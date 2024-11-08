@@ -12,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
+
 namespace ASI.Basecode.WebApp
 {
     // Other services configuration
@@ -35,10 +36,14 @@ namespace ASI.Basecode.WebApp
             // Services
             this._services.TryAddSingleton<TokenValidationParametersFactory>();
             this._services.AddScoped<IUserService, UserService>();
-          
+            this._services.AddScoped<IExpenseService, ExpenseService>();
+            this._services.AddScoped<ICategoryService, CategoryService>();
+
 
             // Repositories
             this._services.AddScoped<IUserRepository, UserRepository>();
+            this._services.AddScoped<ICategoryRepository, CategoryRepository>();
+            this._services.AddScoped<IExpenseRepository, ExpenseRepository>();
 
             // Manager Class
             this._services.AddScoped<SignInManager>();
