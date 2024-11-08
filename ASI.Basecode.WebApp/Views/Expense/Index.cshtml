@@ -1,0 +1,88 @@
+﻿@model IEnumerable<ASI.Basecode.Data.Models.Expense>
+
+@{
+    ViewData["Title"] = "Expense List";
+}
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="text-danger">@ViewData["Title"]</h1>
+        <a href="@Url.Action("AddExpenses", "Expense")" class="btn btn-danger">
+            <i class="fas fa-plus"></i> Add Expense
+        </a>
+    </div>
+
+    <div class="card shadow-sm" style="border-radius: 10px;">
+        <div class="card-header bg-light">
+            <h5 class="mb-0">Expenses Overview</h5>
+        </div>
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead class="table-light">
+                    <tr>
+                        <th>Title</th>
+                        <th>Category</th>
+                        <th>Amount</th>
+                        <th>Date Created</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (var expense in Model)
+                        {
+                            <tr>
+                                <td>@expense.ExpenseTitle</td>
+                                <td>@expense.Category?.Name</td>
+                                <td>@expense.Amount.ToString("C", new System.Globalization.CultureInfo("en-PH"))</td>
+                                <td>@expense.DateCreated.ToShortDateString()</td>
+                                <td>
+                                    <a href="@Url.Action("UpdateExpenses", "Expense", new { id = expense.Id })" class="btn btn-outline-danger btn-sm">
+                                        Edit
+                                    </a>
+                                    <a href="@Url.Action("DeleteConfirmed", "Expense", new { id = expense.Id })" class="btn btn-outline-danger btn-sm" onclick="return confirm('Are you sure you want to delete this expense?');">
+                                        Remove
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="5" class="text-center">No expenses found.</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        background-color: #ffffff;
+        font-family: 'Arial', sans-serif; 
+    }
+
+    h1 {
+        font-weight: bold; 
+    }
+
+    .card {
+        border: none;
+    }
+
+    .table {
+        border-collapse: collapse;
+    }
+
+        .table th, .table td {
+            border: none;
+        }
+
+    .btn {
+        border-radius: 20px;
+    }
+</style>
