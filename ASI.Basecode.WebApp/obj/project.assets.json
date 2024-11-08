@@ -12667,19 +12667,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\kylea\\.nuget\\packages\\": {}
+    "C:\\Users\\allan\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kylea\\Documents\\Alliance\\ExpenseTracker\\ASIBasecode\\ASI.Basecode.WebApp\\ASI.Basecode.WebApp.csproj",
+      "projectUniqueName": "C:\\Users\\allan\\Source\\Repos\\ExpenseTracker-Group2\\ASI.Basecode.WebApp\\ASI.Basecode.WebApp.csproj",
       "projectName": "ASI.Basecode.WebApp",
-      "projectPath": "C:\\Users\\kylea\\Documents\\Alliance\\ExpenseTracker\\ASIBasecode\\ASI.Basecode.WebApp\\ASI.Basecode.WebApp.csproj",
-      "packagesPath": "C:\\Users\\kylea\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kylea\\Documents\\Alliance\\ExpenseTracker\\ASIBasecode\\ASI.Basecode.WebApp\\obj\\",
+      "projectPath": "C:\\Users\\allan\\Source\\Repos\\ExpenseTracker-Group2\\ASI.Basecode.WebApp\\ASI.Basecode.WebApp.csproj",
+      "packagesPath": "C:\\Users\\allan\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\allan\\Source\\Repos\\ExpenseTracker-Group2\\ASI.Basecode.WebApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\kylea\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\allan\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -12694,11 +12694,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\kylea\\Documents\\Alliance\\ExpenseTracker\\ASIBasecode\\ASI.Basecode.Resources\\ASI.Basecode.Resources.csproj": {
-              "projectPath": "C:\\Users\\kylea\\Documents\\Alliance\\ExpenseTracker\\ASIBasecode\\ASI.Basecode.Resources\\ASI.Basecode.Resources.csproj"
+            "C:\\Users\\allan\\Source\\Repos\\ExpenseTracker-Group2\\ASI.Basecode.Resources\\ASI.Basecode.Resources.csproj": {
+              "projectPath": "C:\\Users\\allan\\Source\\Repos\\ExpenseTracker-Group2\\ASI.Basecode.Resources\\ASI.Basecode.Resources.csproj"
             },
-            "C:\\Users\\kylea\\Documents\\Alliance\\ExpenseTracker\\ASIBasecode\\ASI.Basecode.Services\\ASI.Basecode.Services.csproj": {
-              "projectPath": "C:\\Users\\kylea\\Documents\\Alliance\\ExpenseTracker\\ASIBasecode\\ASI.Basecode.Services\\ASI.Basecode.Services.csproj"
+            "C:\\Users\\allan\\Source\\Repos\\ExpenseTracker-Group2\\ASI.Basecode.Services\\ASI.Basecode.Services.csproj": {
+              "projectPath": "C:\\Users\\allan\\Source\\Repos\\ExpenseTracker-Group2\\ASI.Basecode.Services\\ASI.Basecode.Services.csproj"
             }
           }
         }
@@ -12796,7 +12796,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403\\RuntimeIdentifierGraph.json"
       }
     }
   }
