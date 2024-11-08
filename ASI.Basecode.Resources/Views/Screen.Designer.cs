@@ -115,11 +115,11 @@ namespace ASI.Basecode.Resources.Views {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to UserId.
+        ///   Looks up a localized string similar to Username.
         /// </summary>
-        public static string UserId {
+        public static string Username {
             get {
-                return ResourceManager.GetString("UserId", resourceCulture);
+                return ResourceManager.GetString("Username", resourceCulture);
             }
         }
     }
