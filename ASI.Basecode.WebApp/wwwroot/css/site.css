@@ -19,69 +19,89 @@ html {
 
 body {
     margin-bottom: 60px;
+    background-color: #f8f9fa;
 }
 
-.footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    white-space: nowrap;
-}
-
-#footer {
-    height: 160px;
-    margin-left: 0px;
-    transition: margin-left 0.2s;
-}
-
-.wrapper {
-    min-height: 100vh;
-    position: relative;
-    height: auto
-}
-
-.hide-navbar {
-    display: none;
-}
-
-
-/* Initially hide the dropdown */
-.dropdown {
-    display: none;
-    position: absolute;
-    top: 100%;
-    right: 30px;
+#sidebarMenu {
     background-color: #fff;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-    z-index: 1;
+    height: 100vh;
 }
 
-    /* Style the dropdown list */
-    .dropdown ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
+    #sidebarMenu .nav-link {
+        color: #6c757d;
     }
 
-        .dropdown ul li {
-            padding: 10px;
-        }
+    #sidebarMenu .nav-item.active {
+        background-color: #f8f9fa;
+    }
 
-            /* Style the links in the dropdown */
-            .dropdown ul li a {
-                text-decoration: none;
-                color: #333;
-            }
+    #sidebarMenu .nav-link.active {
+        color: #FF2222;
+        font-weight: bold;
+    }
 
-.dropdown-open {
-    display: block;
-    width: 140px
+    #sidebarMenu .nav-item.active .nav-link {
+        color: #FF2222;
+        font-weight: bold;
+    }
+
+.navbar-brand {
+    color: #FF2222;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
 }
 
-.mr-20 {
-    margin-right: 20px;
+.logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 8px;
 }
 
-.w-1000px {
-    width: 1000px;
+.brand-name {
+    font-size: 24px;
+    color: #FF2222;
+    font-weight: bold;
+}
+
+.navbar {
+    background-color: #fff;
+}
+
+.dropdown-toggle::after {
+    margin-left: 0.255em;
+    vertical-align: 0.255em;
+    border-top: 0.3em solid;
+    border-right: 0.3em solid transparent;
+    border-bottom: 0;
+    border-left: 0.3em solid transparent;
+}
+
+main {
+    padding: 20px;
+}
+
+.dropdown-menu {
+    right: 0;
+    left: auto;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    margin-right: 15px;
+}
+
+.w-5.h-5 {
+    width: 24px;
+    height: 24px;
 }
