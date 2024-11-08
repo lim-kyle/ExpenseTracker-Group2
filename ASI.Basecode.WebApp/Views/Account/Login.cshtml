@@ -6,6 +6,7 @@
 @{
     ViewBag.LoginView = true;
     ViewData["Title"] = "Login Page";
+
 }
 <div>
     @Html.AntiForgeryToken()
@@ -23,10 +24,10 @@
                             </div>
                             <form method="post" action="/Account/Login" id="loginForm">
                                 <div class="form-outline mb-4">
-                                    <label class="form-label" for="form2Example11">@UserId</label>
+                                    <label class="form-label" for="form2Example11">@Username</label>
                                     <input type="text" id="form2Example11" class="form-control"
-                                           asp-for="UserId" placeholder="Enter userid" />
-                                    <span asp-validation-for="UserId" class="text-danger"></span>
+                                           asp-for="Username" placeholder="Enter userid" />
+                                    <span asp-validation-for="Username" class="text-danger"></span>
                                 </div>
                                 <div class="form-outline mb-4">
                                     <label class="form-label" for="form2Example22">@Password</label>
@@ -62,8 +63,12 @@
     <script>
         // Check for error message and display Toastr notification
         var errorMessage = '@TempData["ErrorMessage"]';
+        var Success = '@TempData["Success"]';
         if (errorMessage) {
             toastr.error(errorMessage);
+        }
+        if (Success) {
+            toastr.success(Success);
         }
     </script>
 }
