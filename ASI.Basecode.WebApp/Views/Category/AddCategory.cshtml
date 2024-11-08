@@ -1,0 +1,21 @@
+﻿@model ASI.Basecode.Data.Models.Category
+
+@{
+    ViewData["Title"] = "Add Category";
+}
+
+<div class="container mt-4">
+    <h1>@ViewData["Title"]</h1>
+    <form asp-action="AddCategory" method="post">
+        <div class="mb-3">
+            <label for="CategoryName" class="form-label">Category Name</label>
+            <input type="text" class="form-control" id="CategoryName" name="Name"  maxlength="100" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+
+
+        <button type="submit" class="btn btn-primary">Add Category</button>
+        <a href="@Url.Action("Index", "Category")" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>

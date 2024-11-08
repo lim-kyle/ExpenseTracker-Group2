@@ -1,0 +1,38 @@
+﻿@model IEnumerable<ASI.Basecode.Data.Models.Category>
+
+@{
+    ViewData["Title"] = "Category List";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1>@ViewData["Title"]</h1>
+        <a href="@Url.Action("AddCategory", "Category")" class="btn btn-primary">
+            Add Category
+        </a>
+    </div>
+
+    <div class="row">
+        @if (Model != null && Model.Any())
+        {
+            foreach (var category in Model)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">@category.Name</h5>
+                            <a href="@Url.Action("UpdateCategory", "Category", new { id = category.Id })" class="btn btn-outline-primary">Edit</a>
+                            <a href="@Url.Action("DeleteCategory", "Category", new { id = category.Id })" class="btn btn-outline-danger">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="col-12 text-center">
+                <p class="lead">No categories found.</p>
+            </div>
+        }
+    </div>
+</div>
