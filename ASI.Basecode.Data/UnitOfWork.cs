@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Threading.Tasks;
+using System.Threading;
 using ASI.Basecode.Data.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
@@ -38,6 +40,10 @@ namespace ASI.Basecode.Data
         public void Dispose()
         {
             Database.Dispose();
+        }
+        public async Task SaveChangesAsync(CancellationToken ct)
+        {
+            await Database.SaveChangesAsync(ct);
         }
     }
 }
