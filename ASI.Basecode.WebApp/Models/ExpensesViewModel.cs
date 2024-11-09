@@ -1,20 +1,14 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using ASI.Basecode.Data.Models;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
 namespace ASI.Basecode.WebApp.Models
 {
-    /// <summary>
-    /// Login View Model
-    /// </summary>
+
     public class ExpensesViewModel
     {
-        /// <summary>ユーザーID</summary>
-        [JsonPropertyName("username")]
-        [Required(ErrorMessage = "UserId is required.")]
-        public string Username { get; set; }
-        /// <summary>パスワード</summary>
-        [JsonPropertyName("password")]
-        [Required(ErrorMessage = "Password is required.")]
-        public string Password { get; set; }
+       public IEnumerable<Expense> Expenses { get; }
+       public Expense Expense { get; set; }
     }
 }

@@ -1,24 +1,57 @@
-﻿@model IEnumerable<ASI.Basecode.Data.Models.Expense>
+﻿@model ASI.Basecode.Data.Models.Expense
 @inject ASI.Basecode.Data.Interfaces.ICategoryRepository CategoryRepository
-@inject ASI.Basecode.Data.Models.Expense
+@inject ASI.Basecode.Data.Interfaces.IExpenseRepository ExpenseRepository
+
 @{
     ViewData["Title"] = "Expense Management";
     var userId = User.Claims.FirstOrDefault(c => c.Type == "UserId")?.Value;
     var categories = CategoryRepository.GetCategoriesByUserId(int.Parse(userId)).ToList();
+
+    var expenses = await ExpenseRepository.GetExpensesAsyncByUserId(int.Parse(userId));
+    var errors = TempData["Errors"] as Dictionary<string, List<string>>;
 }
 @section modals {
 
-    <div id="modal" class="absolute w-full h-full bg-black z-50 flex flex-row items-center justify-center bg-opacity-20">
-        <form asp-action="AddExpenses" method="post" class="bg-white p-4 rounded-xl">
-            <h1 class="text-lg text-center font-bold text-gray-700">Add Expense</h1>
-            <div class="mb-4">
-                <label asp-for="ExpenseTitle" class="block text-gray-700">Title</label>
-                <input asp-for="ExpenseTitle" class="p-2 border border-gray-200 rounded-xl w-full" />
-                <span asp-validation-for="ExpenseTitle" class="text-red-500"></span>
+    <div id="modal" class="absolute w-full h-full bg-black z-50  @(errors == null ? " hidden" : "flex " ) flex-row items-center justify-center bg-opacity-20">
+        <form asp-action="AddExpenses" method="post" class="bg-white  p-4 rounded-xl ">
+            <h1 class="text-lg text-gray-700 font-bold mb-5 text-center">Add Expense</h1>
+            <div class="flex  flex-col ">
+                <label for="ExpenseTitle" class="text-gray-750 uppercase text-sm">Expense Title</label>
+                <input class="outline-none bg-slate-100 p-1 rounded-lg" type="text" id="ExpenseTitle" name="ExpenseTitle"  maxlength="100" />
+                @if (errors != null && errors.ContainsKey("ExpenseTitle"))
+                {
+                    <div class="alert alert-danger">
+                        @foreach (var error in errors["ExpenseTitle"])
+                        {
+                            <p>@error</p>
+                        }
+                    </div>
+                }
+                      
             </div>
-            <!-- Add other form fields as needed -->
-            <div class="flex justify-end">
-                <button type="submit" class="bg-blue-500 text-white p-2 rounded-xl">Add</button>
+
+            <div class="flex  flex-col">
+                <label for="CategoryId" class="form-label">Category</label>
+                <select class="outline-none bg-slate-100 p-1 rounded-lg" id="CategoryId" name="CategoryId" required>
+                    <option value="">Select a category</option>
+                    @foreach (var category in categories)
+                    {
+                        <option value="@category.Id">@category.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="CategoryId"></span>
+            </div>
+
+            <div class="flex  flex-col">
+                <label for="Amount" class="form-label">Amount</label>
+                <input type="number" class="p-1 outline-none rounded-lg bg-slate-100 " id="Amount" name="Amount" required step="0.01" min="0" />
+                <span asp-validation-for="Amount"></span>
+
+            </div>
+
+            <div class="d-flex justify-content-end mt-5">
+                <button type="submit" class="bg-red-500 p-2  text-white rounded-xl">Add Expense</button>
+                <a id="close" class="bg-blue-500 p-2 text-white rounded-xl">Cancel</a>
             </div>
         </form>
     </div>
@@ -63,9 +96,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @if (Model != null && Model.Any())
+                    @if (expenses.Count > 0)
                     {
-                        foreach (var expense in Model)
+                        foreach (var expense in expenses)
                         {
                             <tr class="border-b border-gray-200 p-3">
                                 <td class="text-center p-2 bg-slate-50">@expense.ExpenseTitle</td>
@@ -101,10 +134,13 @@
     <script>
         const modal = document.getElementById('modal');
         const add = document.getElementById('buttonAdd');
+        const close = document.getElementById('close');
 
         add.addEventListener('click', () => {
-             modal.style.display = 'block';
+            modal.style.display = 'flex';
         });
-
+        close.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
     </script>
 }
