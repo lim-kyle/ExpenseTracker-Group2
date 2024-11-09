@@ -34,11 +34,18 @@ namespace ASI.Basecode.Data
 
                 entity.Property(e => e.CreatedTime).HasColumnType("datetime");
 
-                entity.Property(e => e.Name)
+                entity.Property(e => e.FirstName)
                     .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false);
-
+                entity.Property(e => e.LastName)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+                entity.Property(e => e.Email)
+                   .IsRequired()
+                   .HasMaxLength(50)
+                   .IsUnicode(false);
                 entity.Property(e => e.Password)
                     .IsRequired()
                     .HasMaxLength(50)
