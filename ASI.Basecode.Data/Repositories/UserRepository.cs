@@ -32,5 +32,12 @@ namespace ASI.Basecode.Data.Repositories
             UnitOfWork.SaveChanges();
         }
 
+        public User GetUser(int userId)
+        {
+            return this.GetDbSet<User>().FirstOrDefault(x => x.Id == userId);
+        }
+
+
+
     }
 }
