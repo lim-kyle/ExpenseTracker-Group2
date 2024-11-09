@@ -1,30 +1,65 @@
 ﻿@model IEnumerable<ASI.Basecode.Data.Models.Expense>
-
+@inject ASI.Basecode.Data.Interfaces.ICategoryRepository CategoryRepository
+@inject ASI.Basecode.Data.Models.Expense
 @{
-    ViewData["Title"] = "Expense List";
+    ViewData["Title"] = "Expense Management";
+    var userId = User.Claims.FirstOrDefault(c => c.Type == "UserId")?.Value;
+    var categories = CategoryRepository.GetCategoriesByUserId(int.Parse(userId)).ToList();
+}
+@section modals {
+
+    <div id="modal" class="absolute w-full h-full bg-black z-50 flex flex-row items-center justify-center bg-opacity-20">
+        <form asp-action="AddExpenses" method="post" class="bg-white p-4 rounded-xl">
+            <h1 class="text-lg text-center font-bold text-gray-700">Add Expense</h1>
+            <div class="mb-4">
+                <label asp-for="ExpenseTitle" class="block text-gray-700">Title</label>
+                <input asp-for="ExpenseTitle" class="p-2 border border-gray-200 rounded-xl w-full" />
+                <span asp-validation-for="ExpenseTitle" class="text-red-500"></span>
+            </div>
+            <!-- Add other form fields as needed -->
+            <div class="flex justify-end">
+                <button type="submit" class="bg-blue-500 text-white p-2 rounded-xl">Add</button>
+            </div>
+        </form>
+    </div>
 }
 
 <div class="container mt-5">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1 class="text-danger">@ViewData["Title"]</h1>
-        <a href="@Url.Action("AddExpenses", "Expense")" class="btn btn-danger">
+    <div class="d-flex justify-content-between align-items-center mb-4 pb-4 border-b border-gray-300">
+        <h1 class="text-2xl font-bold text-gray-800">@ViewData["Title"]</h1>
+     
+    </div>
+    <div class="flex flex-row justify-between">
+     <div >
+        <div class="flex flex-row items-center gap-1">
+            <span class="text-gray-700">Sort By: </span>
+                <select class="bg-white p-2 border border-gray-200 rounded-xl">
+                    <option>Categories</option>
+                    @foreach (var category in categories)
+                    {
+                        <option value="@category.Id">@category.Name</option>
+                    }
+                </select>
+
+                <input type="date" class="p-1  border border-gray-200 rounded-xl" />
+                <input type="button"  value="Filter" class="p-1 px-4 bg-purple-500 text-white rounded-xl" />
+        </div>
+     </div>
+        <a id="buttonAdd" class="bg-red-500 p-2 rounded-xl text-white text-sm">
             <i class="fas fa-plus"></i> Add Expense
         </a>
-    </div>
-
-    <div class="card shadow-sm" style="border-radius: 10px;">
-        <div class="card-header bg-light">
-            <h5 class="mb-0">Expenses Overview</h5>
-        </div>
-        <div class="card-body">
-            <table class="table table-hover">
-                <thead class="table-light">
+ </div>
+    <div class="">
+     
+        <div class="mt-5">
+            <table class=" w-full">
+                <thead class="table-light border-collapse border-y border-slate-200">
                     <tr>
-                        <th>Title</th>
-                        <th>Category</th>
-                        <th>Amount</th>
-                        <th>Date Created</th>
-                        <th>Actions</th>
+                        <th class="text-md text-gray-700 text-center font-medium bg-slate-50 p-2">Title</th>
+                        <th class="text-md text-gray-700 text-center font-medium bg-slate-50 p-2">Category</th>
+                        <th class="text-md text-gray-700 text-center font-medium bg-slate-50 p-2">Amount</th>
+                        <th class="text-md text-gray-700 text-center font-medium bg-slate-50 p-2">Date Created</th>
+                        <th class="text-md text-gray-700 text-center font-medium bg-slate-50 p-2">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,18 +67,19 @@
                     {
                         foreach (var expense in Model)
                         {
-                            <tr>
-                                <td>@expense.ExpenseTitle</td>
-                                <td>@expense.Category?.Name</td>
-                                <td>@expense.Amount.ToString("C", new System.Globalization.CultureInfo("en-PH"))</td>
-                                <td>@expense.DateCreated.ToShortDateString()</td>
-                                <td>
-                                    <a href="@Url.Action("UpdateExpenses", "Expense", new { id = expense.Id })" class="btn btn-outline-danger btn-sm">
-                                        Edit
+                            <tr class="border-b border-gray-200 p-3">
+                                <td class="text-center p-2 bg-slate-50">@expense.ExpenseTitle</td>
+                                <td class="text-center p-2 bg-slate-50">@expense.Category?.Name</td>
+                                <td class="text-center p-2 bg-slate-50">@expense.Amount.ToString("C", new System.Globalization.CultureInfo("en-PH"))</td>
+                                <td class="text-center p-2 bg-slate-50">@expense.DateCreated.ToShortDateString()</td>
+                                <td class="text-center p-2 bg-slate-50">
+                                    <a href="@Url.Action("UpdateExpenses", "Expense", new { id = expense.Id })" class="text-blue-500 hover:text-blue-700">
+                                        <i class="fas fa-edit"></i>
                                     </a>
-                                    <a href="@Url.Action("DeleteConfirmed", "Expense", new { id = expense.Id })" class="btn btn-outline-danger btn-sm" onclick="return confirm('Are you sure you want to delete this expense?');">
-                                        Remove
+                                    <a href="@Url.Action("DeleteConfirmed", "Expense", new { id = expense.Id })" class="text-red-500 hover:text-red-700 ml-2">
+                                        <i class="fas fa-trash"></i>
                                     </a>
+                                 
                                 </td>
                             </tr>
                         }
@@ -60,29 +96,15 @@
     </div>
 </div>
 
-<style>
-    body {
-        background-color: #ffffff;
-        font-family: 'Arial', sans-serif; 
-    }
 
-    h1 {
-        font-weight: bold; 
-    }
+@section scripts  {
+    <script>
+        const modal = document.getElementById('modal');
+        const add = document.getElementById('buttonAdd');
 
-    .card {
-        border: none;
-    }
+        add.addEventListener('click', () => {
+             modal.style.display = 'block';
+        });
 
-    .table {
-        border-collapse: collapse;
-    }
-
-        .table th, .table td {
-            border: none;
-        }
-
-    .btn {
-        border-radius: 20px;
-    }
-</style>
+    </script>
+}

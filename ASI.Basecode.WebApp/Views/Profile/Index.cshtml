@@ -1,0 +1,78 @@
+﻿@model ASI.Basecode.Data.Models.User
+
+
+<div class="p-4 bg-white">
+    
+    <h1 class="text-2xl font-bold text-gray-700">Settings and Preferences</h1>
+    <div class="grid grid-cols-2 mt-10 gap-4">
+        <div class="flex flex-col">
+            <label>First Name</label>
+            <input type="text" id="firstName" class="p-2 rounded-xl border border-gray-200 outline-none"
+                   asp-for="FirstName" />
+        </div>
+        <div class="flex flex-col">
+            <label>Last Name</label>
+            <input type="text" id="lastName" class="p-2 rounded-xl border border-gray-200 outline-none"
+                   asp-for="LastName" />
+        </div>
+        <div class="flex flex-col">
+            <label>Email</label>
+            <input type="text" id="email" class="p-2 rounded-xl border border-gray-200 outline-none"
+                   asp-for="Email" />
+        </div>
+        <div class="flex flex-col">
+            <label>Username</label>
+            <input type="text" disabled id="username" class="p-2 rounded-xl border border-gray-200 outline-none"
+                   asp-for="Username" />
+        </div>
+    </div>
+
+    <h2 class="text-xl font-bold text-gray-700 mt-10">Change Password</h2>
+    <div class="grid grid-cols-2 mt-4 gap-4">
+        <div class="flex flex-col">
+            <label>New Password</label>
+            <input type="password" id="newPassword" class="p-2 rounded-xl border border-gray-200 outline-none" />
+        </div>
+        <div class="flex flex-col">
+            <label>Confirm New Password</label>
+            <input type="password" id="confirmNewPassword" class="p-2 rounded-xl border border-gray-200 outline-none" />
+        </div>
+    </div>
+    <div id="currentPasswordModal" class=" z-50" style="display:none;">
+        <div class="modal-content p-4 bg-white rounded shadow-lg">
+            <h2 class="text-xl font-bold text-gray-700">Enter Current Password</h2>
+            <div class="flex flex-col mt-4">
+                <label>Current Password</label>
+                <input type="password" id="currentPassword" class="p-2 rounded-xl border border-gray-200 outline-none" />
+            </div>
+            <div class="flex justify-end mt-4">
+                <button id="confirmButton" class="p-2 bg-blue-500 text-white rounded">Confirm</button>
+                <button id="cancelButton" class="ml-2 p-2 bg-gray-500 text-white rounded">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <button id="updateButton" class="mt-4 p-2 bg-blue-500 text-white rounded">Update</button>
+</div>
+
+<!-- Modal Structure -->
+
+@section scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#updateButton').click(function() {
+                $('#currentPasswordModal').show();
+            });
+
+            $('#cancelButton').click(function() {
+                $('#currentPasswordModal').hide();
+            });
+
+            $('#confirmButton').click(function() {
+                // Add your logic to handle the current password confirmation
+                $('#currentPasswordModal').hide();
+            });
+        });
+    </script>
+}
