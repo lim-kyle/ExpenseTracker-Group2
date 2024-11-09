@@ -1,65 +1,79 @@
-﻿@model LoginViewModel
-@using static ASI.Basecode.Resources.Views.Screen
-@section styles {
-    <link rel="stylesheet" href="~/css/login.css" />
-}
+﻿@using ASI.Basecode.Services.ServiceModels
+@model UserViewModel
 @{
-    ViewBag.LoginView = true;
-    ViewData["Title"] = "Login Page";
-
+    Layout = null;
 }
-<div>
-    @Html.AntiForgeryToken()
-</div>
-<div class="container py-5" style="display:flex; align-content:center;height:calc(100vh - 64px)">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-xl-10">
-            <div class="card rounded-3 text-black">
-                <div class="row g-0 w-1000px">
-                    <div class="col-lg-6">
-                        <div class="card-body p-md-5 mx-md-4">
-                            <div class="text-center">
-                                <img src="~/img/asi-logo-invert.svg"
-                                     style="width: 185px;" alt="logo">
-                            </div>
-                            <form method="post" action="/Account/Login" id="loginForm">
-                                <div class="form-outline mb-4">
-                                    <label class="form-label" for="form2Example11">@Username</label>
-                                    <input type="text" id="form2Example11" class="form-control"
-                                           asp-for="Username" placeholder="Enter userid" />
-                                    <span asp-validation-for="Username" class="text-danger"></span>
-                                </div>
-                                <div class="form-outline mb-4">
-                                    <label class="form-label" for="form2Example22">@Password</label>
-                                    <input type="password" id="form2Example22" class="form-control"
-                                           asp-for="Password" placeholder="Enter password" />
-                                    <span asp-validation-for="Password" class="text-danger"></span>
-                                </div>
-                                <div class="text-center pt-1 mb-5 pb-1 d-flex flex-column align-items-center">
-                                    <button class="btn btn-primary btn-block login-btn gradient-custom-2 mb-3" type="submit">
-                                        @Login
-                                    </button>
-                                    <div>
-                                        <a class="text-muted" href="#!">@ForgotPass</a>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-center justify-content-center pb-4">
-                                    <p class="mb-0 me-2 mr-1">@DontHaveAcc</p>
-                                    <a asp-controller="Account" asp-action="Register" class="btn btn-outline-danger">@CreateNew</a>
-                                </div>
-                            </form>
-                        </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - PennyWise</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js" integrity="sha512-6sSYJqDreZRZGkJ3b+YfdhB3MzmuP9R7X1QZ6g5aIXhRvR1Y/N/P47jmnkENm7YL3oqsmI6AK+V6AD99uWDnIw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="bg-white w-full min-h-screen flex items-center justify-center">
+        <form method="post" action="/Account/Login" class="bg-white shadow-2xl p-5 min-w-96 pt-10 rounded-xl mt-4">
+            <div class="flex flex-col gap-8">
+                <div class="flex flex-row items-center gap-2 self-center">
+                    <img src="/images/PennyWiseLogo.png" alt="PennyWise Logo" class="w-12 h-12" />
+                    <span class="text-red-500 font-bold text-lg">PennyWise</span>
+                </div>
+               
+            
+                <div class="flex flex-col gap-2">
+                    <div class="pb-2 p-2 flex flex-row gap-2 items-center border-b border-gray-500">
+                        <i class="fa-regular fa-circle-user"></i>
+                        <input type="text" id="name" class="w-full border-none outline-none"
+                               asp-for="Username" placeholder="Username" />
                     </div>
-                    <div class="col-lg-6 d-flex">
-                        <img style="width:400px"src="~/img/LiveIT.png" />
+                    <span asp-validation-for="Username" class="text-red-500"></span>
+                </div>
+                <div class="flex flex-col gap-2">
+                    <div class="pb-2 p-2 flex flex-row gap-2 items-center border-b border-gray-500">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" id="name" class="w-full border-none outline-none"
+                               asp-for="Password" placeholder="Password" />
+                    </div>
+                    <span asp-validation-for="Password" class="text-red-500"></span>
+                </div>
+                
+                <div class="flex flex-col items-center justify-center gap-2">
+                    <button class="bg-red-500 text-white flex-1 w-full p-3 rounded-lg" type="submit">
+                        Login
+                    </button>
+                    <div class="flex flex-row gap-2 items-center">
+                        <span>Already Have An Account?</span>
+                        <a class="text-red-500 font-bold" asp-controller="Account" asp-action="Register">
+                            Sign Up
+                        </a>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
 
-@section scripts {
+            </div>
+        </form>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.js"></script>
+    <script src="https://kit.fontawesome.com/7a7c645416.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+    <script>
+            
+            toastr.options = {
+                positionClass: "toast-top-center", // Set the notification position to center
+            timeOut: 3000,
+            closeButton: true,
+            progressBar: true
+                };
+    </script>
     <script>
         // Check for error message and display Toastr notification
         var errorMessage = '@TempData["ErrorMessage"]';
@@ -71,4 +85,8 @@
             toastr.success(Success);
         }
     </script>
-}
+
+</body>
+</html>
+
+

@@ -84,10 +84,10 @@ namespace ASI.Basecode.WebApp.Authentication
             var claims = new List<Claim>()
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Username, ClaimValueTypes.String, Const.Issuer),
-                new Claim(ClaimTypes.Name, user.Name, ClaimValueTypes.String, Const.Issuer),
+                new Claim(ClaimTypes.Name, user.FirstName + " " + user.LastName, ClaimValueTypes.String, Const.Issuer),
 
                 new Claim("Username", user.Username, ClaimValueTypes.String, Const.Issuer),
-                new Claim("Name", user.Name, ClaimValueTypes.String, Const.Issuer),
+                new Claim("Name", user.FirstName + " " + user.LastName, ClaimValueTypes.String, Const.Issuer),
 
                 new Claim("UserId", user.Id.ToString(), ClaimValueTypes.Integer, Const.Issuer),
             };

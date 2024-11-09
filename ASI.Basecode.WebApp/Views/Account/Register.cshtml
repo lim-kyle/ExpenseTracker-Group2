@@ -1,71 +1,106 @@
 ﻿@using ASI.Basecode.Services.ServiceModels
 @model UserViewModel
 @{
-    ViewBag.LoginView = true;
-    ViewData["Title"] = "Register Page";
     Layout = null;
 }
-@section styles {
-    <link rel="stylesheet" href="~/css/login.css" />
-}
-<div class="container py-5 h-100 register-box">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-xl-10">
-            <div class="card rounded-3 text-black">
-                <div class="row g-0">
-                    <div class="card-body p-md-5 mx-md-4">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register - PennyWise</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js" integrity="sha512-6sSYJqDreZRZGkJ3b+YfdhB3MzmuP9R7X1QZ6g5aIXhRvR1Y/N/P47jmnkENm7YL3oqsmI6AK+V6AD99uWDnIw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="bg-white w-full min-h-screen flex items-center justify-center">
+        <form method="post" action="/Account/Register" class="bg-white shadow-2xl p-5 pt-10 rounded-xl mt-4">
+            <div class="flex flex-col gap-8">
+                <h1 class="text-4xl font-bold text-gray-850 text-center">SignUp</h1>
 
-                        <div class="text-center">
-                            <img src="https://www.alliance.com.ph/images/asi-logo-invert.svg"
-                                 style="width: 185px;" alt="logo">
+                <div class="grid grid-cols-2 gap-4 ">
+                   <div class="flex flex-col gap-2">
+                        <div class="pb-2 p-2 flex flex-row gap-2 items-center border-b border-gray-500">
+                            <i class="fa-regular fa-user"></i>
+                            <input type="text" id="name" class="border-none outline-none"
+                                   asp-for="FirstName" placeholder="First Name" />
+
                         </div>
-
-                        <form method="post" action="/Account/Register">
-                            <div class="form-outline mb-4">
-                                <label class="form-label" for="Username">Username</label>
-                                <input type="text" id="username" class="form-control"
-                                       asp-for="Username" placeholder="Enter userid" />
-                                <span asp-validation-for="Username" class="text-danger"></span>
-                            </div>
-                            <div class="form-outline mb-4">
-                                <label class="form-label" for="name">Name</label>
-                                <input type="text" id="name" class="form-control"
-                                       asp-for="Name" placeholder="Enter name" />
-                                <span asp-validation-for="Name" class="text-danger"></span>
-                            </div>
-                            <div class="form-outline mb-4">
-                                <label class="form-label" for="password">Password</label>
-                                <input type="password" id="password" class="form-control"
-                                       asp-for="Password" placeholder="Enter password" />
-                                <span asp-validation-for="Password" class="text-danger"></span>
-                            </div>
-                            <div class="form-outline mb-4">
-                                <label class="form-label" for="confirmpassword">Confirm Password</label>
-                                <input type="password" id="confirmpassword" class="form-control" 
-                                       asp-for="ConfirmPassword" placeholder="Confirm Password" />
-                                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-                            </div>
-                            <div class="text-center pt-1 mb-5 pb-1 d-flex flex-column align-items-center">
-                                <button class="btn btn-primary btn-block login-btn gradient-custom-2 mb-3" type="submit">
-                                    Register
-                                </button>
-                                <a asp-controller="Account" asp-action="Login">
-                                    &#8592 Back
-                                </a>
-                            </div>
-                        </form>
+                        <span asp-validation-for="FirstName" class="text-red-500"></span>
+                   </div>
+                    <div class="flex flex-col gap-2">
+                    <div class="pb-2 p-2 flex flex-row gap-2 items-center border-b border-gray-500">
+                        <i class="fa-regular fa-user"></i>
+                        <input type="text" id="name" class="border-none outline-none"
+                               asp-for="LastName" placeholder="Last Name" />
+                       
+                    </div>
+                       <span asp-validation-for="LastName" class="text-red-500"></span>
                     </div>
                 </div>
+                <div class="flex flex-col gap-2">
+                <div class="pb-2 p-2 flex flex-row gap-2 items-center border-b border-gray-500">
+                    <i class="fa-regular fa-envelope"></i>
+                    <input type="text" id="name" class="border-none outline-none"
+                           asp-for="Email" placeholder="Email" />
+                   
+                </div>
+                    <span asp-validation-for="Email" class="text-red-500"></span>
+                </div>
+                <div class="flex flex-col gap-2">
+                <div class="pb-2 p-2 flex flex-row gap-2 items-center border-b border-gray-500">
+                    <i class="fa-regular fa-circle-user"></i>
+                    <input type="text" id="name" class="border-none outline-none"
+                           asp-for="Username" placeholder="Username" />
+                </div>
+                    <span asp-validation-for="Username" class="text-red-500"></span>
+                </div>
+                <div class="flex flex-col gap-2">
+                <div class="pb-2 p-2 flex flex-row gap-2 items-center border-b border-gray-500">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="name" class="border-none outline-none"
+                           asp-for="Password" placeholder="Password" />
+                </div>
+                    <span asp-validation-for="Password" class="text-red-500"></span>
+                </div>
+                <div class="flex flex-col gap-2">
+                <div class="pb-2 p-2 flex flex-row gap-2 items-center border-b border-gray-500">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="name" class="border-none outline-none"
+                           asp-for="ConfirmPassword" placeholder="Confirm Password" />
+                </div>
+                    <span asp-validation-for="ConfirmPassword" class="text-red-500"></span>
+                </div>
+                <div class="flex flex-col items-center justify-center gap-2">
+                    <button class="bg-red-500 text-white flex-1 w-full p-3 rounded-lg" type="submit">
+                        SignUp
+                    </button>
+                   <div class="flex flex-row gap-2 items-center">
+                       <span>Already Have An Account?</span>
+                        <a class="text-red-500 font-bold" asp-controller="Account" asp-action="Login">
+                            Login
+                        </a>
+                   </div>
+                </div>
+
             </div>
-        </div>
+        </form>
     </div>
-</div>
-@section scripts {
-    <script>
-        // Check for error message and display Toastr notification
-        var errorMessage = '@TempData["ErrorMessage"]';
-        if (errorMessage) {
-            toastr.error(errorMessage);
-        }
-    </script>
-}
+        <script>
+            // Check for error message and display Toastr notification
+            var errorMessage = '@TempData["ErrorMessage"]';
+            var Success = '@TempData["Success"]';
+            if (errorMessage) {
+                toastr.error(errorMessage);
+            }
+            if (Success) {
+                toastr.success(Success);
+            }
+        </script>
+    
+</body>
+</html>
+
+
