@@ -1,0 +1,223 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Reporting and Analytics";
+}
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4 pb-4 border-b border-gray-300">
+        <h1 class="text-2xl font-bold text-gray-800">@ViewData["Title"]</h1>
+
+    </div>
+    <div>
+        <h4 class ="text-1.5xl mb-4 font-bold text-gray-800"> Expense Summary</h4>
+    </div>
+
+    <div class="summary-container">
+        <!-- Expense Breakdown Section (left side) -->
+        <div class="expense-breakdown">
+            <h5>Expense Breakdown</h5>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <span>Travel</span>
+                    <span>30%</span>
+                </li>
+                <li class="list-group-item">
+                    <span>Travel</span>
+                    <span>30%</span>
+                </li>
+                <li class="list-group-item">
+                    <span>Entertainment</span>
+                    <span>25%</span>
+                </li>
+                <li class="list-group-item">
+                    <span>Entertainment</span>
+                    <span>25%</span>
+                </li>
+                <li class="list-group-item">
+                    <span>Fitness</span>
+                    <span>43%</span>
+                </li>
+                <li class="list-group-item">
+                    <span>Entertainment</span>
+                    <span>25%</span>
+                </li>
+                <li class="list-group-item">
+                    <span>Entertainment</span>
+                    <span>25%</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Filter and Table Section (right side) -->
+        <div class="col-md-10 table-container">
+            <div class="mb-3">
+                <div class="d-flex flex-row align-items-center gap-2">
+                    <span class="text-gray-700">Sort By: </span>
+                    <select class="bg-white p-2 border border-gray-200 rounded-xl">
+                        <option>Categories</option>
+                    </select>
+                    <label>From: </label>
+                    <input type="date" class="p-1 border border-gray-200 rounded-xl" />
+                    <label>To: </label>
+                    <input type="date" class="p-1 border border-gray-200 rounded-xl" />
+                    <input type="button" value="Filter" class="p-1 px-4 w-24 bg-[#4A46FF] text-white rounded-xl ml-4" />
+                    <input type="button" value="Trends" class="p-1 px-4 w-24 bg-[#FF5A01] text-white rounded-xl ml-2" />
+                    <input type="button" value="Print" class="p-1 px-4 w-24 bg-[#FF4649] text-white rounded-xl ml-2" />
+                </div>
+            </div>
+
+            <div class="mt-5">
+                <table class=" w-full">
+                    <thead class="table-light border-collapse border-y border-slate-200">
+                        <tr>
+                            <th class="text-md text-gray-700 text-center font-medium bg-slate-50 p-2">Title</th>
+                            <th class="text-md text-gray-700 text-center font-medium bg-slate-50 p-2">Category</th>
+                            <th class="text-md text-gray-700 text-center font-medium bg-slate-50 p-2">Amount</th>
+                            <th class="text-md text-gray-700 text-center font-medium bg-slate-50 p-2">Creation Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Expense data rows go here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="expense-trends-container mt-4">
+        <!-- Chart Container with border and adjusted height -->
+        <div class="chart-container relative mt-0 p-20 border border-gray-300 rounded-lg shadow-md" style="height: 400px;">
+            <!-- Positioned Title inside the padding -->
+            <h4 class="chart-title absolute top-4 left-4 text-lg font-semibold">Expense Trends</h4>
+
+            <canvas id="expenseTrendsChart" style="height: 100%;"></canvas>
+        </div>
+    </div>
+
+
+    @section scripts {
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            // Example Expense Data with scaled-down values
+            var expenseData = {
+                labels: ['November', 'October', 'September', 'August'], // Months
+                datasets: [
+                    {
+                        label: 'Groceries',
+                        backgroundColor: '#E0440E',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1,
+                        data: [100, 75, 50, 90], // Scaled-down example expenses
+                    },
+                    {
+                        label: 'Bills',
+                        backgroundColor: '#E6693E',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1,
+                        data: [150, 125, 100, 140], // Scaled-down example expenses
+                    },
+                    {
+                        label: 'Allowance',
+                        backgroundColor: '#EC8F6E',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1,
+                        data: [75, 60, 90, 70], // Scaled-down example expenses
+                    }
+                ]
+            };
+
+            // Create the Grouped Bar Chart with updated options
+            var ctx = document.getElementById('expenseTrendsChart').getContext('2d');
+            var expenseTrendsChart = new Chart(ctx, {
+                type: 'bar', // Bar chart type
+                data: expenseData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false, // Maintain custom height
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                        },
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                stepSize: 2, // Adjust step size for y-axis for smaller values
+                            },
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'right', // Position of the legend
+                        }
+                    }
+                }
+            });
+        </script>
+    }
+
+
+</div>
+
+<style>
+    /* General container styling */
+    .container {
+        margin-top: 10px;
+        padding: 10px;
+    }
+
+    .header h1 {
+        font-size: 1.5em;
+        font-weight: bold;
+        color: #333;
+    }
+
+    /* Flex layout for main content */
+    .summary-container {
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+    }
+
+    /* Expense Breakdown card styling */
+    .expense-breakdown {
+        width: 250px;
+        padding: 15px;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+        .expense-breakdown h5 {
+            font-size: 1.25em;
+            margin-bottom: 10px;
+        }
+
+    .list-group {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .list-group-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0;
+        border-bottom: 1px solid #e9ecef;
+        font-size: 0.9em;
+    }
+
+        .list-group-item:last-child {
+            border-bottom: none;
+        }
+
+    /* Table container and filter styling */
+    .table-container {
+        width: 75%; /* Adjust width as needed */
+        margin-left: auto;
+        margin-right: auto;
+    }
+     
+</style>
