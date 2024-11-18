@@ -29,7 +29,7 @@ public class ExpenseController : Controller
 
     public IActionResult AddExpenses()
     {
-        return View();
+        return RedirectToAction("Index");
     }
 
     [HttpPost]
@@ -38,20 +38,11 @@ public class ExpenseController : Controller
         if (ModelState.IsValid)
         {
             var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == "UserId");
-
-
             expense.UserId = int.Parse(userIdClaim.Value);
             await _expenseService.AddExpenseAsync(expense, ct);
             return RedirectToAction("Index");
         }
-
-        TempData["Errors"] = ModelState.ToDictionary(
-             kvp => kvp.Key,
-             kvp => kvp.Value.Errors.Select(e => e.ErrorMessage).ToList()
-         );
-        TempData["Expense"] = expense;
-
-        return RedirectToAction("Index");
+        return View("Index", expense);
     }
 
     public async Task<IActionResult> UpdateExpenses(int id, CancellationToken ct)

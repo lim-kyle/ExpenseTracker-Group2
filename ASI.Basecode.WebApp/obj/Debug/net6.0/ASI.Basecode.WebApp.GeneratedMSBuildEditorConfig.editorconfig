@@ -9,83 +9,87 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ASI.Basecode.WebApp
 build_property.RootNamespace = ASI.Basecode.WebApp
-build_property.ProjectDir = C:\Users\allan\Source\Repos\ExpenseTracker-Group2\ASI.Basecode.WebApp\
+build_property.ProjectDir = C:\Users\allan\source\repos\ExpenseTracker-Group2\ASI.Basecode.WebApp\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = true
-build_property.MSBuildProjectDirectory = C:\Users\allan\Source\Repos\ExpenseTracker-Group2\ASI.Basecode.WebApp
+build_property.MSBuildProjectDirectory = C:\Users\allan\source\repos\ExpenseTracker-Group2\ASI.Basecode.WebApp
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/allan/Source/Repos/ExpenseTracker-Group2/ASI.Basecode.WebApp/Views/Account/Login.cshtml]
+[C:/Users/allan/source/repos/ExpenseTracker-Group2/ASI.Basecode.WebApp/Views/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/allan/Source/Repos/ExpenseTracker-Group2/ASI.Basecode.WebApp/Views/Account/Register.cshtml]
+[C:/Users/allan/source/repos/ExpenseTracker-Group2/ASI.Basecode.WebApp/Views/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/allan/Source/Repos/ExpenseTracker-Group2/ASI.Basecode.WebApp/Views/Category/AddCategory.cshtml]
+[C:/Users/allan/source/repos/ExpenseTracker-Group2/ASI.Basecode.WebApp/Views/Analytics/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5hbHl0aWNzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/allan/source/repos/ExpenseTracker-Group2/ASI.Basecode.WebApp/Views/Category/AddCategory.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcQWRkQ2F0ZWdvcnkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/allan/Source/Repos/ExpenseTracker-Group2/ASI.Basecode.WebApp/Views/Category/Index.cshtml]
+[C:/Users/allan/source/repos/ExpenseTracker-Group2/ASI.Basecode.WebApp/Views/Category/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/allan/Source/Repos/ExpenseTracker-Group2/ASI.Basecode.WebApp/Views/Category/UpdateCategory.cshtml]
+[C:/Users/allan/source/repos/ExpenseTracker-Group2/ASI.Basecode.WebApp/Views/Category/UpdateCategory.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcVXBkYXRlQ2F0ZWdvcnkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/allan/Source/Repos/ExpenseTracker-Group2/ASI.Basecode.WebApp/Views/Expense/AddExpenses.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhwZW5zZVxBZGRFeHBlbnNlcy5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/allan/Source/Repos/ExpenseTracker-Group2/ASI.Basecode.WebApp/Views/Expense/Index.cshtml]
+[C:/Users/allan/source/repos/ExpenseTracker-Group2/ASI.Basecode.WebApp/Views/Expense/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhwZW5zZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/allan/Source/Repos/ExpenseTracker-Group2/ASI.Basecode.WebApp/Views/Expense/UpdateExpenses.cshtml]
+[C:/Users/allan/source/repos/ExpenseTracker-Group2/ASI.Basecode.WebApp/Views/Expense/UpdateExpenses.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhwZW5zZVxVcGRhdGVFeHBlbnNlcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/allan/Source/Repos/ExpenseTracker-Group2/ASI.Basecode.WebApp/Views/Home/Index.cshtml]
+[C:/Users/allan/source/repos/ExpenseTracker-Group2/ASI.Basecode.WebApp/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/allan/Source/Repos/ExpenseTracker-Group2/ASI.Basecode.WebApp/Views/Profile/Index.cshtml]
+[C:/Users/allan/source/repos/ExpenseTracker-Group2/ASI.Basecode.WebApp/Views/Profile/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/allan/Source/Repos/ExpenseTracker-Group2/ASI.Basecode.WebApp/Views/Shared/Error.cshtml]
+[C:/Users/allan/source/repos/ExpenseTracker-Group2/ASI.Basecode.WebApp/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/allan/Source/Repos/ExpenseTracker-Group2/ASI.Basecode.WebApp/Views/Shared/SideBar.cshtml]
+[C:/Users/allan/source/repos/ExpenseTracker-Group2/ASI.Basecode.WebApp/Views/Shared/Modals/AddExpense.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXE1vZGFsc1xBZGRFeHBlbnNlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/allan/source/repos/ExpenseTracker-Group2/ASI.Basecode.WebApp/Views/Shared/SideBar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFNpZGVCYXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/allan/Source/Repos/ExpenseTracker-Group2/ASI.Basecode.WebApp/Views/Shared/TopBar.cshtml]
+[C:/Users/allan/source/repos/ExpenseTracker-Group2/ASI.Basecode.WebApp/Views/Shared/TopBar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFRvcEJhci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/allan/Source/Repos/ExpenseTracker-Group2/ASI.Basecode.WebApp/Views/Shared/_Header.cshtml]
+[C:/Users/allan/source/repos/ExpenseTracker-Group2/ASI.Basecode.WebApp/Views/Shared/_Header.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9IZWFkZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/allan/Source/Repos/ExpenseTracker-Group2/ASI.Basecode.WebApp/Views/Shared/_Layout.cshtml]
+[C:/Users/allan/source/repos/ExpenseTracker-Group2/ASI.Basecode.WebApp/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/allan/Source/Repos/ExpenseTracker-Group2/ASI.Basecode.WebApp/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/allan/source/repos/ExpenseTracker-Group2/ASI.Basecode.WebApp/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/allan/Source/Repos/ExpenseTracker-Group2/ASI.Basecode.WebApp/Views/_ViewImports.cshtml]
+[C:/Users/allan/source/repos/ExpenseTracker-Group2/ASI.Basecode.WebApp/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/allan/Source/Repos/ExpenseTracker-Group2/ASI.Basecode.WebApp/Views/_ViewStart.cshtml]
+[C:/Users/allan/source/repos/ExpenseTracker-Group2/ASI.Basecode.WebApp/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

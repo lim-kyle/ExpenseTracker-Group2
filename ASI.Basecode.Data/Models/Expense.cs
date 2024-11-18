@@ -1,15 +1,21 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace  ASI.Basecode.Data.Models;
 
 public class Expense
 {
     public int Id { get; set; }
+    [Required(ErrorMessage = "Expense title is required")]
     public string ExpenseTitle { get; set; } = string.Empty;
-    public decimal Amount { get; set; }
+
+    [Required(ErrorMessage = "The Amount field is required.")]
+    public decimal Amount { get; set; } = 0;
     public DateTime DateCreated { get; set; } = DateTime.UtcNow;
 
     // Foreign key for Category
+    [Required]
+
     public int CategoryId { get; set; }
     public Category Category { get; set; } = null!;
 
