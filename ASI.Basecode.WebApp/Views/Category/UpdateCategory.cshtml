@@ -4,17 +4,67 @@
     ViewData["Title"] = "Update Category";
 }
 
-<div class="container mt-4">
-    <h1>@ViewData["Title"]</h1>
-    <form asp-action="UpdateCategory" method="post">
-        <input type="hidden" asp-for="Id" />
-        <div class="mb-3">
-            <label for="CategoryName" class="form-label">Category Name</label>
-            <input type="text" class="form-control" asp-for="Name" required maxlength="100" />
-            <span asp-validation-for="Name" class="text-danger"></span>
-        </div>
-        <button type="submit" class="btn btn-primary">Save changes</button>
-        <a href="@Url.Action("Index", "Category")" class="btn btn-secondary">Cancel</a>
-    </form>
+<div class="container max-w-4xl mx-auto px-4 py-8">
+    <!-- Breadcrumbs -->
+    <nav aria-label="breadcrumb" class="mb-8">
+        <ol class="flex items-center space-x-2">
+            <li class="flex items-center">
+                <a href="@Url.Action("Index", "Home")" class="text-gray-500 hover:text-blue-500 transition-colors duration-200">
+                    <i class="fas fa-home text-sm"></i>
+                    <span class="ml-1">Home</span>
+                </a>
+            </li>
+            <li class="flex items-center">
+                <i class="fas fa-chevron-right text-gray-400 text-sm mx-2"></i>
+                <a href="@Url.Action("Index", "Category")" class="text-gray-500 hover:text-blue-500 transition-colors duration-200">
+                    <i class="fas fa-folder text-sm"></i>
+                    <span class="ml-1">Categories</span>
+                </a>
+            </li>
+            <li class="flex items-center">
+                <i class="fas fa-chevron-right text-gray-400 text-sm mx-2"></i>
+                <span class="text-gray-400">
+                    <i class="fas fa-edit text-sm"></i>
+                    <span class="ml-1">Update Category</span>
+                </span>
+            </li>
+        </ol>
+    </nav>
+
+    <!-- Header -->
+    <div class="mb-8 text-center">
+        <h1 class="text-3xl font-bold text-gray-800 mb-2">Update Category</h1>
+        <p class="text-gray-600">Modify your category details to better organize your expenses</p>
+        <div class="w-20 h-1 bg-blue-500 mx-auto rounded-full mt-4"></div>
+    </div>
+
+    <!-- Form Card -->
+    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
+        <form asp-action="UpdateCategory" method="post" class="space-y-6">
+            <input type="hidden" asp-for="Id" />
+
+            <div class="space-y-2">
+                <label for="Name" class="text-gray-700 font-medium block">Category Name</label>
+                <input type="text" 
+                       class="w-full outline-none bg-gray-50 p-3 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200"
+                       asp-for="Name" 
+                       required 
+                       maxlength="50" />
+                <p class="text-sm text-gray-500">Choose a clear and concise name for your category (max 50 characters)</p>
+                <span asp-validation-for="Name" class="text-red-500 text-sm"></span>
+            </div>
+
+            <div class="flex justify-end gap-3 pt-6 border-t border-gray-100">
+                <a href="@Url.Action("Index", "Category")" 
+                   class="px-6 py-3 text-gray-700 bg-gray-100 rounded-xl hover:bg-gray-200 transition-all duration-200">
+                    Cancel
+                </a>
+                <button type="submit" 
+                        class="px-6 py-3 bg-blue-500 text-white rounded-xl hover:bg-blue-600 transition-all duration-200">
+                    <i class="fas fa-save mr-2"></i> Update Category
+                </button>
+            </div>
+        </form>
+    </div>
 </div>
 
