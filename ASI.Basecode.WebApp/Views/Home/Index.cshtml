@@ -1,145 +1,115 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Dashboard";
 }
 
-<h2 class="mb-4 fw-bold">Dashboard</h2>
+<div class="container">
+    <!-- Breadcrumbs -->
+    <nav aria-label="breadcrumb" class="mb-8">
+        <ol class="flex items-center space-x-2">
+            <li class="flex items-center">
+                <span class="text-gray-500">
+                    <i class="fas fa-home text-sm"></i>
+                    <span class="ml-1">Home</span>
+                </span>
+            </li>
+            <li class="flex items-center">
+                <i class="fas fa-chevron-right text-gray-400 text-sm mx-2"></i>
+                <span class="text-gray-400">
+                    <i class="fas fa-chart-pie text-sm"></i>
+                    <span class="ml-1">Dashboard</span>
+                </span>
+            </li>
+        </ol>
+    </nav>
 
-<div class="row my-4">
-    <div class="col-md-4 col-sm-6 col-12 mb-3">
-        <div class="metric-card shadow-sm">
-            <h5>Total Expenses</h5>
-            <h3 class="cards-title">P 10,950.00</h3>
-        </div>
+    <!-- Header -->
+    <div class="mb-8">
+        <h1 class="text-3xl font-bold text-gray-800 mb-2">@ViewData["Title"]</h1>
+        <p class="text-gray-600">Overview of your financial activities</p>
     </div>
-    <div class="col-md-4 col-sm-6 col-12 mb-3">
-        <div class="metric-card shadow-sm">
-            <h5>Highest Expense <span class="badge bg-transparent text-secondary">Travel</span></h5>
-            <h3 class="cards-title">P 19,623.00</h3>
-        </div>
-    </div>
-    <div class="col-md-4 col-sm-6 col-12 mb-3">
-        <div class="metric-card shadow-sm">
-            <h5>Newly Added <span class="badge bg-transparent text-secondary">School</span></h5>
-            <h3 class="cards-title">P 100.00</h3>
-            <p class="mb-0">G-tech pen</p>
-        </div>
-    </div>
-</div>
 
-<h4>Recent Expenses</h4>
-<div class="table-responsive">
-    <table class="table table-striped-1 table-hover">
-        <thead style="background-color: #FBFBFB;">
-            <tr>
-                <th>TITLE</th>
-                <th>CATEGORY</th>
-                <th>AMOUNT</th>
-                <th>CREATION DATE</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr style="background-color: #FBFBFB;">
-                <td>Trip to Busan</td>
-                <td>Travel</td>
-                <td>P19,623.00</td>
-                <td>Mar 23, 2022, 13:00 PM</td>
-            </tr>
-            <tr>
-                <td>Ingredients for Dinner</td>
-                <td>Grocery</td>
-                <td>P8,960.00</td>
-                <td>Mar 23, 2022, 13:00 PM</td>
-            </tr>
-            <tr style="background-color: #FBFBFB;">
-                <td>G-tech Pen</td>
-                <td>School</td>
-                <td>P100.00</td>
-                <td>Mar 23, 2022, 13:00 PM</td>
-            </tr>
-            <tr>
-                <td>Dimsum Break</td>
-                <td>Eating Outside</td>
-                <td>P230.00</td>
-                <td>Mar 23, 2022, 13:00 PM</td>
-            </tr>
-            <tr style="background-color: #FBFBFB;">
-                <td>Paracetamol - Medicine</td>
-                <td>Health Care</td>
-                <td>P623.00</td>
-                <td>Mar 23, 2022, 13:00 PM</td>
-            </tr>
-        </tbody>
-    </table>
+    <!-- Stats Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-gray-600 text-sm font-medium">Total Expenses</h3>
+                <span class="text-blue-500 bg-blue-50 p-2 rounded-lg">
+                    <i class="fas fa-wallet"></i>
+                </span>
+            </div>
+            <p class="text-2xl font-bold text-gray-800">₱10,950.00</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-gray-600 text-sm font-medium">Highest Expense</h3>
+                <span class="text-green-500 bg-green-50 p-2 rounded-lg">
+                    <i class="fas fa-plane"></i>
+                </span>
+            </div>
+            <p class="text-2xl font-bold text-gray-800">₱19,623.00</p>
+            <span class="text-sm text-gray-500">Travel</span>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-gray-600 text-sm font-medium">Latest Expense</h3>
+                <span class="text-purple-500 bg-purple-50 p-2 rounded-lg">
+                    <i class="fas fa-clock"></i>
+                </span>
+            </div>
+            <p class="text-2xl font-bold text-gray-800">₱100.00</p>
+            <span class="text-sm text-gray-500">G-tech pen (School)</span>
+        </div>
+    </div>
+
+    <!-- Recent Expenses Table -->
+    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+        <div class="flex justify-between items-center p-6 border-b border-gray-100">
+            <h2 class="text-lg font-semibold text-gray-800">Recent Expenses</h2>
+            <a href="@Url.Action("Index", "Expense")" class="text-blue-500 hover:text-blue-600 transition-colors duration-200">
+                View All <i class="fas fa-arrow-right ml-1"></i>
+            </a>
+        </div>
+
+        <div class="overflow-x-auto">
+            <table class="w-full">
+                <thead>
+                    <tr class="bg-gray-50 border-b border-gray-100">
+                        <th class="text-left text-sm font-semibold text-gray-600 p-4">Title</th>
+                        <th class="text-left text-sm font-semibold text-gray-600 p-4">Category</th>
+                        <th class="text-right text-sm font-semibold text-gray-600 p-4">Amount</th>
+                        <th class="text-left text-sm font-semibold text-gray-600 p-4">Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="border-b border-gray-50 hover:bg-gray-50 transition-colors duration-200">
+                        <td class="p-4 text-gray-800">Trip to Busan</td>
+                        <td class="p-4">
+                            <span class="px-3 py-1 rounded-full text-sm bg-blue-50 text-blue-600">
+                                Travel
+                            </span>
+                        </td>
+                        <td class="p-4 text-right font-medium">₱19,623.00</td>
+                        <td class="p-4 text-gray-600">Mar 23, 2022</td>
+                    </tr>
+                    <tr class="border-b border-gray-50 hover:bg-gray-50 transition-colors duration-200">
+                        <td class="p-4 text-gray-800">Ingredients for Dinner</td>
+                        <td class="p-4">
+                            <span class="px-3 py-1 rounded-full text-sm bg-green-50 text-green-600">
+                                Grocery
+                            </span>
+                        </td>
+                        <td class="p-4 text-right font-medium">₱8,960.00</td>
+                        <td class="p-4 text-gray-600">Mar 23, 2022</td>
+                    </tr>
+                    <!-- Add more rows following the same pattern -->
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 
 <style>
-    .cards-title {
-        color: rgba(55, 65, 81, 1);
-    }
-
-    .metric-card {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-start;
-        padding: 20px;
-        background-color: #FFFFFF;
-        border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        width: 100%;
-        height: 180px;
-    }
-
-    .metric-card h5 {
-        font-size: 2rem;
-        font-weight: 600;
-        color: #3A3A3A;
-        margin-bottom: 8px;
-    }
-
-    .metric-card h3 {
-            font-size: 2rem;
-        font-weight: bold;
-        color: #333333;
-        margin: 0;
-    }
-
-    .metric-card .badge {
-        font-size: 0.85rem;
-        color: #5A5A5A;
-        background-color: transparent;
-        font-weight: 500;
-        margin-top: 4px;
-    }
-
-    .metric-card p {
-        font-size: 0.9rem;
-        color: #5A5A5A;
-        margin: 0;
-        margin-top: 4px;
-    }
-
-    .table-responsive {
-        overflow-x: auto;
-    }
-
-    @@media (max-width: 768px) {
-        .metric-card {
-            height: auto;
-            padding: 15px;
-        }
-
-        .metric-card h5 {
-            font-size: 1rem;
-        }
-
-        .metric-card h3 {
-            font-size: 2rem;
-        }
-    }
-
-    .table-striped > tbody > tr:nth-of-type(odd) {
-        background-color: #FBFBFB;
-    }
-
+    /* Remove previous styles as they're now handled by Tailwind classes */
 </style>
