@@ -1,0 +1,65 @@
+﻿@model ASI.Basecode.Data.Models.Expense
+@inject ASI.Basecode.Data.Interfaces.ICategoryRepository CategoryRepository
+@{
+    var userId = User.Claims.FirstOrDefault(c => c.Type == "UserId")?.Value;
+    var categories = CategoryRepository.GetCategoriesByUserId(int.Parse(userId)).ToList();
+}
+
+@section modals {
+    <div id="modal" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center @(ViewData.ModelState.IsValid ? "hidden" : "flex")">
+        <form asp-action="AddExpenses" method="post" class="bg-white rounded-2xl p-8 md:p-12 w-11/12 max-w-2xl shadow-2xl">
+            <div class="space-y-6">
+                <!-- Header -->
+                <div class="text-center space-y-3">
+                    <h1 class="text-3xl text-gray-800 font-bold">Add a New Expense</h1>
+                    <p class="text-gray-600 text-lg">Track your spending by adding a new expense entry below</p>
+                    <div class="w-20 h-1 bg-blue-500 mx-auto rounded-full"></div>
+                </div>
+
+                <!-- Form Fields -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="flex flex-col space-y-2">
+                        <label for="ExpenseTitle" class="text-gray-700 font-medium">Expense Title</label>
+                        <input class="outline-none bg-gray-50 p-3 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200"
+                               type="text" id="ExpenseTitle" name="ExpenseTitle" maxlength="100" placeholder="e.g. Grocery Shopping" />
+                        <span asp-validation-for="ExpenseTitle" class="text-red-500 text-sm"></span>
+                    </div>
+
+                    <div class="flex flex-col space-y-2">
+                        <label for="CategoryId" class="text-gray-700 font-medium">Category</label>
+                        <select class="outline-none bg-gray-50 p-3 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200"
+                                id="CategoryId" name="CategoryId" required>
+                            <option value="">Select a category</option>
+                            @foreach (var category in categories)
+                            {
+                                <option value="@category.Id">@category.Name</option>
+                            }
+                        </select>
+                        <span asp-validation-for="CategoryId" class="text-red-500 text-sm"></span>
+                    </div>
+
+                    <div class="flex flex-col space-y-2">
+                        <label for="Amount" class="text-gray-700 font-medium">Amount</label>
+                        <div class="relative">
+                            <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">₱</span>
+                            <input type="number"
+                                   class="pl-8 w-full outline-none bg-gray-50 p-3 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200"
+                                   id="Amount" name="Amount" step="0.01" min="0" placeholder="0.00" />
+                        </div>
+                        <span asp-validation-for="Amount" class="text-red-500 text-sm"></span>
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="flex justify-end gap-3 pt-6 border-t border-gray-100">
+                    <a id="close" class="px-6 py-3 text-gray-700 bg-gray-100 rounded-xl cursor-pointer hover:bg-gray-200 transition-all duration-200">
+                        Cancel
+                    </a>
+                    <button type="submit" class="px-6 py-3 bg-blue-500 text-white rounded-xl hover:bg-blue-600 transition-all duration-200">
+                        Save Expense
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+}
