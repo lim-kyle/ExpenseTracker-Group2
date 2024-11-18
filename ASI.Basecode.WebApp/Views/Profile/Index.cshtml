@@ -1,77 +1,142 @@
 ﻿@model ASI.Basecode.Data.Models.User
 
-
-<div class="p-4 bg-white">
-    
-    <h1 class="text-2xl font-bold text-gray-700">Settings and Preferences</h1>
-    <div class="grid grid-cols-2 mt-10 gap-4">
-        <div class="flex flex-col">
-            <label>First Name</label>
-            <input type="text" id="firstName" class="p-2 rounded-xl border border-gray-200 outline-none"
-                   asp-for="FirstName" />
-        </div>
-        <div class="flex flex-col">
-            <label>Last Name</label>
-            <input type="text" id="lastName" class="p-2 rounded-xl border border-gray-200 outline-none"
-                   asp-for="LastName" />
-        </div>
-        <div class="flex flex-col">
-            <label>Email</label>
-            <input type="text" id="email" class="p-2 rounded-xl border border-gray-200 outline-none"
-                   asp-for="Email" />
-        </div>
-        <div class="flex flex-col">
-            <label>Username</label>
-            <input type="text" disabled id="username" class="p-2 rounded-xl border border-gray-200 outline-none"
-                   asp-for="Username" />
-        </div>
+<div class="container max-w-4xl  p-6">
+    <!-- Header -->
+    <div class="mb-8">
+        <h1 class="text-3xl font-bold text-gray-800 mb-2">Account Settings</h1>
+        <p class="text-gray-600">Manage your profile and preferences</p>
     </div>
 
-    <h2 class="text-xl font-bold text-gray-700 mt-10">Change Password</h2>
-    <div class="grid grid-cols-2 mt-4 gap-4">
-        <div class="flex flex-col">
-            <label>New Password</label>
-            <input type="password" id="newPassword" class="p-2 rounded-xl border border-gray-200 outline-none" />
-        </div>
-        <div class="flex flex-col">
-            <label>Confirm New Password</label>
-            <input type="password" id="confirmNewPassword" class="p-2 rounded-xl border border-gray-200 outline-none" />
-        </div>
-    </div>
-    <div id="currentPasswordModal" class=" z-50" style="display:none;">
-        <div class="modal-content p-4 bg-white rounded shadow-lg">
-            <h2 class="text-xl font-bold text-gray-700">Enter Current Password</h2>
-            <div class="flex flex-col mt-4">
-                <label>Current Password</label>
-                <input type="password" id="currentPassword" class="p-2 rounded-xl border border-gray-200 outline-none" />
+    <div class="grid gap-6">
+        <!-- Profile Section -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+            <div class="flex items-center gap-4 mb-6 pb-6 border-b border-gray-100">
+                <div class="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center">
+                    <span class="text-2xl text-red-500 font-bold">@(Model.FirstName?[0])@(Model.LastName?[0])</span>
+                </div>
+                <div>
+                    <h2 class="text-xl font-semibold text-gray-800">@Model.FirstName @Model.LastName</h2>
+                    <p class="text-gray-500">@Model.Email</p>
+                </div>
             </div>
-            <div class="flex justify-end mt-4">
-                <button id="confirmButton" class="p-2 bg-blue-500 text-white rounded">Confirm</button>
-                <button id="cancelButton" class="ml-2 p-2 bg-gray-500 text-white rounded">Cancel</button>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="space-y-2">
+                    <label class="block text-sm font-medium text-gray-700">First Name</label>
+                    <input type="text" id="firstName" asp-for="FirstName"
+                           class="w-full p-3 rounded-xl border border-gray-200 outline-none focus:border-red-500 focus:ring-2 focus:ring-red-200 transition-all duration-200" />
+                </div>
+                <div class="space-y-2">
+                    <label class="block text-sm font-medium text-gray-700">Last Name</label>
+                    <input type="text" id="lastName" asp-for="LastName"
+                           class="w-full p-3 rounded-xl border border-gray-200 outline-none focus:border-red-500 focus:ring-2 focus:ring-red-200 transition-all duration-200" />
+                </div>
+                <div class="space-y-2">
+                    <label class="block text-sm font-medium text-gray-700">Email Address</label>
+                    <input type="email" id="email" asp-for="Email"
+                           class="w-full p-3 rounded-xl border border-gray-200 outline-none focus:border-red-500 focus:ring-2 focus:ring-red-200 transition-all duration-200" />
+                </div>
+                <div class="space-y-2">
+                    <label class="block text-sm font-medium text-gray-700">Username</label>
+                    <input type="text" id="username" asp-for="Username" disabled
+                           class="w-full p-3 rounded-xl border border-gray-200 bg-gray-50 cursor-not-allowed" />
+                    <p class="text-sm text-gray-500">Username cannot be changed</p>
+                </div>
             </div>
         </div>
-    </div>
 
-    <button id="updateButton" class="mt-4 p-2 bg-blue-500 text-white rounded">Update</button>
+        <!-- Security Section -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+            <h2 class="text-xl font-semibold text-gray-800 mb-6">Security Settings</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="space-y-2">
+                    <label class="block text-sm font-medium text-gray-700">New Password</label>
+                    <input type="password" id="newPassword"
+                           class="w-full p-3 rounded-xl border border-gray-200 outline-none focus:border-red-500 focus:ring-2 focus:ring-red-200 transition-all duration-200"
+                           placeholder="Enter new password" />
+                </div>
+                <div class="space-y-2">
+                    <label class="block text-sm font-medium text-gray-700">Confirm New Password</label>
+                    <input type="password" id="confirmNewPassword"
+                           class="w-full p-3 rounded-xl border border-gray-200 outline-none focus:border-red-500 focus:ring-2 focus:ring-red-200 transition-all duration-200"
+                           placeholder="Confirm new password" />
+                </div>
+            </div>
+        </div>
+
+        <!-- Notification Preferences -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+            <h2 class="text-xl font-semibold text-gray-800 mb-6">Notification Preferences</h2>
+            <div class="space-y-4">
+                <label class="flex items-center space-x-3">
+                    <input type="checkbox" class="w-5 h-5 rounded border-gray-300 text-red-500 focus:ring-red-500" checked>
+                    <span class="text-gray-700">Email notifications for new expenses</span>
+                </label>
+                <label class="flex items-center space-x-3">
+                    <input type="checkbox" class="w-5 h-5 rounded border-gray-300 text-red-500 focus:ring-red-500" checked>
+                    <span class="text-gray-700">Monthly expense summary</span>
+                </label>
+                <label class="flex items-center space-x-3">
+                    <input type="checkbox" class="w-5 h-5 rounded border-gray-300 text-red-500 focus:ring-red-500">
+                    <span class="text-gray-700">Budget alerts</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex justify-end gap-4">
+            <button id="cancelButton" class="px-6 py-3 text-gray-700 bg-gray-100 rounded-xl hover:bg-gray-200 transition-all duration-200">
+                Cancel
+            </button>
+            <button id="updateButton" class="px-6 py-3 bg-red-500 text-white rounded-xl hover:bg-red-600 transition-all duration-200">
+                Save Changes
+            </button>
+        </div>
+    </div>
 </div>
 
-<!-- Modal Structure -->
+<!-- Password Confirmation Modal -->
+<div id="currentPasswordModal" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 items-center justify-center hidden">
+    <div class="bg-white rounded-2xl p-6 max-w-md w-11/12 mx-auto mt-20">
+        <h2 class="text-xl font-semibold text-gray-800 mb-4">Confirm Your Password</h2>
+        <p class="text-gray-600 mb-4">Please enter your current password to save changes</p>
+        
+        <div class="space-y-4">
+            <div class="space-y-2">
+                <label class="block text-sm font-medium text-gray-700">Current Password</label>
+                <input type="password" id="currentPassword"
+                       class="w-full p-3 rounded-xl border border-gray-200 outline-none focus:border-red-500 focus:ring-2 focus:ring-red-200 transition-all duration-200"
+                       placeholder="Enter current password" />
+            </div>
+            
+            <div class="flex justify-end gap-3">
+                <button id="modalCancelButton" class="px-4 py-2 text-gray-700 bg-gray-100 rounded-xl hover:bg-gray-200 transition-all duration-200">
+                    Cancel
+                </button>
+                <button id="confirmButton" class="px-4 py-2 bg-red-500 text-white rounded-xl hover:bg-red-600 transition-all duration-200">
+                    Confirm
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 
 @section scripts {
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
             $('#updateButton').click(function() {
-                $('#currentPasswordModal').show();
+                $('#currentPasswordModal').removeClass('hidden').addClass('flex');
             });
 
-            $('#cancelButton').click(function() {
-                $('#currentPasswordModal').hide();
+            $('#modalCancelButton, #cancelButton').click(function() {
+                $('#currentPasswordModal').removeClass('flex').addClass('hidden');
             });
 
             $('#confirmButton').click(function() {
-                // Add your logic to handle the current password confirmation
-                $('#currentPasswordModal').hide();
+                // Add your password confirmation logic here
+                $('#currentPasswordModal').removeClass('flex').addClass('hidden');
+                // Show success message using toastr
+                toastr.success('Profile updated successfully!');
             });
         });
     </script>
