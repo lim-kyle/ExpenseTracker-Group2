@@ -3,6 +3,7 @@ using ASI.Basecode.Services.Interfaces;
 using ASI.Basecode.Services.Manager;
 using ASI.Basecode.Services.ServiceModels;
 using ASI.Basecode.WebApp.Authentication;
+using ASI.Basecode.WebApp.Filters;
 using ASI.Basecode.WebApp.Models;
 using ASI.Basecode.WebApp.Mvc;
 using AutoMapper;
@@ -63,6 +64,7 @@ namespace ASI.Basecode.WebApp.Controllers
         /// <returns>Created response view</returns>
         [HttpGet]
         [AllowAnonymous]
+        [RedirectIfAuthenticated]
         public ActionResult Login()
         {
             TempData["returnUrl"] = System.Net.WebUtility.UrlDecode(HttpContext.Request.Query["ReturnUrl"]);
@@ -104,6 +106,7 @@ namespace ASI.Basecode.WebApp.Controllers
 
         [HttpGet]
         [AllowAnonymous]
+        [RedirectIfAuthenticated]
         public IActionResult Register()
         {
             return View();
