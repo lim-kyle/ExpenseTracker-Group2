@@ -8,91 +8,145 @@
     var categories = CategoryRepository.GetCategoriesByUserId(int.Parse(userId)).ToList();
 
     var expenses = await ExpenseRepository.GetExpensesAsyncByUserId(int.Parse(userId));
-    var errors = TempData["Errors"] as Dictionary<string, List<string>>;
+
 }
 @section modals {
-
-    <div id="modal" class="absolute w-full h-full bg-black z-50  @(errors == null ? " hidden" : "flex " ) flex-row items-center justify-center bg-opacity-20">
-        <form asp-action="AddExpenses" method="post" class="bg-white  p-4 rounded-xl ">
-            <h1 class="text-lg text-gray-700 font-bold mb-5 text-center">Add Expense</h1>
-            <div class="flex  flex-col ">
-                <label for="ExpenseTitle" class="text-gray-750 uppercase text-sm">Expense Title</label>
-                <input class="outline-none bg-slate-100 p-1 rounded-lg" type="text" id="ExpenseTitle" name="ExpenseTitle"  maxlength="100" />
-                @if (errors != null && errors.ContainsKey("ExpenseTitle"))
-                {
-                    <div class="alert alert-danger">
-                        @foreach (var error in errors["ExpenseTitle"])
-                        {
-                            <p>@error</p>
-                        }
+    <div id="modal" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center @(ViewData.ModelState.IsValid ? "hidden" : "flex")">
+        <form asp-action="AddExpenses" method="post" class="bg-white rounded-2xl p-8 md:p-12 w-11/12 max-w-2xl shadow-2xl">
+            <div class="space-y-6">
+                <div class="text-center space-y-3">
+                    <h1 class="text-3xl text-gray-800 font-bold">Add a New Expense</h1>
+                    <p class="text-gray-600 text-lg">Track your spending by adding a new expense entry below</p>
+                    <div class="w-20 h-1 bg-blue-500 mx-auto rounded-full"></div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="flex flex-col space-y-2 col-span-2">
+                        <label for="ExpenseTitle" class="text-gray-700 font-medium">Expense Title</label>
+                        <input class="outline-none bg-gray-50 p-3 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200"
+                               type="text" id="ExpenseTitle" name="ExpenseTitle" maxlength="100" placeholder="e.g. Grocery Shopping" />
+                        <span asp-validation-for="ExpenseTitle" class="text-red-500 text-sm"></span>
                     </div>
-                }
-                      
-            </div>
 
-            <div class="flex  flex-col">
-                <label for="CategoryId" class="form-label">Category</label>
-                <select class="outline-none bg-slate-100 p-1 rounded-lg" id="CategoryId" name="CategoryId" required>
-                    <option value="">Select a category</option>
-                    @foreach (var category in categories)
-                    {
-                        <option value="@category.Id">@category.Name</option>
-                    }
-                </select>
-                <span asp-validation-for="CategoryId"></span>
-            </div>
+                    <div class="flex flex-col space-y-2 col-span-2">
+                        <label for="CategoryId" class="text-gray-700 font-medium">Category</label>
+                        <select class="outline-none bg-gray-50 p-3 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200"
+                                id="CategoryId" name="CategoryId" required>
+                            <option value="">Select a category</option>
+                            @foreach (var category in categories)
+                            {
+                                <option value="@category.Id">@category.Name</option>
+                            }
+                        </select>
+                        <span asp-validation-for="CategoryId" class="text-red-500 text-sm"></span>
+                    </div>
 
-            <div class="flex  flex-col">
-                <label for="Amount" class="form-label">Amount</label>
-                <input type="number" class="p-1 outline-none rounded-lg bg-slate-100 " id="Amount" name="Amount" required step="0.01" min="0" />
-                <span asp-validation-for="Amount"></span>
-
-            </div>
-
-            <div class="d-flex justify-content-end mt-5">
-                <button type="submit" class="bg-red-500 p-2  text-white rounded-xl">Add Expense</button>
-                <a id="close" class="bg-blue-500 p-2 text-white rounded-xl">Cancel</a>
+                    <div class="flex flex-col space-y-2 col-span-2">
+                        <label for="Amount" class="text-gray-700 font-medium">Amount</label>
+                        <div class="relative">
+                            <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">₱</span>
+                            <input type="number"
+                                   class="pl-8 w-full outline-none bg-gray-50 p-3 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200"
+                                   id="Amount" name="Amount" step="0.01" min="0" placeholder="0.00" />
+                        </div>
+                        <span asp-validation-for="Amount" class="text-red-500 text-sm"></span>
+                    </div>
+                </div>
+                <div class="flex justify-end gap-3 pt-6 border-t border-gray-100">
+                    <a id="close" class="px-6 py-3 text-gray-700 bg-gray-100 rounded-xl cursor-pointer hover:bg-gray-200 transition-all duration-200">
+                        Cancel
+                    </a>
+                    <button type="submit" class="px-6 py-3 bg-blue-500 text-white rounded-xl hover:bg-blue-600 transition-all duration-200">
+                        Save Expense
+                    </button>
+                </div>
             </div>
         </form>
     </div>
 }
 
-<div class="container mt-5">
-    <div class="d-flex justify-content-between align-items-center mb-4 pb-4 border-b border-gray-300">
-        <h1 class="text-2xl font-bold text-gray-800">@ViewData["Title"]</h1>
-     
+<div class="container">
+    <!-- Breadcrumbs -->
+    <nav aria-label="breadcrumb" class="mb-8">
+        <ol class="flex items-center space-x-2">
+            <li class="flex items-center">
+                <a href="@Url.Action("Index", "Home")" class="text-gray-500 hover:text-blue-500 transition-colors duration-200">
+                    <i class="fas fa-home text-sm"></i>
+                    <span class="ml-1">Home</span>
+                </a>
+            </li>
+            <li class="flex items-center">
+                <i class="fas fa-chevron-right text-gray-400 text-sm mx-2"></i>
+                <span class="text-gray-400">
+                    <i class="fas fa-wallet text-sm"></i>
+                    <span class="ml-1">Expenses</span>
+                </span>
+            </li>
+        </ol>
+    </nav>
+
+    <!-- Header -->
+    <div class="mb-8">
+        <h1 class="text-3xl font-bold text-gray-800 mb-2">@ViewData["Title"]</h1>
+        <p class="text-gray-600">Track and manage your expenses efficiently</p>
     </div>
-    <div class="flex flex-row justify-between">
-     <div >
-        <div class="flex flex-row items-center gap-1">
-            <span class="text-gray-700">Sort By: </span>
-                <select class="bg-white p-2 border border-gray-200 rounded-xl">
-                    <option>Categories</option>
+
+    <!-- Stats Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-gray-600 text-sm font-medium">Total Expenses</h3>
+                <span class="text-blue-500 bg-blue-50 p-2 rounded-lg">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+                </span>
+            </div>
+            <p class="text-2xl font-bold text-gray-800">@expenses.Sum(e => e.Amount).ToString("C", new System.Globalization.CultureInfo("en-PH"))</p>
+        </div>
+        <!-- Add more stat cards as needed -->
+    </div>
+
+    <!-- Filters Section -->
+    <div class="bg-white rounded-2xl p-6 mb-8 shadow-sm border border-gray-100">
+        <div class="flex flex-wrap items-center gap-4">
+            <div class="flex-1 min-w-[200px]">
+                <label class="block text-sm font-medium text-gray-700 mb-2">Category</label>
+                <select class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5">
+                    <option>All Categories</option>
                     @foreach (var category in categories)
                     {
                         <option value="@category.Id">@category.Name</option>
                     }
                 </select>
-
-                <input type="date" class="p-1  border border-gray-200 rounded-xl" />
-                <input type="button"  value="Filter" class="p-1 px-4 bg-purple-500 text-white rounded-xl" />
+            </div>
+            <div class="flex-1 min-w-[200px]">
+                <label class="block text-sm font-medium text-gray-700 mb-2">Date Range</label>
+                <input type="date" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5" />
+            </div>
+            <div class="flex items-end">
+                <button class="bg-blue-500 text-white px-6 py-2.5 rounded-xl hover:bg-blue-600 transition-all duration-200">
+                    Apply Filters
+                </button>
+            </div>
         </div>
-     </div>
-        <a id="buttonAdd" class="bg-red-500 p-2 rounded-xl text-white text-sm">
-            <i class="fas fa-plus"></i> Add Expense
-        </a>
- </div>
-    <div class="">
-     
-        <div class="mt-5">
-            <table class=" w-full">
-                <thead class="table-light border-collapse border-y border-slate-200">
-                    <tr>
-                        <th class="text-md text-gray-700 text-center font-medium bg-slate-50 p-2">Title</th>
-                        <th class="text-md text-gray-700 text-center font-medium bg-slate-50 p-2">Category</th>
-                        <th class="text-md text-gray-700 text-center font-medium bg-slate-50 p-2">Amount</th>
-                        <th class="text-md text-gray-700 text-center font-medium bg-slate-50 p-2">Date Created</th>
-                        <th class="text-md text-gray-700 text-center font-medium bg-slate-50 p-2">Actions</th>
+    </div>
+
+    <!-- Expenses Table -->
+    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+        <div class="flex justify-between items-center p-6 border-b border-gray-100">
+            <h2 class="text-lg font-semibold text-gray-800">Expense List</h2>
+            <button id="buttonAdd" class="bg-red-500 px-4 py-2 rounded-xl text-white hover:bg-red-600 transition-all duration-200 flex items-center gap-2">
+                <i class="fas fa-plus"></i> Add Expense
+            </button>
+        </div>
+
+        <div class="overflow-x-auto">
+            <table class="w-full">
+                <thead>
+                    <tr class="bg-gray-50 border-b border-gray-100">
+                        <th class="text-left text-sm font-semibold text-gray-600 p-4">Title</th>
+                        <th class="text-left text-sm font-semibold text-gray-600 p-4">Category</th>
+                        <th class="text-right text-sm font-semibold text-gray-600 p-4">Amount</th>
+                        <th class="text-left text-sm font-semibold text-gray-600 p-4">Date</th>
+                        <th class="text-center text-sm font-semibold text-gray-600 p-4">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -100,19 +154,26 @@
                     {
                         foreach (var expense in expenses)
                         {
-                            <tr class="border-b border-gray-200 p-3">
-                                <td class="text-center p-2 bg-slate-50">@expense.ExpenseTitle</td>
-                                <td class="text-center p-2 bg-slate-50">@expense.Category?.Name</td>
-                                <td class="text-center p-2 bg-slate-50">@expense.Amount.ToString("C", new System.Globalization.CultureInfo("en-PH"))</td>
-                                <td class="text-center p-2 bg-slate-50">@expense.DateCreated.ToShortDateString()</td>
-                                <td class="text-center p-2 bg-slate-50">
-                                    <a href="@Url.Action("UpdateExpenses", "Expense", new { id = expense.Id })" class="text-blue-500 hover:text-blue-700">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
-                                    <a href="@Url.Action("DeleteConfirmed", "Expense", new { id = expense.Id })" class="text-red-500 hover:text-red-700 ml-2">
-                                        <i class="fas fa-trash"></i>
-                                    </a>
-                                 
+                            <tr class="border-b border-gray-50 hover:bg-gray-50 transition-colors duration-200">
+                                <td class="p-4 text-gray-800">@expense.ExpenseTitle</td>
+                                <td class="p-4">
+                                    <span class="px-3 py-1 rounded-full text-sm bg-blue-50 text-blue-600">
+                                        @expense.Category?.Name
+                                    </span>
+                                </td>
+                                <td class="p-4 text-right font-medium">@expense.Amount.ToString("C", new System.Globalization.CultureInfo("en-PH"))</td>
+                                <td class="p-4 text-gray-600">@expense.DateCreated.ToShortDateString()</td>
+                                <td class="p-4">
+                                    <div class="flex justify-center gap-3">
+                                        <a href="@Url.Action("UpdateExpenses", "Expense", new { id = expense.Id })" 
+                                           class="px-4 py-2 text-blue-600 bg-blue-50 rounded-xl hover:bg-blue-100 transition-all duration-200 flex items-center gap-2">
+                                            <i class="fas fa-edit"></i> 
+                                        </a>
+                                        <a href="@Url.Action("DeleteConfirmed", "Expense", new { id = expense.Id })" 
+                                           class="px-4 py-2 text-red-600 bg-red-50 rounded-xl hover:bg-red-100 transition-all duration-200 flex items-center gap-2">
+                                            <i class="fas fa-trash"></i> 
+                                        </a>
+                                    </div>
                                 </td>
                             </tr>
                         }
@@ -120,7 +181,7 @@
                     else
                     {
                         <tr>
-                            <td colspan="5" class="text-center">No expenses found.</td>
+                            <td colspan="5" class="p-8 text-center text-gray-500">No expenses found.</td>
                         </tr>
                     }
                 </tbody>
@@ -128,7 +189,6 @@
         </div>
     </div>
 </div>
-
 
 @section scripts  {
     <script>
