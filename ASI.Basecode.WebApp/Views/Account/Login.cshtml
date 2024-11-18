@@ -1,79 +1,73 @@
 ﻿@using ASI.Basecode.Services.ServiceModels
 @model UserViewModel
 @{
-    Layout = null;
+    ViewBag.Login = true;
 }
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login - PennyWise</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js" integrity="sha512-6sSYJqDreZRZGkJ3b+YfdhB3MzmuP9R7X1QZ6g5aIXhRvR1Y/N/P47jmnkENm7YL3oqsmI6AK+V6AD99uWDnIw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
-<body>
-    <div class="bg-white w-full min-h-screen flex items-center justify-center">
-        <form method="post" action="/Account/Login" class="bg-white shadow-2xl p-5 min-w-96 pt-10 rounded-xl mt-4">
-            <div class="flex flex-col gap-8">
-                <div class="flex flex-row items-center gap-2 self-center">
+
+<div class="min-h-screen flex items-center justify-center bg-white px-4">
+    <form method="post" action="/Account/Login" class="bg-white rounded-2xl p-8 md:p-12 w-11/12 max-w-lg shadow-2xl">
+        <div class="space-y-8">
+            <!-- Logo Section -->
+            <div class="text-center space-y-3">
+                <div class="flex justify-center items-center gap-3 mb-6">
                     <img src="/images/PennyWiseLogo.png" alt="PennyWise Logo" class="w-12 h-12" />
-                    <span class="text-red-500 font-bold text-lg">PennyWise</span>
+                    <span class="text-red-500 font-bold text-2xl">PennyWise</span>
                 </div>
-               
-            
-                <div class="flex flex-col gap-2">
-                    <div class="pb-2 p-2 flex flex-row gap-2 items-center border-b border-gray-500">
-                        <i class="fa-regular fa-circle-user"></i>
-                        <input type="text" id="name" class="w-full border-none outline-none"
-                               asp-for="Username" placeholder="Username" />
-                    </div>
-                    <span asp-validation-for="Username" class="text-red-500"></span>
-                </div>
-                <div class="flex flex-col gap-2">
-                    <div class="pb-2 p-2 flex flex-row gap-2 items-center border-b border-gray-500">
-                        <i class="fa-solid fa-lock"></i>
-                        <input type="password" id="name" class="w-full border-none outline-none"
-                               asp-for="Password" placeholder="Password" />
-                    </div>
-                    <span asp-validation-for="Password" class="text-red-500"></span>
-                </div>
-                
-                <div class="flex flex-col items-center justify-center gap-2">
-                    <button class="bg-red-500 text-white flex-1 w-full p-3 rounded-lg" type="submit">
-                        Login
-                    </button>
-                    <div class="flex flex-row gap-2 items-center">
-                        <span>Already Have An Account?</span>
-                        <a class="text-red-500 font-bold" asp-controller="Account" asp-action="Register">
-                            Sign Up
-                        </a>
-                    </div>
-                </div>
-
+                <h1 class="text-3xl text-gray-800 font-bold">Welcome Back!</h1>
+                <p class="text-gray-600">Sign in to manage your expenses</p>
+                <div class="w-20 h-1 bg-red-500 mx-auto rounded-full"></div>
             </div>
-        </form>
-    </div>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.js"></script>
-    <script src="https://kit.fontawesome.com/7a7c645416.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
-    <script>
-            
-            toastr.options = {
-                positionClass: "toast-top-center", // Set the notification position to center
-            timeOut: 3000,
-            closeButton: true,
-            progressBar: true
-                };
-    </script>
+            <!-- Input Fields -->
+            <div class="space-y-6">
+                <div class="flex flex-col space-y-2">
+                    <label for="Username" class="text-gray-700 font-medium">Username</label>
+                    <div class="relative">
+                        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">
+                            <i class="fa-regular fa-circle-user"></i>
+                        </span>
+                        <input type="text" 
+                               id="Username" 
+                               asp-for="Username" 
+                               class="pl-10 w-full outline-none bg-gray-50 p-3 rounded-xl border border-gray-200 focus:border-red-500 focus:ring-2 focus:ring-red-200 transition-all duration-200"
+                               placeholder="Enter your username" />
+                    </div>
+                    <span asp-validation-for="Username" class="text-red-500 text-sm"></span>
+                </div>
+
+                <div class="flex flex-col space-y-2">
+                    <label for="Password" class="text-gray-700 font-medium">Password</label>
+                    <div class="relative">
+                        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">
+                            <i class="fa-solid fa-lock"></i>
+                        </span>
+                        <input type="password" 
+                               id="Password" 
+                               asp-for="Password" 
+                               class="pl-10 w-full outline-none bg-gray-50 p-3 rounded-xl border border-gray-200 focus:border-red-500 focus:ring-2 focus:ring-red-200 transition-all duration-200"
+                               placeholder="Enter your password" />
+                    </div>
+                    <span asp-validation-for="Password" class="text-red-500 text-sm"></span>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="space-y-4">
+                <button type="submit" class="w-full bg-red-500 text-white py-3 rounded-xl hover:bg-red-600 transition-all duration-200 font-medium">
+                    Sign In
+                </button>
+                <p class="text-center text-gray-600">
+                    Don't have an account? 
+                    <a asp-controller="Account" asp-action="Register" class="text-red-500 font-medium hover:text-red-600 transition-colors duration-200">
+                        Sign Up
+                    </a>
+                </p>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
     <script>
         // Check for error message and display Toastr notification
         var errorMessage = '@TempData["ErrorMessage"]';
@@ -85,8 +79,4 @@
             toastr.success(Success);
         }
     </script>
-
-</body>
-</html>
-
-
+}
