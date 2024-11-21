@@ -4,8 +4,8 @@
     ViewBag.Login = true;
 }
 
-<div class="min-h-screen flex items-center justify-center bg-white px-4">
-    <form method="post" action="/Account/Login" class="bg-white rounded-2xl p-8 md:p-12 w-11/12 max-w-lg shadow-2xl">
+<div class="min-h-screen flex items-center justify-center bg-white dark:bg-gray-900">
+    <form method="post" action="/Account/Login" class="bg-white dark:bg-gray-800 rounded-2xl p-8 md:p-12 w-11/12 max-w-lg shadow-2xl">
         <div class="space-y-8">
             <!-- Logo Section -->
             <div class="text-center space-y-3">
@@ -13,38 +13,38 @@
                     <img src="/images/PennyWiseLogo.png" alt="PennyWise Logo" class="w-12 h-12" />
                     <span class="text-red-500 font-bold text-2xl">PennyWise</span>
                 </div>
-                <h1 class="text-3xl text-gray-800 font-bold">Welcome Back!</h1>
-                <p class="text-gray-600">Sign in to manage your expenses</p>
+                <h1 class="text-3xl text-gray-800 dark:text-white font-bold">Welcome Back!</h1>
+                <p class="text-gray-600 dark:text-gray-400">Sign in to manage your expenses</p>
                 <div class="w-20 h-1 bg-red-500 mx-auto rounded-full"></div>
             </div>
 
             <!-- Input Fields -->
             <div class="space-y-6">
                 <div class="flex flex-col space-y-2">
-                    <label for="Username" class="text-gray-700 font-medium">Username</label>
+                    <label for="Username" class="text-gray-700 dark:text-gray-300 font-medium">Username</label>
                     <div class="relative">
-                        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">
+                        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400">
                             <i class="fa-regular fa-circle-user"></i>
                         </span>
                         <input type="text" 
                                id="Username" 
                                asp-for="Username" 
-                               class="pl-10 w-full outline-none bg-gray-50 p-3 rounded-xl border border-gray-200 focus:border-red-500 focus:ring-2 focus:ring-red-200 transition-all duration-200"
+                               class="pl-10 w-full outline-none bg-gray-50 dark:bg-gray-700 p-3 rounded-xl border border-gray-200 dark:border-gray-600 focus:border-red-500 dark:focus:border-red-400 focus:ring-2 focus:ring-red-200 dark:focus:ring-red-800 transition-all duration-200 dark:text-white"
                                placeholder="Enter your username" />
                     </div>
                     <span asp-validation-for="Username" class="text-red-500 text-sm"></span>
                 </div>
 
                 <div class="flex flex-col space-y-2">
-                    <label for="Password" class="text-gray-700 font-medium">Password</label>
+                    <label for="Password" class="text-gray-700 dark:text-gray-300 font-medium">Password</label>
                     <div class="relative">
-                        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">
+                        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400">
                             <i class="fa-solid fa-lock"></i>
                         </span>
                         <input type="password" 
                                id="Password" 
                                asp-for="Password" 
-                               class="pl-10 w-full outline-none bg-gray-50 p-3 rounded-xl border border-gray-200 focus:border-red-500 focus:ring-2 focus:ring-red-200 transition-all duration-200"
+                               class="pl-10 w-full outline-none bg-gray-50 dark:bg-gray-700 p-3 rounded-xl border border-gray-200 dark:border-gray-600 focus:border-red-500 dark:focus:border-red-400 focus:ring-2 focus:ring-red-200 dark:focus:ring-red-800 transition-all duration-200 dark:text-white"
                                placeholder="Enter your password" />
                     </div>
                     <span asp-validation-for="Password" class="text-red-500 text-sm"></span>
@@ -56,7 +56,7 @@
                 <button type="submit" class="w-full bg-red-500 text-white py-3 rounded-xl hover:bg-red-600 transition-all duration-200 font-medium">
                     Sign In
                 </button>
-                <p class="text-center text-gray-600">
+                <p class="text-center text-gray-600 dark:text-gray-400">
                     Don't have an account? 
                     <a asp-controller="Account" asp-action="Register" class="text-red-500 font-medium hover:text-red-600 transition-colors duration-200">
                         Sign Up
