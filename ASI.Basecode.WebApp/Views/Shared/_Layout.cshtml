@@ -3,37 +3,70 @@
 @inject IHttpContextAccessor HttpContextAccessor
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - PennyWise</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class'
+        };
+    </script>
+    <script>
+        // Check for saved dark mode preference or use system preference
+        if (localStorage.getItem('darkMode') === 'true' ||
+            (!('darkMode' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js" integrity="sha512-6sSYJqDreZRZGkJ3b+YfdhB3MzmuP9R7X1QZ6g5aIXhRvR1Y/N/P47jmnkENm7YL3oqsmI6AK+V6AD99uWDnIw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js"
+        integrity="sha512-6sSYJqDreZRZGkJ3b+YfdhB3MzmuP9R7X1QZ6g5aIXhRvR1Y/N/P47jmnkENm7YL3oqsmI6AK+V6AD99uWDnIw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     @RenderSection("Styles", required: false)
 </head>
-<body>
-    @await RenderSectionAsync("Modals", required: false)
-            <div class="flex flex-row">
 
-            @if(ViewBag.Login == null)
-              @Html.Partial("SideBar")
-                
-                
-                    <main class="p-4 container md:mx-auto lg:ml-64  flex flex-col w-full">
-              
-                        @RenderBody()
-                    </main>
-                
-               
+<body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+    @await RenderSectionAsync("Modals", required: false)
+
+    @if (ViewBag.Login == null)
+    {
+        <div id="top" class=" lg:hidden bg-white p-3 px-5 shadow-xl rounded-xl mx-4 mt-4 flex flex-row items-center justify-between">
+            <div>
+                   <img src="/images/PennyWiseLogo.png" alt="PennyWise Logo" class="w-10 h-10" />
             </div>
+            <button id="bar">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+        <div class="flex flex-row ">
+            @Html.Partial("SideBar")
+            <main class="p-4 container md:mx-auto lg:ml-64 flex flex-col w-full">
+                @RenderBody()
+            </main>
+        </div>
+    }
+    else
+    {
+        <main class="p-4 container mx-auto ">
+            @RenderBody()
+        </main>
+    }
+
+
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.js"></script>
     <script src="https://kit.fontawesome.com/7a7c645416.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <script>
@@ -45,6 +78,28 @@
             progressBar: true
         };
     </script>
+
+    <script>
+        $(document).ready(function() {
+
+            $('#bar').click(function() {
+                $('#top').addClass('hidden');
+                $('#top').removeClass('flex');
+
+                $('#sidebarMenu').removeClass('hidden');
+            });
+            $('#yawa').click(function() {
+                $('#top').addClass('flex');
+                $('#top').removeClass('hidden');
+
+                $('#sidebarMenu').addClass('hidden');
+                $('#sidebarMenu').removeClass('flex');
+            });
+
+         
+        });
+    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+
 </html>
