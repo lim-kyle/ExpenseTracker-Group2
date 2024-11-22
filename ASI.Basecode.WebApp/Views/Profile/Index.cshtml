@@ -1,4 +1,7 @@
 ﻿@model ASI.Basecode.Data.Models.User
+@{
+    ViewData["Title"] = "Profile";
+}
 <form asp-action="Index" method="post">
 <div class="container max-w-4xl p-6 bg-white dark:bg-gray-900 dark:text-white">
     <!-- Header -->
@@ -21,6 +24,7 @@
                 </div>
                }
             </div>
+    using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
             <div class="grid md:grid-cols-2 gap-6">
                 <div class="space-y-2">
