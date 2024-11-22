@@ -127,4 +127,8 @@ public class ExpenseService : IExpenseService
     {
         return await _repository.GetExpensesAsyncByUserId(userId);
     }
+    public async Task<List<Expense>> FilterExpensesByCategoryAndDate(int userId, int categoryId, DateTime startDate, DateTime endDate)
+    {
+        return await _repository.GetExpensesAsyncByUserId(userId);
+    }
 }

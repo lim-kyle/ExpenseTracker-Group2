@@ -2,6 +2,7 @@
 using ASI.Basecode.Data.Models;
 using Basecode.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -55,5 +56,14 @@ public class ExpenseRepository : BaseRepository, IExpenseRepository
     public async Task<List<Expense>> GetExpensesAsyncByUserId(int userId)
     {
         return await this.GetDbSet<Expense>().Where(c => c.UserId == userId).Include(e => e.Category).ToListAsync();
+    }
+    public async Task<List<Expense>> FilterExpensesByCategoryAndDate(int userId, int categoryId, DateTime startDate, DateTime endDate) {
+        var query = this.GetDbSet<Expense>()
+            .Where(e => e.UserId == userId && e.DateCreated >= startDate && e.DateCreated <= endDate);
+            
+        if (categoryId != 0) {
+            query = query.Where(e => e.CategoryId == categoryId);
+        }
+        return await query.Include(e => e.Category).ToListAsync();
     }
 }
