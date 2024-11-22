@@ -1,129 +1,151 @@
 ﻿@model ASI.Basecode.Data.Models.User
-
-<div class="container max-w-4xl  p-6">
+<form asp-action="Index" method="post">
+<div class="container max-w-4xl p-6 bg-white dark:bg-gray-900 dark:text-white">
     <!-- Header -->
     <div class="mb-8">
-        <h1 class="text-3xl font-bold text-gray-800 mb-2">Account Settings</h1>
-        <p class="text-gray-600">Manage your profile and preferences</p>
+        <h1 class="text-3xl font-bold text-gray-800 dark:text-white mb-2">Account Settings</h1>
+        <p class="text-gray-600 dark:text-gray-300">Manage your profile and preferences</p>
     </div>
 
     <div class="grid gap-6">
         <!-- Profile Section -->
-        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-            <div class="flex items-center gap-4 mb-6 pb-6 border-b border-gray-100">
-                <div class="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center">
-                    <span class="text-2xl text-red-500 font-bold">@(Model.FirstName?[0])@(Model.LastName?[0])</span>
+        <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-700">
+            <div class="flex items-center gap-4 mb-6 pb-6 border-b border-gray-100 dark:border-gray-700">
+               @if(Model != null) {
+                 <div class="w-20 h-20 bg-red-100 dark:bg-red-900 rounded-full flex items-center justify-center">
+                    <span class="text-2xl text-red-500 dark:text-red-300 font-bold">@(Model.FirstName?[0])@(Model.LastName?[0])</span>
                 </div>
                 <div>
-                    <h2 class="text-xl font-semibold text-gray-800">@Model.FirstName @Model.LastName</h2>
-                    <p class="text-gray-500">@Model.Email</p>
+                    <h2 class="text-xl font-semibold text-gray-800 dark:text-white">@Model.FirstName @Model.LastName</h2>
+                    <p class="text-gray-500 dark:text-gray-300">@Model.Email</p>
                 </div>
+               }
             </div>
 
             <div class="grid md:grid-cols-2 gap-6">
                 <div class="space-y-2">
-                    <label class="block text-sm font-medium text-gray-700">First Name</label>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">First Name</label>
+              
+
                     <input type="text" id="firstName" asp-for="FirstName"
-                           class="w-full p-3 rounded-xl border border-gray-200 outline-none focus:border-red-500 focus:ring-2 focus:ring-red-200 transition-all duration-200" />
+                           class="dark:text-gray-700 w-full p-3 rounded-xl border border-gray-200 dark:border-gray-700 outline-none focus:border-red-500 dark:focus:border-red-300 focus:ring-2 focus:ring-red-200 dark:focus:ring-red-900 transition-all duration-200" />
+                    <span asp-validation-for="FirstName" class="text-red-500 text-sm"></span>
                 </div>
                 <div class="space-y-2">
-                    <label class="block text-sm font-medium text-gray-700">Last Name</label>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Last Name</label>
                     <input type="text" id="lastName" asp-for="LastName"
-                           class="w-full p-3 rounded-xl border border-gray-200 outline-none focus:border-red-500 focus:ring-2 focus:ring-red-200 transition-all duration-200" />
+                           class="dark:text-gray-700 w-full p-3 rounded-xl border border-gray-200 dark:border-gray-700 outline-none focus:border-red-500 dark:focus:border-red-300 focus:ring-2 focus:ring-red-200 dark:focus:ring-red-900 transition-all duration-200" />
+                    <span asp-validation-for="LastName" class="text-red-500 text-sm"></span>
                 </div>
                 <div class="space-y-2">
-                    <label class="block text-sm font-medium text-gray-700">Email Address</label>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Email Address</label>
                     <input type="email" id="email" asp-for="Email"
-                           class="w-full p-3 rounded-xl border border-gray-200 outline-none focus:border-red-500 focus:ring-2 focus:ring-red-200 transition-all duration-200" />
+                           class="dark:text-gray-700 w-full p-3 rounded-xl border border-gray-200 dark:border-gray-700 outline-none focus:border-red-500 dark:focus:border-red-300 focus:ring-2 focus:ring-red-200 dark:focus:ring-red-900 transition-all duration-200" />
+                    <span asp-validation-for="Email" class="text-red-500 text-sm"></span>
                 </div>
                 <div class="space-y-2">
-                    <label class="block text-sm font-medium text-gray-700">Username</label>
-                    <input type="text" id="username" asp-for="Username" disabled
-                           class="w-full p-3 rounded-xl border border-gray-200 bg-gray-50 cursor-not-allowed" />
-                    <p class="text-sm text-gray-500">Username cannot be changed</p>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Username</label>
+                    <input type="text"  asp-for="Username" disabled
+                           class="dark:text-white w-full p-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 cursor-not-allowed" />
+                    <input type="hidden" id="username" name="Username" asp-for="Username" 
+                           class="dark:text-white w-full p-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 cursor-not-allowed" />
+                    <p class="text-sm text-gray-500 dark:text-gray-400">Username cannot be changed</p>
                 </div>
             </div>
         </div>
 
         <!-- Security Section -->
-        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-            <h2 class="text-xl font-semibold text-gray-800 mb-6">Security Settings</h2>
+        <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-700">
+            <h2 class="text-xl font-semibold text-gray-800 dark:text-white mb-6">Security Settings</h2>
             <div class="grid md:grid-cols-2 gap-6">
                 <div class="space-y-2">
-                    <label class="block text-sm font-medium text-gray-700">New Password</label>
-                    <input type="password" id="newPassword"
-                           class="w-full p-3 rounded-xl border border-gray-200 outline-none focus:border-red-500 focus:ring-2 focus:ring-red-200 transition-all duration-200"
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">New Password</label>
+                    <input name="NewPassword" type="password" id="newPassword"
+                           class="dark:text-gray-700 w-full p-3 rounded-xl border border-gray-200 dark:border-gray-700 outline-none focus:border-red-500 dark:focus:border-red-300 focus:ring-2 focus:ring-red-200 dark:focus:ring-red-900 transition-all duration-200"
                            placeholder="Enter new password" />
                 </div>
                 <div class="space-y-2">
-                    <label class="block text-sm font-medium text-gray-700">Confirm New Password</label>
-                    <input type="password" id="confirmNewPassword"
-                           class="w-full p-3 rounded-xl border border-gray-200 outline-none focus:border-red-500 focus:ring-2 focus:ring-red-200 transition-all duration-200"
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Confirm New Password</label>
+                    <input name="ConfirmPassword" type="password" id="confirmNewPassword"
+                           class="dark:text-gray-700 w-full p-3 rounded-xl border border-gray-200 dark:border-gray-700 outline-none focus:border-red-500 dark:focus:border-red-300 focus:ring-2 focus:ring-red-200 dark:focus:ring-red-900 transition-all duration-200"
                            placeholder="Confirm new password" />
                 </div>
             </div>
         </div>
 
-        <!-- Notification Preferences -->
-        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-            <h2 class="text-xl font-semibold text-gray-800 mb-6">Notification Preferences</h2>
+       
+        <!-- Appearance Settings -->
+        <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-700">
+            <h2 class="text-xl font-semibold text-gray-800 dark:text-white mb-6">Appearance Settings</h2>
             <div class="space-y-4">
-                <label class="flex items-center space-x-3">
-                    <input type="checkbox" class="w-5 h-5 rounded border-gray-300 text-red-500 focus:ring-red-500" checked>
-                    <span class="text-gray-700">Email notifications for new expenses</span>
-                </label>
-                <label class="flex items-center space-x-3">
-                    <input type="checkbox" class="w-5 h-5 rounded border-gray-300 text-red-500 focus:ring-red-500" checked>
-                    <span class="text-gray-700">Monthly expense summary</span>
-                </label>
-                <label class="flex items-center space-x-3">
-                    <input type="checkbox" class="w-5 h-5 rounded border-gray-300 text-red-500 focus:ring-red-500">
-                    <span class="text-gray-700">Budget alerts</span>
-                </label>
+                <div class="flex items-center justify-between">
+                    <span class="text-gray-700 dark:text-gray-300">Dark Mode</span>
+                    <span id="darkModeToggle" class="relative inline-flex items-center h-6 rounded-full w-11 bg-gray-200 dark:bg-gray-700">
+                        <span class="sr-only">Toggle dark mode</span>
+                        <span id="darkModeToggleSlider" class="inline-block w-4 h-4 transform transition-transform bg-white rounded-full translate-x-1 dark:translate-x-6"></span>
+                    </span>
+                </div>
             </div>
         </div>
 
         <!-- Action Buttons -->
         <div class="flex justify-end gap-4">
-            <button id="cancelButton" class="px-6 py-3 text-gray-700 bg-gray-100 rounded-xl hover:bg-gray-200 transition-all duration-200">
+            <span id="cancelButton" class="px-6 py-3 text-gray-700 bg-gray-100 dark:bg-gray-700 dark:text-gray-300 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-200">
                 Cancel
-            </button>
-            <button id="updateButton" class="px-6 py-3 bg-red-500 text-white rounded-xl hover:bg-red-600 transition-all duration-200">
+            </span>
+            <span id="updateButton" class="px-6 py-3 bg-red-500 text-white rounded-xl hover:bg-red-600 transition-all duration-200">
                 Save Changes
-            </button>
+            </span>
         </div>
     </div>
 </div>
 
 <!-- Password Confirmation Modal -->
 <div id="currentPasswordModal" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 items-center justify-center hidden">
-    <div class="bg-white rounded-2xl p-6 max-w-md w-11/12 mx-auto mt-20">
-        <h2 class="text-xl font-semibold text-gray-800 mb-4">Confirm Your Password</h2>
-        <p class="text-gray-600 mb-4">Please enter your current password to save changes</p>
+    <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 max-w-md w-11/12 mx-auto mt-20">
+        <h2 class="text-xl font-semibold text-gray-800 dark:text-white mb-4">Confirm Your Password</h2>
+        <p class="text-gray-600 dark:text-gray-300 mb-4">Please enter your current password to save changes</p>
         
         <div class="space-y-4">
             <div class="space-y-2">
-                <label class="block text-sm font-medium text-gray-700">Current Password</label>
-                <input type="password" id="currentPassword"
-                       class="w-full p-3 rounded-xl border border-gray-200 outline-none focus:border-red-500 focus:ring-2 focus:ring-red-200 transition-all duration-200"
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Current Password</label>
+                <input name="Password" type="password" id="currentPassword"
+                       class="dark:text-gray-700 w-full p-3 rounded-xl border border-gray-200 dark:border-gray-700 outline-none focus:border-red-500 dark:focus:border-red-300 focus:ring-2 focus:ring-red-200 dark:focus:ring-red-900 transition-all duration-200"
                        placeholder="Enter current password" />
+                <span id="oldpass" asp-validation-for="Password" class="text-red-500 text-sm"></span>
             </div>
             
             <div class="flex justify-end gap-3">
-                <button id="modalCancelButton" class="px-4 py-2 text-gray-700 bg-gray-100 rounded-xl hover:bg-gray-200 transition-all duration-200">
+                <span id="modalCancelButton" class="px-4 py-2 text-gray-700 bg-gray-100 dark:bg-gray-700 dark:text-gray-300 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-200">
                     Cancel
-                </button>
-                <button id="confirmButton" class="px-4 py-2 bg-red-500 text-white rounded-xl hover:bg-red-600 transition-all duration-200">
+                </span>
+                <button name="Password" id="confirmButton" class="px-4 py-2 bg-red-500 text-white rounded-xl hover:bg-red-600 transition-all duration-200">
                     Confirm
                 </button>
+                
             </div>
         </div>
     </div>
 </div>
-
+</form>
 @section scripts {
     <script>
+
+        const errorMessage = '@TempData["ErrorMessage"]';
+        const SuccessMessage = '@TempData["SuccessMessage"]';
+        const isvalid= '@(ViewData.ModelState.IsValid ? "Yes" : "No")';
+        
         $(document).ready(function() {
+            const oldpass = $('#oldpass').text();
+            if (errorMessage) {
+                toastr.error(errorMessage);
+            }
+             if (SuccessMessage) {
+                toastr.success(SuccessMessage);
+            }
+            if(oldpass !=""){
+                toastr.error("Password is required");
+            }
             $('#updateButton').click(function() {
                 $('#currentPasswordModal').removeClass('hidden').addClass('flex');
             });
@@ -136,7 +158,22 @@
                 // Add your password confirmation logic here
                 $('#currentPasswordModal').removeClass('flex').addClass('hidden');
                 // Show success message using toastr
-                toastr.success('Profile updated successfully!');
+            });
+
+            // Dark mode toggle functionality
+            const darkModeToggle = $('#darkModeToggle');
+            
+            // Set initial state
+            if (document.documentElement.classList.contains('dark')) {
+                darkModeToggle.addClass('bg-red-500');
+            }
+
+            darkModeToggle.click(function() {
+                document.documentElement.classList.toggle('dark');
+                $(this).toggleClass('bg-gray-200 bg-red-500');
+                
+                // Save preference
+                localStorage.setItem('darkMode', document.documentElement.classList.contains('dark'));
             });
         });
     </script>

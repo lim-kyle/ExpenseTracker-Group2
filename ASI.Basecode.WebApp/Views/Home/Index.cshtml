@@ -1,20 +1,33 @@
-﻿@{
+﻿@model IEnumerable<ASI.Basecode.Data.Models.Expense>
+@inject ASI.Basecode.Data.Interfaces.IExpenseRepository ExpenseRepository
+@inject ASI.Basecode.Data.Interfaces.ICategoryRepository CategoryRepository
+
+@{
     ViewData["Title"] = "Dashboard";
+    var userId = User.Claims.FirstOrDefault(c => c.Type == "UserId")?.Value;
+    var expenses = await ExpenseRepository.GetExpensesAsyncByUserId(int.Parse(userId));
+    var categories = CategoryRepository.GetCategoriesByUserId(int.Parse(userId)).ToList();
+    
+    // Calculate statistics
+    var totalExpenses = expenses.Sum(e => e.Amount);
+    var highestExpense = expenses.OrderByDescending(e => e.Amount).FirstOrDefault();
+    var latestExpense = expenses.OrderByDescending(e => e.DateCreated).FirstOrDefault();
+    var recentExpenses = expenses.OrderByDescending(e => e.DateCreated).Take(5);
 }
 
-<div class="container">
+<div class="container max-w-7xl mx-auto px-4 py-8 dark:bg-gray-900">
     <!-- Breadcrumbs -->
     <nav aria-label="breadcrumb" class="mb-8">
         <ol class="flex items-center space-x-2">
             <li class="flex items-center">
-                <span class="text-gray-500">
+                <span class="text-gray-500 dark:text-gray-400">
                     <i class="fas fa-home text-sm"></i>
                     <span class="ml-1">Home</span>
                 </span>
             </li>
             <li class="flex items-center">
                 <i class="fas fa-chevron-right text-gray-400 text-sm mx-2"></i>
-                <span class="text-gray-400">
+                <span class="text-gray-400 dark:text-gray-500">
                     <i class="fas fa-chart-pie text-sm"></i>
                     <span class="ml-1">Dashboard</span>
                 </span>
@@ -23,51 +36,52 @@
     </nav>
 
     <!-- Header -->
-    <div class="mb-8">
-        <h1 class="text-3xl font-bold text-gray-800 mb-2">@ViewData["Title"]</h1>
-        <p class="text-gray-600">Overview of your financial activities</p>
+    <div class="mb-8 text-center">
+        <h1 class="text-3xl font-bold text-gray-800 dark:text-white mb-2">@ViewData["Title"]</h1>
+        <p class="text-gray-600 dark:text-gray-400">Overview of your financial activities</p>
+        <div class="w-20 h-1 bg-blue-500 mx-auto rounded-full mt-4"></div>
     </div>
 
     <!-- Stats Cards -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+        <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-700">
             <div class="flex items-center justify-between mb-4">
-                <h3 class="text-gray-600 text-sm font-medium">Total Expenses</h3>
-                <span class="text-blue-500 bg-blue-50 p-2 rounded-lg">
+                <h3 class="text-gray-600 dark:text-gray-300 text-sm font-medium">Total Expenses</h3>
+                <span class="text-blue-500 bg-blue-50 dark:bg-blue-900 p-2 rounded-lg">
                     <i class="fas fa-wallet"></i>
                 </span>
             </div>
-            <p class="text-2xl font-bold text-gray-800">₱10,950.00</p>
+            <p class="text-2xl font-bold text-gray-800 dark:text-white">@totalExpenses.ToString("C", new System.Globalization.CultureInfo("en-PH"))</p>
         </div>
 
-        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+        <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-700">
             <div class="flex items-center justify-between mb-4">
-                <h3 class="text-gray-600 text-sm font-medium">Highest Expense</h3>
-                <span class="text-green-500 bg-green-50 p-2 rounded-lg">
-                    <i class="fas fa-plane"></i>
+                <h3 class="text-gray-600 dark:text-gray-300 text-sm font-medium">Highest Expense</h3>
+                <span class="text-green-500 bg-green-50 dark:bg-green-900 p-2 rounded-lg">
+                    @* <i class="@(highestExpense?.Category?.Icon ?? "fas fa-receipt")"></i> *@
                 </span>
             </div>
-            <p class="text-2xl font-bold text-gray-800">₱19,623.00</p>
-            <span class="text-sm text-gray-500">Travel</span>
+            <p class="text-2xl font-bold text-gray-800 dark:text-white">@(highestExpense?.Amount.ToString("C", new System.Globalization.CultureInfo("en-PH")) ?? "₱0.00")</p>
+            <span class="text-sm text-gray-500 dark:text-gray-400">@(highestExpense?.Category?.Name ?? "No expenses yet")</span>
         </div>
 
-        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+        <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-700">
             <div class="flex items-center justify-between mb-4">
-                <h3 class="text-gray-600 text-sm font-medium">Latest Expense</h3>
-                <span class="text-purple-500 bg-purple-50 p-2 rounded-lg">
+                <h3 class="text-gray-600 dark:text-gray-300 text-sm font-medium">Latest Expense</h3>
+                <span class="text-purple-500 bg-purple-50 dark:bg-purple-900 p-2 rounded-lg">
                     <i class="fas fa-clock"></i>
                 </span>
             </div>
-            <p class="text-2xl font-bold text-gray-800">₱100.00</p>
-            <span class="text-sm text-gray-500">G-tech pen (School)</span>
+            <p class="text-2xl font-bold text-gray-800 dark:text-white">@(latestExpense?.Amount.ToString("C", new System.Globalization.CultureInfo("en-PH")) ?? "₱0.00")</p>
+            <span class="text-sm text-gray-500 dark:text-gray-400">@(latestExpense != null ? $"{latestExpense.ExpenseTitle} ({latestExpense.Category?.Name})" : "No expenses yet")</span>
         </div>
     </div>
 
     <!-- Recent Expenses Table -->
-    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-        <div class="flex justify-between items-center p-6 border-b border-gray-100">
-            <h2 class="text-lg font-semibold text-gray-800">Recent Expenses</h2>
-            <a href="@Url.Action("Index", "Expense")" class="text-blue-500 hover:text-blue-600 transition-colors duration-200">
+    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
+        <div class="flex justify-between items-center p-6 border-b border-gray-100 dark:border-gray-700">
+            <h2 class="text-lg font-semibold text-gray-800 dark:text-white">Recent Expenses</h2>
+            <a href="@Url.Action("Index", "Expense")" class="text-blue-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200">
                 View All <i class="fas fa-arrow-right ml-1"></i>
             </a>
         </div>
@@ -75,41 +89,68 @@
         <div class="overflow-x-auto">
             <table class="w-full">
                 <thead>
-                    <tr class="bg-gray-50 border-b border-gray-100">
-                        <th class="text-left text-sm font-semibold text-gray-600 p-4">Title</th>
-                        <th class="text-left text-sm font-semibold text-gray-600 p-4">Category</th>
-                        <th class="text-right text-sm font-semibold text-gray-600 p-4">Amount</th>
-                        <th class="text-left text-sm font-semibold text-gray-600 p-4">Date</th>
+                    <tr class="bg-gray-50 dark:bg-gray-700 border-b border-gray-100 dark:border-gray-600">
+                        <th class="text-left text-sm font-semibold text-gray-600 dark:text-gray-300 p-4">Title</th>
+                        <th class="text-left text-sm font-semibold text-gray-600 dark:text-gray-300 p-4">Category</th>
+                        <th class="text-right text-sm font-semibold text-gray-600 dark:text-gray-300 p-4">Amount</th>
+                        <th class="text-left text-sm font-semibold text-gray-600 dark:text-gray-300 p-4">Date</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="border-b border-gray-50 hover:bg-gray-50 transition-colors duration-200">
-                        <td class="p-4 text-gray-800">Trip to Busan</td>
-                        <td class="p-4">
-                            <span class="px-3 py-1 rounded-full text-sm bg-blue-50 text-blue-600">
-                                Travel
-                            </span>
-                        </td>
-                        <td class="p-4 text-right font-medium">₱19,623.00</td>
-                        <td class="p-4 text-gray-600">Mar 23, 2022</td>
-                    </tr>
-                    <tr class="border-b border-gray-50 hover:bg-gray-50 transition-colors duration-200">
-                        <td class="p-4 text-gray-800">Ingredients for Dinner</td>
-                        <td class="p-4">
-                            <span class="px-3 py-1 rounded-full text-sm bg-green-50 text-green-600">
-                                Grocery
-                            </span>
-                        </td>
-                        <td class="p-4 text-right font-medium">₱8,960.00</td>
-                        <td class="p-4 text-gray-600">Mar 23, 2022</td>
-                    </tr>
-                    <!-- Add more rows following the same pattern -->
+                    @if (!recentExpenses.Any())
+                    {
+                        <tr class="border-b border-gray-50 dark:border-gray-700">
+                            <td colspan="4" class="p-4 text-center text-gray-500 dark:text-gray-400">No expenses recorded yet</td>
+                        </tr>
+                    }
+                    else
+                    {
+                        @foreach (var expense in recentExpenses)
+                        {
+                            <tr class="border-b border-gray-50 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200">
+                                <td class="p-4 text-gray-800 dark:text-white">@expense.ExpenseTitle</td>
+                                <td class="p-4">
+                                    <span id="category-@expense.CategoryId" class="px-3 py-1 rounded-full text-sm">
+                                        @(expense.Category?.Name ?? "Uncategorized")
+                                    </span>
+                                </td>
+                                <td class="p-4 text-right font-medium text-gray-800 dark:text-white">@expense.Amount.ToString("C", new System.Globalization.CultureInfo("en-PH"))</td>
+                                <td class="p-4 text-gray-600 dark:text-gray-400">@expense.DateCreated.ToString("MMM dd, yyyy")</td>
+                            </tr>
+                        }
+                    }
                 </tbody>
             </table>
         </div>
     </div>
 </div>
 
-<style>
-    /* Remove previous styles as they're now handled by Tailwind classes */
-</style>
+@section scripts {
+    <script>
+        // Color palette generator
+        const generateColors = (categoryId) => {
+            const hue = Math.random() * 360;
+            const backgroundColor = `hsl(${hue}, 70%, 95%)`;
+            const textColor = `hsl(${hue}, 70%, 35%)`;
+            return { backgroundColor, textColor };
+        };
+
+        // Apply random colors to categories
+        document.addEventListener('DOMContentLoaded', () => {
+            const categoryColors = new Map();
+
+            document.querySelectorAll('[id^="category-"]').forEach(element => {
+                const categoryId = element.id.split('-')[1];
+                
+                // Use same color for same category
+                if (!categoryColors.has(categoryId)) {
+                    categoryColors.set(categoryId, generateColors(categoryId));
+                }
+
+                const { backgroundColor, textColor } = categoryColors.get(categoryId);
+                element.style.backgroundColor = backgroundColor;
+                element.style.color = textColor;
+            });
+        });
+    </script>
+}
