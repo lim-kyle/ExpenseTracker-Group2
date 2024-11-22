@@ -13,5 +13,7 @@ namespace ASI.Basecode.Data.Interfaces
         bool UserExists(string userId);
         void AddUser(User user);
         User GetUser(int userId);
+
+        void UpdateUser(User user);
     }
 }
