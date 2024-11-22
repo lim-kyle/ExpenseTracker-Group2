@@ -33,7 +33,7 @@ public class ExpenseRepository : BaseRepository, IExpenseRepository
         if (existingExpense != null)
         {
             existingExpense.ExpenseTitle = expense.ExpenseTitle;
-            existingExpense.Category = expense.Category;
+            existingExpense.CategoryId = expense.CategoryId;
             existingExpense.Amount = expense.Amount;
             await UnitOfWork.SaveChangesAsync(ct);
         }
