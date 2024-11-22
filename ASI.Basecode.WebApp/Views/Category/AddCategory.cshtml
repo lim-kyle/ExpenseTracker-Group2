@@ -19,3 +19,16 @@
         <a href="@Url.Action("Index", "Category")" class="btn btn-secondary">Cancel</a>
     </form>
 </div>
+@section Scripts {
+    <script>
+        // Check for error message and display Toastr notification
+        var errorMessage = '@TempData["ErrorMessage"]';
+        var Success = '@TempData["Success"]';
+        if (errorMessage) {
+            toastr.error(errorMessage);
+        }
+        if (Success) {
+            toastr.success(Success);
+        }
+    </script>
+}

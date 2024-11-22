@@ -230,5 +230,17 @@
                 window.location.href = `/Category/DeleteCategory?id=${categoryIdToDelete}`;
             }
         });
+
+        var errorMessage = '@TempData["ErrorMessage"]';
+        var Success = '@TempData["Success"]';
+        if (errorMessage) {
+            toastr.error(errorMessage);
+        }
+        if (Success) {
+            toastr.success(Success);
+        }
     </script>
 }
+
+  
+
