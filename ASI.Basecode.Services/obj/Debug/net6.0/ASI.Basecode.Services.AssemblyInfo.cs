@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ASI.Basecode.Services")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+22b9f4128707a900740673e42ce8691f7f0e958b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+06e29104cfd2b5dfe9484239f8c0712cd06e1fed")]
 [assembly: System.Reflection.AssemblyProductAttribute("ASI.Basecode.Services")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ASI.Basecode.Services")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
