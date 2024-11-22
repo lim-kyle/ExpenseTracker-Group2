@@ -37,7 +37,11 @@ namespace ASI.Basecode.Data.Repositories
             return this.GetDbSet<User>().FirstOrDefault(x => x.Id == userId);
         }
 
-
+        public void UpdateUser(User user)
+        {
+            this.GetDbSet<User>().Update(user);
+            UnitOfWork.SaveChanges();
+        }
 
     }
 }

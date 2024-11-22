@@ -32,7 +32,7 @@ namespace ASI.Basecode.Services.Services
             return user != null ? LoginResult.Success : LoginResult.Failed;
         }
 
-        public User? GetUser(int userId)
+        public User GetUser(int userId)
         {
             return _repository.GetUser(userId);
         }
@@ -54,6 +54,12 @@ namespace ASI.Basecode.Services.Services
             {
                 throw new InvalidDataException(Resources.Messages.Errors.UserExists);
             }
+        }
+
+        public void UpdateUser(User user)
+        {
+            user.UpdatedTime = DateTime.Now;
+            _repository.UpdateUser(user);
         }
     }
 }
