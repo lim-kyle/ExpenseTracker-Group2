@@ -14,7 +14,8 @@
     <nav aria-label="breadcrumb" class="mb-8">
         <ol class="flex items-center space-x-2">
             <li class="flex items-center">
-                <a href="@Url.Action("Index", "Home")" class="text-gray-500 hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-400">
+                <a href="@Url.Action("Index", "Home")"
+                    class="text-gray-500 hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-400">
                     <i class="fas fa-home text-sm"></i>
                     <span class="ml-1">Home</span>
                 </a>
@@ -35,13 +36,15 @@
             <h1 class="text-3xl font-bold text-gray-800 dark:text-white mb-2">@ViewData["Title"]</h1>
             <p class="text-gray-600 dark:text-gray-400">View insights and trends of your expenses</p>
         </div>
-        <button id="generateReport" class="bg-blue-500 px-6 py-3 rounded-xl text-white hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 transition-all duration-200 flex items-center gap-2">
+        <button id="generateReport"
+            class="bg-blue-500 px-6 py-3 rounded-xl text-white hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 transition-all duration-200 flex items-center gap-2">
             <i class="fas fa-file-pdf"></i> Generate Report
         </button>
     </div>
 
     <!-- Add this after the header and before Summary Cards -->
-    <div id="noDataMessage" class="hidden mb-8 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 p-4 rounded-xl">
+    <div id="noDataMessage"
+        class="hidden mb-8 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 p-4 rounded-xl">
         <div class="flex items-center gap-3">
             <i class="fas fa-exclamation-circle text-yellow-500"></i>
             <p class="text-yellow-700 dark:text-yellow-400">No expense data found for the selected filters.</p>
@@ -49,22 +52,34 @@
     </div>
 
     <!-- Filters Section - Improved mobile layout -->
-    <div class="bg-white dark:bg-gray-800 rounded-2xl p-4 sm:p-6 mb-8 shadow-sm border border-gray-100 dark:border-gray-700">
+    <div
+        class="bg-white dark:bg-gray-800 rounded-2xl p-4 sm:p-6 mb-8 shadow-sm border border-gray-100 dark:border-gray-700">
         <div class="flex flex-wrap gap-4">
             <div class="w-96 flex flex-col gap-2">
-                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Date Range</label>
-               
-                  <div class="flex flex-row gap-2">
 
-                      <input type="date" id="startDate" class="w-full bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-xl px-4 py-2.5 dark:text-white" />
-                    <input type="date" id="endDate" class="w-full bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-xl px-4 py-2.5 dark:text-white" />
 
+                <div class="flex flex-row gap-2">
+                    <div class="flex flex-col items-start">
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Start
+                            Date</label>
+                        <input type="date" id="startDate"
+                            class="w-full bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-xl px-4 py-2.5 dark:text-white" />
                     </div>
-              
+                    <div  class="flex flex-col items-start">
+                         <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">End
+                            Date</label>
+                             <input type="date" id="endDate"
+                        class="w-full bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-xl px-4 py-2.5 dark:text-white" />
+                    </div>
+                   
+
+                </div>
+
             </div>
             <div class="w-56 self-end">
                 <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Category</label>
-                <select id="categoryFilter" class="w-full bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-xl px-4 py-2.5 dark:text-white">
+                <select id="categoryFilter"
+                    class="w-full bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-xl px-4 py-2.5 dark:text-white">
                     <option value="">All Categories</option>
                     @foreach (var category in categories)
                     {
@@ -73,7 +88,8 @@
                 </select>
             </div>
             <div class="col-span-2 w-56 flex items-end">
-                <button id="applyFilters" class="w-full bg-blue-500 px-6 py-2.5 rounded-xl text-white hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 transition-all duration-200">
+                <button id="applyFilters"
+                    class="w-full bg-blue-500 px-6 py-2.5 rounded-xl text-white hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 transition-all duration-200">
                     Apply Filters
                 </button>
             </div>
@@ -84,15 +100,18 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8">
         <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-700">
             <h3 class="text-gray-600 dark:text-gray-400 text-sm font-medium mb-4">Total Expenses</h3>
-            <p class="text-2xl font-bold text-gray-800 dark:text-white">@expenses.Sum(e => e.Amount).ToString("C", new System.Globalization.CultureInfo("en-PH"))</p>
+            <p class="text-2xl font-bold text-gray-800 dark:text-white">@expenses.Sum(e => e.Amount).ToString("C", new
+                System.Globalization.CultureInfo("en-PH"))</p>
         </div>
         <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-700">
             <h3 class="text-gray-600 dark:text-gray-400 text-sm font-medium mb-4">Average per Month</h3>
-            <p class="text-2xl font-bold text-gray-800 dark:text-white">@((expenses.Any() ? expenses.Average(e => e.Amount) : 0).ToString("C", new System.Globalization.CultureInfo("en-PH")))</p>
+            <p class="text-2xl font-bold text-gray-800 dark:text-white">@((expenses.Any() ? expenses.Average(e =>
+                e.Amount) : 0).ToString("C", new System.Globalization.CultureInfo("en-PH")))</p>
         </div>
         <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-700">
             <h3 class="text-gray-600 dark:text-gray-400 text-sm font-medium mb-4">Highest Expense</h3>
-            <p class="text-2xl font-bold text-gray-800 dark:text-white">@(expenses.Any() ? expenses.Max(e => e.Amount).ToString("C", new System.Globalization.CultureInfo("en-PH")) : "₱0.00")</p>
+            <p class="text-2xl font-bold text-gray-800 dark:text-white">@(expenses.Any() ? expenses.Max(e =>
+                e.Amount).ToString("C", new System.Globalization.CultureInfo("en-PH")) : "₱0.00")</p>
         </div>
         <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-700">
             <h3 class="text-gray-600 dark:text-gray-400 text-sm font-medium mb-4">Total Categories</h3>
@@ -103,691 +122,698 @@
     <!-- Charts Section - Improved responsiveness -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-8">
         <!-- Category Distribution Chart -->
-        <div class="bg-white dark:bg-gray-800 rounded-2xl p-4 sm:p-6 shadow-sm border border-gray-100 dark:border-gray-700 relative">
+        <div
+            class="bg-white dark:bg-gray-800 rounded-2xl p-4 sm:p-6 shadow-sm border border-gray-100 dark:border-gray-700 relative">
             <h3 class="text-gray-800 dark:text-white font-semibold mb-4 sm:mb-6">Expenses by Category</h3>
             <div class="chart-container" style="position: relative; height: 50vh; max-height: 400px;">
                 <canvas id="categoryChart"></canvas>
-                <div class="no-data-overlay hidden absolute inset-0 bg-gray-50/90 dark:bg-gray-800/90 flex items-center justify-center">
+                <div
+                    class="no-data-overlay hidden absolute inset-0 bg-gray-50/90 dark:bg-gray-800/90 flex items-center justify-center">
                     <p class="text-gray-500 dark:text-gray-400">No data available</p>
                 </div>
             </div>
         </div>
         <!-- Monthly Trend Chart -->
-        <div class="bg-white dark:bg-gray-800 rounded-2xl p-4 sm:p-6 shadow-sm border border-gray-100 dark:border-gray-700 relative">
+        <div
+            class="bg-white dark:bg-gray-800 rounded-2xl p-4 sm:p-6 shadow-sm border border-gray-100 dark:border-gray-700 relative">
             <h3 class="text-gray-800 dark:text-white font-semibold mb-4 sm:mb-6">Monthly Expense Trend</h3>
             <div class="chart-container" style="position: relative; height: 50vh; max-height: 400px;">
                 <canvas id="trendChart"></canvas>
-                <div class="no-data-overlay hidden absolute inset-0 bg-gray-50/90 dark:bg-gray-800/90 flex items-center justify-center">
+                <div
+                    class="no-data-overlay hidden absolute inset-0 bg-gray-50/90 dark:bg-gray-800/90 flex items-center justify-center">
                     <p class="text-gray-500 dark:text-gray-400">No data available</p>
                 </div>
             </div>
         </div>
         <!-- Weekly Distribution Chart -->
-        <div class="bg-white dark:bg-gray-800 rounded-2xl p-4 sm:p-6 shadow-sm border border-gray-100 dark:border-gray-700 relative">
+        <div
+            class="bg-white dark:bg-gray-800 rounded-2xl p-4 sm:p-6 shadow-sm border border-gray-100 dark:border-gray-700 relative">
             <h3 class="text-gray-800 dark:text-white font-semibold mb-4 sm:mb-6">Weekly Spending Pattern</h3>
             <div class="chart-container" style="position: relative; height: 50vh; max-height: 400px;">
                 <canvas id="weeklyChart"></canvas>
-                <div class="no-data-overlay hidden absolute inset-0 bg-gray-50/90 dark:bg-gray-800/90 flex items-center justify-center">
+                <div
+                    class="no-data-overlay hidden absolute inset-0 bg-gray-50/90 dark:bg-gray-800/90 flex items-center justify-center">
                     <p class="text-gray-500 dark:text-gray-400">No data available</p>
                 </div>
             </div>
         </div>
         <!-- Category Growth Chart -->
-        <div class="bg-white dark:bg-gray-800 rounded-2xl p-4 sm:p-6 shadow-sm border border-gray-100 dark:border-gray-700 relative">
+        <div
+            class="bg-white dark:bg-gray-800 rounded-2xl p-4 sm:p-6 shadow-sm border border-gray-100 dark:border-gray-700 relative">
             <h3 class="text-gray-800 dark:text-white font-semibold mb-4 sm:mb-6">Category Growth Analysis</h3>
             <div class="chart-container" style="position: relative; height: 50vh; max-height: 400px;">
                 <canvas id="growthChart"></canvas>
-                <div class="no-data-overlay hidden absolute inset-0 bg-gray-50/90 dark:bg-gray-800/90 flex items-center justify-center">
+                <div
+                    class="no-data-overlay hidden absolute inset-0 bg-gray-50/90 dark:bg-gray-800/90 flex items-center justify-center">
                     <p class="text-gray-500 dark:text-gray-400">No data available</p>
                 </div>
             </div>
         </div>
     </div>
 
-@section scripts {
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script>
-        // Prepare data for charts
-        const expenses = @Html.Raw(Json.Serialize(expenses.Select(e => new
-        {
-            amount = e.Amount,
-            categoryId = e.CategoryId,
-            categoryName = e.Category?.Name,
-            date = e.DateCreated
-        })));
+    @section scripts {
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+        <script>
+            // Prepare data for charts
+            const expenses = @Html.Raw(Json.Serialize(expenses.Select(e => new
+                {
+                    amount = e.Amount,
+                    categoryId = e.CategoryId,
+                    categoryName = e.Category?.Name,
+                    date = e.DateCreated
+                })));
 
-        let filteredExpenses = [...expenses];
+            let filteredExpenses = [...expenses];
 
-        // Add filtering functionality
-        document.getElementById('applyFilters').addEventListener('click', function() {
-            filterData();
-        });
+            // Add filtering functionality
+            document.getElementById('applyFilters').addEventListener('click', function () {
+                filterData();
+            });
 
-        function filterData() {
-            const startDate = document.getElementById('startDate').value;
-            const endDate = document.getElementById('endDate').value;
-            const categoryId = document.getElementById('categoryFilter').value;
+            function filterData() {
+                const startDate = document.getElementById('startDate').value;
+                const endDate = document.getElementById('endDate').value;
+                const categoryId = document.getElementById('categoryFilter').value;
 
-            filteredExpenses = expenses.filter(expense => {
-                const expenseDate = new Date(expense.date);
-                // Normalize all dates to midnight for comparison
-                expenseDate.setHours(0, 0, 0, 0);
-                
-                let isWithinDateRange = true;
-                if (startDate && endDate) {
-                    const start = new Date(startDate);
-                    const end = new Date(endDate);
-                    start.setHours(0, 0, 0, 0);
-                    end.setHours(23, 59, 59, 999); // Include the entire end date
-                    
-                    isWithinDateRange = expenseDate >= start && expenseDate <= end;
+                filteredExpenses = expenses.filter(expense => {
+                    const expenseDate = new Date(expense.date);
+                    // Normalize all dates to midnight for comparison
+                    expenseDate.setHours(0, 0, 0, 0);
+
+                    let isWithinDateRange = true;
+                    if (startDate && endDate) {
+                        const start = new Date(startDate);
+                        const end = new Date(endDate);
+                        start.setHours(0, 0, 0, 0);
+                        end.setHours(23, 59, 59, 999); // Include the entire end date
+
+                        isWithinDateRange = expenseDate >= start && expenseDate <= end;
+                    }
+
+                    const matchesCategory = !categoryId || expense.categoryId == categoryId;
+                    return isWithinDateRange && matchesCategory;
+                });
+
+                updateCharts();
+                updateSummaryCards();
+            }
+
+            // Add event listeners for date inputs
+            document.getElementById('startDate').addEventListener('change', function () {
+                const endDateInput = document.getElementById('endDate');
+                endDateInput.min = this.value; // Set minimum end date
+                if (endDateInput.value && this.value > endDateInput.value) {
+                    endDateInput.value = this.value;
+                }
+                filterData();
+            });
+
+            document.getElementById('endDate').addEventListener('change', function () {
+                const startDateInput = document.getElementById('startDate');
+                startDateInput.max = this.value; // Set maximum start date
+                if (startDateInput.value && this.value < startDateInput.value) {
+                    startDateInput.value = this.value;
+                }
+                filterData();
+            });
+
+            // Update category filter to immediately filter when changed
+            document.getElementById('categoryFilter').addEventListener('change', filterData);
+
+            function updateCharts() {
+                const hasData = filteredExpenses.length > 0;
+                document.getElementById('noDataMessage').classList.toggle('hidden', hasData);
+
+                // Show/hide no-data overlays
+                document.querySelectorAll('.no-data-overlay').forEach(overlay => {
+                    overlay.classList.toggle('hidden', hasData);
+                });
+
+                if (!hasData) {
+                    // Update charts with empty data
+                    [categoryChart, trendChart, weeklyChart, growthChart].forEach(chart => {
+                        chart.data.labels = [];
+                        chart.data.datasets.forEach(dataset => {
+                            dataset.data = [];
+                        });
+                        chart.update();
+                    });
+                    return;
                 }
 
-                const matchesCategory = !categoryId || expense.categoryId == categoryId;
-                return isWithinDateRange && matchesCategory;
-            });
-
-            updateCharts();
-            updateSummaryCards();
-        }
-
-        // Add event listeners for date inputs
-        document.getElementById('startDate').addEventListener('change', function() {
-            const endDateInput = document.getElementById('endDate');
-            endDateInput.min = this.value; // Set minimum end date
-            if (endDateInput.value && this.value > endDateInput.value) {
-                endDateInput.value = this.value;
-            }
-            filterData();
-        });
-
-        document.getElementById('endDate').addEventListener('change', function() {
-            const startDateInput = document.getElementById('startDate');
-            startDateInput.max = this.value; // Set maximum start date
-            if (startDateInput.value && this.value < startDateInput.value) {
-                startDateInput.value = this.value;
-            }
-            filterData();
-        });
-
-        // Update category filter to immediately filter when changed
-        document.getElementById('categoryFilter').addEventListener('change', filterData);
-
-        function updateCharts() {
-            const hasData = filteredExpenses.length > 0;
-            document.getElementById('noDataMessage').classList.toggle('hidden', hasData);
-            
-            // Show/hide no-data overlays
-            document.querySelectorAll('.no-data-overlay').forEach(overlay => {
-                overlay.classList.toggle('hidden', hasData);
-            });
-
-            if (!hasData) {
-                // Update charts with empty data
-                [categoryChart, trendChart, weeklyChart, growthChart].forEach(chart => {
-                    chart.data.labels = [];
-                    chart.data.datasets.forEach(dataset => {
-                        dataset.data = [];
-                    });
-                    chart.update();
+                // Update Category Chart
+                const newCategoryData = {};
+                filteredExpenses.forEach(expense => {
+                    newCategoryData[expense.categoryName] = (newCategoryData[expense.categoryName] || 0) + expense.amount;
                 });
-                return;
+
+                categoryChart.data.labels = Object.keys(newCategoryData);
+                categoryChart.data.datasets[0].data = Object.values(newCategoryData);
+                categoryChart.update();
+
+                // Update Monthly Trend Chart
+                const newMonthlyData = {};
+                filteredExpenses.forEach(expense => {
+                    const month = new Date(expense.date).toLocaleString('default', { month: 'short' });
+                    newMonthlyData[month] = (newMonthlyData[month] || 0) + expense.amount;
+                });
+
+                trendChart.data.labels = Object.keys(newMonthlyData);
+                trendChart.data.datasets[0].data = Object.values(newMonthlyData);
+                trendChart.update();
+
+                // Update Weekly Chart
+                const newWeeklyData = {};
+                filteredExpenses.forEach(expense => {
+                    const date = new Date(expense.date);
+                    const week = `Week ${Math.ceil(date.getDate() / 7)}`;
+                    newWeeklyData[week] = (newWeeklyData[week] || 0) + expense.amount;
+                });
+
+                weeklyChart.data.labels = Object.keys(newWeeklyData);
+                weeklyChart.data.datasets[0].data = Object.values(newWeeklyData);
+                weeklyChart.update();
+
+                // Update Growth Chart
+                const newCategoryGrowthData = {};
+                filteredExpenses.forEach(expense => {
+                    const yearMonth = new Date(expense.date).toLocaleString('default', { month: 'short', year: '2-digit' });
+                    if (!newCategoryGrowthData[yearMonth]) {
+                        newCategoryGrowthData[yearMonth] = {};
+                    }
+                    if (!newCategoryGrowthData[yearMonth][expense.categoryName]) {
+                        newCategoryGrowthData[yearMonth][expense.categoryName] = 0;
+                    }
+                    newCategoryGrowthData[yearMonth][expense.categoryName] += expense.amount;
+                });
+
+                const months = Object.keys(newCategoryGrowthData);
+                const categories = [...new Set(Object.values(newCategoryGrowthData).flatMap(m => Object.keys(m)))];
+                const datasets = categories.map((category, index) => ({
+                    label: category,
+                    data: months.map(month => newCategoryGrowthData[month][category] || 0),
+                    borderColor: ['#3B82F6', '#EF4444', '#10B981', '#F59E0B', '#6366F1'][index % 5],
+                    fill: false,
+                    tension: 0.4
+                }));
+
+                growthChart.data.labels = months;
+                growthChart.data.datasets = datasets;
+                growthChart.update();
             }
 
-            // Update Category Chart
-            const newCategoryData = {};
-            filteredExpenses.forEach(expense => {
-                newCategoryData[expense.categoryName] = (newCategoryData[expense.categoryName] || 0) + expense.amount;
+            function updateSummaryCards() {
+                const hasData = filteredExpenses.length > 0;
+                const formatter = new Intl.NumberFormat('en-PH', {
+                    style: 'currency',
+                    currency: 'PHP'
+                });
+
+                const totalAmount = hasData ? filteredExpenses.reduce((sum, e) => sum + e.amount, 0) : 0;
+                const avgAmount = hasData ? totalAmount / filteredExpenses.length : 0;
+                const maxAmount = hasData ? Math.max(...filteredExpenses.map(e => e.amount), 0) : 0;
+                const uniqueCategories = hasData ? new Set(filteredExpenses.map(e => e.categoryName)).size : 0;
+
+                // Update summary cards with empty state handling
+                document.querySelectorAll('.text-2xl.font-bold')[0].textContent = hasData ? formatter.format(totalAmount) : '₱0.00';
+                document.querySelectorAll('.text-2xl.font-bold')[1].textContent = hasData ? formatter.format(avgAmount) : '₱0.00';
+                document.querySelectorAll('.text-2xl.font-bold')[2].textContent = hasData ? formatter.format(maxAmount) : '₱0.00';
+                document.querySelectorAll('.text-2xl.font-bold')[3].textContent = uniqueCategories;
+            }
+
+            const categoryData = {};
+            expenses.forEach(expense => {
+                categoryData[expense.categoryName] = (categoryData[expense.categoryName] || 0) + expense.amount;
             });
 
-            categoryChart.data.labels = Object.keys(newCategoryData);
-            categoryChart.data.datasets[0].data = Object.values(newCategoryData);
-            categoryChart.update();
+            const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const chartTextColor = isDarkMode ? '#D1D5DB' : '#1F2937';
+            const chartGridColor = isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
 
-            // Update Monthly Trend Chart
-            const newMonthlyData = {};
-            filteredExpenses.forEach(expense => {
+            // Common chart options for dark mode
+            const darkModeOptions = {
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: chartTextColor
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: { color: chartTextColor },
+                        grid: { color: chartGridColor }
+                    },
+                    y: {
+                        ticks: { color: chartTextColor },
+                        grid: { color: chartGridColor }
+                    }
+                }
+            };
+
+            const categoryChart = new Chart(document.getElementById('categoryChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: Object.keys(categoryData),
+                    datasets: [{
+                        data: Object.values(categoryData),
+                        backgroundColor: [
+                            '#3B82F6', '#EF4444', '#10B981', '#F59E0B', '#6366F1',
+                            '#EC4899', '#8B5CF6', '#14B8A6', '#F97316', '#06B6D4'
+                        ]
+                    }]
+                },
+                options: {
+                    ...darkModeOptions,
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    aspectRatio: 2,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                boxWidth: 12,
+                                padding: 15
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Monthly Trend Chart
+            const monthlyData = {};
+            expenses.forEach(expense => {
                 const month = new Date(expense.date).toLocaleString('default', { month: 'short' });
-                newMonthlyData[month] = (newMonthlyData[month] || 0) + expense.amount;
+                monthlyData[month] = (monthlyData[month] || 0) + expense.amount;
             });
 
-            trendChart.data.labels = Object.keys(newMonthlyData);
-            trendChart.data.datasets[0].data = Object.values(newMonthlyData);
-            trendChart.update();
+            const trendChart = new Chart(document.getElementById('trendChart'), {
+                type: 'line',
+                data: {
+                    labels: Object.keys(monthlyData),
+                    datasets: [{
+                        label: 'Monthly Expenses',
+                        data: Object.values(monthlyData),
+                        borderColor: '#3B82F6',
+                        tension: 0.1,
+                        fill: false
+                    }]
+                },
+                options: {
+                    ...darkModeOptions,
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    aspectRatio: 2,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function (value) {
+                                    return '₱' + value.toLocaleString('en-PH');
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function (context) {
+                                    return '₱' + context.raw.toLocaleString('en-PH');
+                                }
+                            }
+                        }
+                    }
+                }
+            });
 
-            // Update Weekly Chart
-            const newWeeklyData = {};
-            filteredExpenses.forEach(expense => {
+            // Additional data preparation for new charts
+            const weeklyData = {};
+            const categoryGrowthData = {};
+
+            expenses.forEach(expense => {
+                // Weekly data
                 const date = new Date(expense.date);
                 const week = `Week ${Math.ceil(date.getDate() / 7)}`;
-                newWeeklyData[week] = (newWeeklyData[week] || 0) + expense.amount;
+                weeklyData[week] = (weeklyData[week] || 0) + expense.amount;
+
+                // Category growth data
+                const yearMonth = date.toLocaleString('default', { month: 'short', year: '2-digit' });
+                if (!categoryGrowthData[yearMonth]) {
+                    categoryGrowthData[yearMonth] = {};
+                }
+                if (!categoryGrowthData[yearMonth][expense.categoryName]) {
+                    categoryGrowthData[yearMonth][expense.categoryName] = 0;
+                }
+                categoryGrowthData[yearMonth][expense.categoryName] += expense.amount;
             });
 
-            weeklyChart.data.labels = Object.keys(newWeeklyData);
-            weeklyChart.data.datasets[0].data = Object.values(newWeeklyData);
-            weeklyChart.update();
-
-            // Update Growth Chart
-            const newCategoryGrowthData = {};
-            filteredExpenses.forEach(expense => {
-                const yearMonth = new Date(expense.date).toLocaleString('default', { month: 'short', year: '2-digit' });
-                if (!newCategoryGrowthData[yearMonth]) {
-                    newCategoryGrowthData[yearMonth] = {};
+            // Weekly Distribution Chart
+            const weeklyChart = new Chart(document.getElementById('weeklyChart'), {
+                type: 'bar',
+                data: {
+                    labels: Object.keys(weeklyData),
+                    datasets: [{
+                        label: 'Weekly Expenses',
+                        data: Object.values(weeklyData),
+                        backgroundColor: '#10B981',
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    ...darkModeOptions,
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    aspectRatio: 2,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: value => '₱' + value.toLocaleString('en-PH')
+                            }
+                        }
+                    },
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: context => '₱' + context.raw.toLocaleString('en-PH')
+                            }
+                        }
+                    }
                 }
-                if (!newCategoryGrowthData[yearMonth][expense.categoryName]) {
-                    newCategoryGrowthData[yearMonth][expense.categoryName] = 0;
-                }
-                newCategoryGrowthData[yearMonth][expense.categoryName] += expense.amount;
             });
 
-            const months = Object.keys(newCategoryGrowthData);
-            const categories = [...new Set(Object.values(newCategoryGrowthData).flatMap(m => Object.keys(m)))];
+            // Category Growth Chart
+            const months = Object.keys(categoryGrowthData);
+            const categories = [...new Set(Object.values(categoryGrowthData).flatMap(m => Object.keys(m)))];
             const datasets = categories.map((category, index) => ({
                 label: category,
-                data: months.map(month => newCategoryGrowthData[month][category] || 0),
+                data: months.map(month => categoryGrowthData[month][category] || 0),
                 borderColor: ['#3B82F6', '#EF4444', '#10B981', '#F59E0B', '#6366F1'][index % 5],
                 fill: false,
                 tension: 0.4
             }));
 
-            growthChart.data.labels = months;
-            growthChart.data.datasets = datasets;
-            growthChart.update();
-        }
-
-        function updateSummaryCards() {
-            const hasData = filteredExpenses.length > 0;
-            const formatter = new Intl.NumberFormat('en-PH', {
-                style: 'currency',
-                currency: 'PHP'
-            });
-
-            const totalAmount = hasData ? filteredExpenses.reduce((sum, e) => sum + e.amount, 0) : 0;
-            const avgAmount = hasData ? totalAmount / filteredExpenses.length : 0;
-            const maxAmount = hasData ? Math.max(...filteredExpenses.map(e => e.amount), 0) : 0;
-            const uniqueCategories = hasData ? new Set(filteredExpenses.map(e => e.categoryName)).size : 0;
-
-            // Update summary cards with empty state handling
-            document.querySelectorAll('.text-2xl.font-bold')[0].textContent = hasData ? formatter.format(totalAmount) : '₱0.00';
-            document.querySelectorAll('.text-2xl.font-bold')[1].textContent = hasData ? formatter.format(avgAmount) : '₱0.00';
-            document.querySelectorAll('.text-2xl.font-bold')[2].textContent = hasData ? formatter.format(maxAmount) : '₱0.00';
-            document.querySelectorAll('.text-2xl.font-bold')[3].textContent = uniqueCategories;
-        }
-
-        const categoryData = {};
-        expenses.forEach(expense => {
-            categoryData[expense.categoryName] = (categoryData[expense.categoryName] || 0) + expense.amount;
-        });
-
-        const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const chartTextColor = isDarkMode ? '#D1D5DB' : '#1F2937';
-        const chartGridColor = isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
-
-        // Common chart options for dark mode
-        const darkModeOptions = {
-            plugins: {
-                legend: {
-                    labels: {
-                        color: chartTextColor
-                    }
-                }
-            },
-            scales: {
-                x: {
-                    ticks: { color: chartTextColor },
-                    grid: { color: chartGridColor }
+            const growthChart = new Chart(document.getElementById('growthChart'), {
+                type: 'line',
+                data: {
+                    labels: months,
+                    datasets: datasets
                 },
-                y: {
-                    ticks: { color: chartTextColor },
-                    grid: { color: chartGridColor }
-                }
-            }
-        };
-
-        const categoryChart = new Chart(document.getElementById('categoryChart'), {
-            type: 'doughnut',
-            data: {
-                labels: Object.keys(categoryData),
-                datasets: [{
-                    data: Object.values(categoryData),
-                    backgroundColor: [
-                        '#3B82F6', '#EF4444', '#10B981', '#F59E0B', '#6366F1',
-                        '#EC4899', '#8B5CF6', '#14B8A6', '#F97316', '#06B6D4'
-                    ]
-                }]
-            },
-            options: {
-                ...darkModeOptions,
-                responsive: true,
-                maintainAspectRatio: true,
-                aspectRatio: 2,
-                plugins: {
-                    legend: {
-                        position: 'bottom',
-                        labels: {
-                            boxWidth: 12,
-                            padding: 15
-                        }
-                    }
-                }
-            }
-        });
-
-        // Monthly Trend Chart
-        const monthlyData = {};
-        expenses.forEach(expense => {
-            const month = new Date(expense.date).toLocaleString('default', { month: 'short' });
-            monthlyData[month] = (monthlyData[month] || 0) + expense.amount;
-        });
-
-        const trendChart = new Chart(document.getElementById('trendChart'), {
-            type: 'line',
-            data: {
-                labels: Object.keys(monthlyData),
-                datasets: [{
-                    label: 'Monthly Expenses',
-                    data: Object.values(monthlyData),
-                    borderColor: '#3B82F6',
-                    tension: 0.1,
-                    fill: false
-                }]
-            },
-            options: {
-                ...darkModeOptions,
-                responsive: true,
-                maintainAspectRatio: true,
-                aspectRatio: 2,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        ticks: {
-                            callback: function(value) {
-                                return '₱' + value.toLocaleString('en-PH');
+                options: {
+                    ...darkModeOptions,
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    aspectRatio: 2,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: value => '₱' + value.toLocaleString('en-PH')
                             }
                         }
-                    }
-                },
-                plugins: {
-                    tooltip: {
-                        callbacks: {
-                            label: function(context) {
-                                return '₱' + context.raw.toLocaleString('en-PH');
+                    },
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: context => `${context.dataset.label}: ₱${context.raw.toLocaleString('en-PH')}`
                             }
                         }
                     }
                 }
-            }
-        });
+            });
 
-        // Additional data preparation for new charts
-        const weeklyData = {};
-        const categoryGrowthData = {};
-        
-        expenses.forEach(expense => {
-            // Weekly data
-            const date = new Date(expense.date);
-            const week = `Week ${Math.ceil(date.getDate() / 7)}`;
-            weeklyData[week] = (weeklyData[week] || 0) + expense.amount;
+            // PDF Generation Function
+            document.getElementById('generateReport').addEventListener('click', async function () {
+                // Get current filter values
+                const startDate = document.getElementById('startDate').value;
+                const endDate = document.getElementById('endDate').value;
+                const categoryId = document.getElementById('categoryFilter').value;
+                const categoryName = categoryId ?
+                    document.querySelector(`#categoryFilter option[value="${categoryId}"]`).textContent :
+                    'All Categories';
 
-            // Category growth data
-            const yearMonth = date.toLocaleString('default', { month: 'short', year: '2-digit' });
-            if (!categoryGrowthData[yearMonth]) {
-                categoryGrowthData[yearMonth] = {};
-            }
-            if (!categoryGrowthData[yearMonth][expense.categoryName]) {
-                categoryGrowthData[yearMonth][expense.categoryName] = 0;
-            }
-            categoryGrowthData[yearMonth][expense.categoryName] += expense.amount;
-        });
+                // Add filter information to PDF
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF({
+                    orientation: 'portrait',
+                    unit: 'mm',
+                    format: 'a4'
+                });
 
-        // Weekly Distribution Chart
-        const weeklyChart = new Chart(document.getElementById('weeklyChart'), {
-            type: 'bar',
-            data: {
-                labels: Object.keys(weeklyData),
-                datasets: [{
-                    label: 'Weekly Expenses',
-                    data: Object.values(weeklyData),
-                    backgroundColor: '#10B981',
-                    borderRadius: 6
-                }]
-            },
-            options: {
-                ...darkModeOptions,
-                responsive: true,
-                maintainAspectRatio: true,
-                aspectRatio: 2,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        ticks: {
-                            callback: value => '₱' + value.toLocaleString('en-PH')
+                // Custom colors and styles
+                const colors = {
+                    primary: isDarkMode ? '#60A5FA' : '#3B82F6',
+                    text: isDarkMode ? '#D1D5DB' : '#1F2937',
+                    subtext: isDarkMode ? '#9CA3AF' : '#6B7280',
+                    accent: isDarkMode ? '#374151' : '#E5E7EB'
+                };
+
+                // Helper function for consistent text styling
+                const addText = (text, x, y, size = 10, color = colors.text) => {
+                    doc.setFontSize(size);
+                    doc.setTextColor(color);
+                    doc.text(text, x, y);
+                };
+
+                // Add modern header with logo
+                const logoImg = new Image();
+                logoImg.src = '/images/PennyWiseLogo.png';
+                await new Promise(resolve => logoImg.onload = resolve);
+
+                // Cover page with modern layout
+                doc.addImage(logoImg, 'PNG', 20, 20, 30, 30);
+                addText('PennyWise', 55, 35, 28, colors.primary);
+                addText('Financial Analytics Report', 55, 45, 16, colors.text);
+
+                // Modern divider line
+                doc.setDrawColor(colors.accent);
+                doc.setLineWidth(0.5);
+                doc.line(20, 55, 190, 55);
+
+                // Report metadata with icons
+                doc.setFontSize(10);
+                doc.setTextColor(colors.subtext);
+                const currentDate = new Date().toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+                addText(`Generated on ${currentDate}`, 20, 65, 10, colors.subtext);
+
+                // Add filter information section after metadata
+                addText('Filter Settings:', 20, 75, 12, colors.text);
+                addText(`Date Range: ${startDate ? new Date(startDate).toLocaleDateString() : 'All'} to ${endDate ? new Date(endDate).toLocaleDateString() : 'All'}`, 25, 85, 10);
+                addText(`Category: ${categoryName}`, 25, 95, 10);
+
+                // Move other content down by 20mm to accommodate filter info
+                let yPos = 115; // Adjust starting position for statistics
+
+                // Key Statistics Section
+                addText('Key Statistics', 20, yPos, 16, colors.primary);
+
+                // Create modern stat boxes
+                const createStatBox = (title, value, y) => {
+                    doc.setFillColor(249, 250, 251);
+                    doc.roundedRect(20, y, 170, 15, 2, 2, 'F');
+                    addText(title, 25, y + 10, 10, colors.subtext);
+                    addText(value, 120, y + 10, 10, colors.text);
+                };
+
+                yPos += 10;
+                const totalExpenses = filteredExpenses.reduce((sum, e) => sum + e.amount, 0);
+                const avgExpense = filteredExpenses.length ? totalExpenses / filteredExpenses.length : 0;
+
+                // Enhanced statistics with more detailed information
+                [
+                    ['Total Filtered Expenses', formatCurrency(totalExpenses)],
+                    ['Average (Filtered)', formatCurrency(avgExpense)],
+                    ['Filtered Transactions', `${filteredExpenses.length} transactions`],
+                    ['Date Range', `${startDate ? new Date(startDate).toLocaleDateString() : 'All'} - ${endDate ? new Date(endDate).toLocaleDateString() : 'All'}`],
+                    ['Selected Category', categoryName],
+                    ['Highest Expense (Filtered)', formatCurrency(Math.max(...filteredExpenses.map(e => e.amount), 0))]
+                ].forEach(([title, value]) => {
+                    createStatBox(title, value, yPos);
+                    yPos += 20;
+                });
+
+                // Spending Patterns Page
+                doc.addPage();
+                addText('Spending Patterns', 20, 20, 16, colors.primary);
+
+                // Add category distribution chart
+                const categoryChart = document.getElementById('categoryChart');
+                const categoryImg = categoryChart.toDataURL('image/png');
+                doc.addImage(categoryImg, 'PNG', 20, 30, 170, 90);
+
+                // Monthly trend analysis
+                doc.addPage();
+                addText('Monthly Trend Analysis', 20, 20, 16, colors.primary);
+                const trendChart = document.getElementById('trendChart');
+                const trendImg = trendChart.toDataURL('image/png');
+                doc.addImage(trendImg, 'PNG', 20, 30, 170, 90);
+
+                // Detailed Category Breakdown
+                doc.addPage();
+                addText('Category Breakdown Analysis', 20, 20, 16, colors.primary);
+
+                // Modern table headers
+                yPos = 35;
+                doc.setFillColor(colors.primary);
+                doc.rect(20, yPos - 5, 170, 10, 'F');
+                ['Category', 'Amount', '% of Total', 'Transactions'].forEach((header, i) => {
+                    addText(header, 25 + (i * 45), yPos, 10, '#FFFFFF');
+                });
+
+                // Table content with alternating backgrounds
+                yPos += 10;
+                Object.entries(categoryData)
+                    .sort((a, b) => b[1] - a[1])
+                    .forEach(([category, amount], index) => {
+                        if (index % 2 === 0) {
+                            doc.setFillColor(249, 250, 251);
+                            doc.rect(20, yPos - 5, 170, 10, 'F');
                         }
-                    }
-                },
-                plugins: {
-                    tooltip: {
-                        callbacks: {
-                            label: context => '₱' + context.raw.toLocaleString('en-PH')
-                        }
-                    }
+
+                        const percentage = ((amount / totalExpenses) * 100).toFixed(1);
+                        const txCount = filteredExpenses.filter(e => e.categoryName === category).length;
+
+                        addText(category, 25, yPos, 9);
+                        addText(formatCurrency(amount), 70, yPos, 9);
+                        addText(`${percentage}%`, 115, yPos, 9);
+                        addText(`${txCount}`, 160, yPos, 9);
+
+                        yPos += 10;
+                    });
+
+                // Insights Page
+                doc.addPage();
+                addText('Financial Insights', 20, 20, 16, colors.primary);
+
+                // Add monthly comparison
+                const monthlyComparison = calculateMonthlyComparison(filteredExpenses);
+                addText('Month-over-Month Analysis', 20, 40, 12, colors.text);
+                yPos = 50;
+                Object.entries(monthlyComparison).forEach(([month, change]) => {
+                    const prefix = change >= 0 ? '▲' : '▼';
+                    const color = change >= 0 ? '#EF4444' : '#10B981';
+                    addText(`${month}: ${prefix} ${Math.abs(change)}%`, 25, yPos, 10, color);
+                    yPos += 8;
+                });
+
+                // Modern footer with page numbers
+                const pageCount = doc.internal.getNumberOfPages();
+                for (let i = 1; i <= pageCount; i++) {
+                    doc.setPage(i);
+                    doc.setFillColor(colors.primary);
+                    doc.rect(0, 285, 210, 12, 'F');
+                    addText('Generated by PennyWise', 20, 292, 8, '#FFFFFF');
+                    addText(`Page ${i} of ${pageCount}`, 180, 292, 8, '#FFFFFF', 'right');
                 }
-            }
-        });
 
-        // Category Growth Chart
-        const months = Object.keys(categoryGrowthData);
-        const categories = [...new Set(Object.values(categoryGrowthData).flatMap(m => Object.keys(m)))];
-        const datasets = categories.map((category, index) => ({
-            label: category,
-            data: months.map(month => categoryGrowthData[month][category] || 0),
-            borderColor: ['#3B82F6', '#EF4444', '#10B981', '#F59E0B', '#6366F1'][index % 5],
-            fill: false,
-            tension: 0.4
-        }));
+                // Add new charts to PDF
+                doc.addPage();
+                addText('Weekly Spending Analysis', 20, 20, 16, colors.primary);
+                const weeklyChart = document.getElementById('weeklyChart');
+                const weeklyImg = weeklyChart.toDataURL('image/png');
+                doc.addImage(weeklyImg, 'PNG', 20, 30, 170, 90);
 
-        const growthChart = new Chart(document.getElementById('growthChart'), {
-            type: 'line',
-            data: {
-                labels: months,
-                datasets: datasets
-            },
-            options: {
-                ...darkModeOptions,
-                responsive: true,
-                maintainAspectRatio: true,
-                aspectRatio: 2,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        ticks: {
-                            callback: value => '₱' + value.toLocaleString('en-PH')
-                        }
-                    }
-                },
-                plugins: {
-                    tooltip: {
-                        callbacks: {
-                            label: context => `${context.dataset.label}: ₱${context.raw.toLocaleString('en-PH')}`
-                        }
-                    }
-                }
-            }
-        });
+                doc.addPage();
+                addText('Category Growth Trends', 20, 20, 16, colors.primary);
+                const growthChart = document.getElementById('growthChart');
+                const growthImg = growthChart.toDataURL('image/png');
+                doc.addImage(growthImg, 'PNG', 20, 30, 170, 90);
 
-        // PDF Generation Function
-        document.getElementById('generateReport').addEventListener('click', async function() {
-            // Get current filter values
-            const startDate = document.getElementById('startDate').value;
-            const endDate = document.getElementById('endDate').value;
-            const categoryId = document.getElementById('categoryFilter').value;
-            const categoryName = categoryId ? 
-                document.querySelector(`#categoryFilter option[value="${categoryId}"]`).textContent : 
-                'All Categories';
+                // Add spending pattern analysis
+                addText('Spending Pattern Insights:', 20, 130, 14, colors.text);
+                yPos = 140;
 
-            // Add filter information to PDF
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF({
-                orientation: 'portrait',
-                unit: 'mm',
-                format: 'a4'
-            });
+                // Weekly analysis
+                const avgWeeklySpend = Object.values(weeklyData).reduce((a, b) => a + b, 0) / Object.keys(weeklyData).length;
+                const highestWeek = Object.entries(weeklyData).sort((a, b) => b[1] - a[1])[0];
 
-            // Custom colors and styles
-            const colors = {
-                primary: isDarkMode ? '#60A5FA' : '#3B82F6',
-                text: isDarkMode ? '#D1D5DB' : '#1F2937',
-                subtext: isDarkMode ? '#9CA3AF' : '#6B7280',
-                accent: isDarkMode ? '#374151' : '#E5E7EB'
-            };
-
-            // Helper function for consistent text styling
-            const addText = (text, x, y, size = 10, color = colors.text) => {
-                doc.setFontSize(size);
-                doc.setTextColor(color);
-                doc.text(text, x, y);
-            };
-
-            // Add modern header with logo
-            const logoImg = new Image();
-            logoImg.src = '/images/PennyWiseLogo.png';
-            await new Promise(resolve => logoImg.onload = resolve);
-            
-            // Cover page with modern layout
-            doc.addImage(logoImg, 'PNG', 20, 20, 30, 30);
-            addText('PennyWise', 55, 35, 28, colors.primary);
-            addText('Financial Analytics Report', 55, 45, 16, colors.text);
-            
-            // Modern divider line
-            doc.setDrawColor(colors.accent);
-            doc.setLineWidth(0.5);
-            doc.line(20, 55, 190, 55);
-
-            // Report metadata with icons
-            doc.setFontSize(10);
-            doc.setTextColor(colors.subtext);
-            const currentDate = new Date().toLocaleDateString('en-US', { 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric' 
-            });
-            addText(`Generated on ${currentDate}`, 20, 65, 10, colors.subtext);
-            
-            // Add filter information section after metadata
-            addText('Filter Settings:', 20, 75, 12, colors.text);
-            addText(`Date Range: ${startDate ? new Date(startDate).toLocaleDateString() : 'All'} to ${endDate ? new Date(endDate).toLocaleDateString() : 'All'}`, 25, 85, 10);
-            addText(`Category: ${categoryName}`, 25, 95, 10);
-            
-            // Move other content down by 20mm to accommodate filter info
-            let yPos = 115; // Adjust starting position for statistics
-
-            // Key Statistics Section
-            addText('Key Statistics', 20, yPos, 16, colors.primary);
-            
-            // Create modern stat boxes
-            const createStatBox = (title, value, y) => {
-                doc.setFillColor(249, 250, 251);
-                doc.roundedRect(20, y, 170, 15, 2, 2, 'F');
-                addText(title, 25, y + 10, 10, colors.subtext);
-                addText(value, 120, y + 10, 10, colors.text);
-            };
-
-            yPos += 10;
-            const totalExpenses = filteredExpenses.reduce((sum, e) => sum + e.amount, 0);
-            const avgExpense = filteredExpenses.length ? totalExpenses / filteredExpenses.length : 0;
-            
-            // Enhanced statistics with more detailed information
-            [
-                ['Total Filtered Expenses', formatCurrency(totalExpenses)],
-                ['Average (Filtered)', formatCurrency(avgExpense)],
-                ['Filtered Transactions', `${filteredExpenses.length} transactions`],
-                ['Date Range', `${startDate ? new Date(startDate).toLocaleDateString() : 'All'} - ${endDate ? new Date(endDate).toLocaleDateString() : 'All'}`],
-                ['Selected Category', categoryName],
-                ['Highest Expense (Filtered)', formatCurrency(Math.max(...filteredExpenses.map(e => e.amount), 0))]
-            ].forEach(([title, value]) => {
-                createStatBox(title, value, yPos);
-                yPos += 20;
-            });
-
-            // Spending Patterns Page
-            doc.addPage();
-            addText('Spending Patterns', 20, 20, 16, colors.primary);
-            
-            // Add category distribution chart
-            const categoryChart = document.getElementById('categoryChart');
-            const categoryImg = categoryChart.toDataURL('image/png');
-            doc.addImage(categoryImg, 'PNG', 20, 30, 170, 90);
-
-            // Monthly trend analysis
-            doc.addPage();
-            addText('Monthly Trend Analysis', 20, 20, 16, colors.primary);
-            const trendChart = document.getElementById('trendChart');
-            const trendImg = trendChart.toDataURL('image/png');
-            doc.addImage(trendImg, 'PNG', 20, 30, 170, 90);
-
-            // Detailed Category Breakdown
-            doc.addPage();
-            addText('Category Breakdown Analysis', 20, 20, 16, colors.primary);
-            
-            // Modern table headers
-            yPos = 35;
-            doc.setFillColor(colors.primary);
-            doc.rect(20, yPos - 5, 170, 10, 'F');
-            ['Category', 'Amount', '% of Total', 'Transactions'].forEach((header, i) => {
-                addText(header, 25 + (i * 45), yPos, 10, '#FFFFFF');
-            });
-
-            // Table content with alternating backgrounds
-            yPos += 10;
-            Object.entries(categoryData)
-                .sort((a, b) => b[1] - a[1])
-                .forEach(([category, amount], index) => {
-                    if (index % 2 === 0) {
-                        doc.setFillColor(249, 250, 251);
-                        doc.rect(20, yPos - 5, 170, 10, 'F');
-                    }
-                    
-                    const percentage = ((amount / totalExpenses) * 100).toFixed(1);
-                    const txCount = filteredExpenses.filter(e => e.categoryName === category).length;
-                    
-                    addText(category, 25, yPos, 9);
-                    addText(formatCurrency(amount), 70, yPos, 9);
-                    addText(`${percentage}%`, 115, yPos, 9);
-                    addText(`${txCount}`, 160, yPos, 9);
-                    
+                [
+                    `Average Weekly Spending: ${formatCurrency(avgWeeklySpend)}`,
+                    `Highest Spending Week: ${highestWeek[0]} (${formatCurrency(highestWeek[1])})`,
+                    `Weekly Spending Variance: ${calculateVariance(Object.values(weeklyData)).toFixed(1)}%`
+                ].forEach(text => {
+                    addText(`• ${text}`, 25, yPos, 10);
                     yPos += 10;
                 });
 
-            // Insights Page
-            doc.addPage();
-            addText('Financial Insights', 20, 20, 16, colors.primary);
-            
-            // Add monthly comparison
-            const monthlyComparison = calculateMonthlyComparison(filteredExpenses);
-            addText('Month-over-Month Analysis', 20, 40, 12, colors.text);
-            yPos = 50;
-            Object.entries(monthlyComparison).forEach(([month, change]) => {
-                const prefix = change >= 0 ? '▲' : '▼';
-                const color = change >= 0 ? '#EF4444' : '#10B981';
-                addText(`${month}: ${prefix} ${Math.abs(change)}%`, 25, yPos, 10, color);
-                yPos += 8;
+                // Save the PDF with current timestamp
+                const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+                const categorySlug = categoryName.replace(/\s+/g, '-').toLowerCase();
+                doc.save(`PennyWise-Analytics-${categorySlug}-${timestamp}.pdf`);
             });
 
-            // Modern footer with page numbers
-            const pageCount = doc.internal.getNumberOfPages();
-            for(let i = 1; i <= pageCount; i++) {
-                doc.setPage(i);
-                doc.setFillColor(colors.primary);
-                doc.rect(0, 285, 210, 12, 'F');
-                addText('Generated by PennyWise', 20, 292, 8, '#FFFFFF');
-                addText(`Page ${i} of ${pageCount}`, 180, 292, 8, '#FFFFFF', 'right');
+            // Helper function to calculate variance
+            function calculateVariance(numbers) {
+                const mean = numbers.reduce((a, b) => a + b, 0) / numbers.length;
+                const variance = numbers.reduce((a, b) => a + Math.pow(b - mean, 2), 0) / numbers.length;
+                return (Math.sqrt(variance) / mean) * 100;
             }
 
-            // Add new charts to PDF
-            doc.addPage();
-            addText('Weekly Spending Analysis', 20, 20, 16, colors.primary);
-            const weeklyChart = document.getElementById('weeklyChart');
-            const weeklyImg = weeklyChart.toDataURL('image/png');
-            doc.addImage(weeklyImg, 'PNG', 20, 30, 170, 90);
+            // For PDF generation, update the currency formatting
+            const formatCurrency = (amount) => {
+                return '₱' + amount.toLocaleString('en-PH', {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                });
+            };
 
-            doc.addPage();
-            addText('Category Growth Trends', 20, 20, 16, colors.primary);
-            const growthChart = document.getElementById('growthChart');
-            const growthImg = growthChart.toDataURL('image/png');
-            doc.addImage(growthImg, 'PNG', 20, 30, 170, 90);
+            // Helper function for monthly comparison
+            function calculateMonthlyComparison(expenses) {
+                const monthlyTotals = {};
+                expenses.forEach(expense => {
+                    const month = new Date(expense.date).toLocaleString('default', { month: 'short', year: '2-digit' });
+                    monthlyTotals[month] = (monthlyTotals[month] || 0) + expense.amount;
+                });
 
-            // Add spending pattern analysis
-            addText('Spending Pattern Insights:', 20, 130, 14, colors.text);
-            yPos = 140;
-            
-            // Weekly analysis
-            const avgWeeklySpend = Object.values(weeklyData).reduce((a, b) => a + b, 0) / Object.keys(weeklyData).length;
-            const highestWeek = Object.entries(weeklyData).sort((a, b) => b[1] - a[1])[0];
-            
-            [
-                `Average Weekly Spending: ${formatCurrency(avgWeeklySpend)}`,
-                `Highest Spending Week: ${highestWeek[0]} (${formatCurrency(highestWeek[1])})`,
-                `Weekly Spending Variance: ${calculateVariance(Object.values(weeklyData)).toFixed(1)}%`
-            ].forEach(text => {
-                addText(`• ${text}`, 25, yPos, 10);
-                yPos += 10;
-            });
+                const months = Object.keys(monthlyTotals).sort((a, b) =>
+                    new Date(b) - new Date(a));
 
-            // Save the PDF with current timestamp
-            const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-            const categorySlug = categoryName.replace(/\s+/g, '-').toLowerCase();
-            doc.save(`PennyWise-Analytics-${categorySlug}-${timestamp}.pdf`);
-        });
+                const comparison = {};
+                for (let i = 0; i < months.length - 1; i++) {
+                    const currentMonth = monthlyTotals[months[i]];
+                    const previousMonth = monthlyTotals[months[i + 1]];
+                    const change = previousMonth ?
+                        ((currentMonth - previousMonth) / previousMonth * 100).toFixed(1) : 0;
+                    comparison[months[i]] = parseFloat(change);
+                }
 
-        // Helper function to calculate variance
-        function calculateVariance(numbers) {
-            const mean = numbers.reduce((a, b) => a + b, 0) / numbers.length;
-            const variance = numbers.reduce((a, b) => a + Math.pow(b - mean, 2), 0) / numbers.length;
-            return (Math.sqrt(variance) / mean) * 100;
-        }
-
-        // For PDF generation, update the currency formatting
-        const formatCurrency = (amount) => {
-            return '₱' + amount.toLocaleString('en-PH', {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2
-            });
-        };
-
-        // Helper function for monthly comparison
-        function calculateMonthlyComparison(expenses) {
-            const monthlyTotals = {};
-            expenses.forEach(expense => {
-                const month = new Date(expense.date).toLocaleString('default', { month: 'short', year: '2-digit' });
-                monthlyTotals[month] = (monthlyTotals[month] || 0) + expense.amount;
-            });
-
-            const months = Object.keys(monthlyTotals).sort((a, b) => 
-                new Date(b) - new Date(a));
-            
-            const comparison = {};
-            for(let i = 0; i < months.length - 1; i++) {
-                const currentMonth = monthlyTotals[months[i]];
-                const previousMonth = monthlyTotals[months[i + 1]];
-                const change = previousMonth ? 
-                    ((currentMonth - previousMonth) / previousMonth * 100).toFixed(1) : 0;
-                comparison[months[i]] = parseFloat(change);
+                return comparison;
             }
-            
-            return comparison;
-        }
 
-        // Update chart options for better responsiveness
-        const chartOptions = {
-            ...darkModeOptions,
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    position: window.innerWidth < 768 ? 'bottom' : 'right',
-                    labels: {
-                        boxWidth: window.innerWidth < 768 ? 12 : 15,
-                        padding: window.innerWidth < 768 ? 10 : 15,
-                        color: chartTextColor
+            // Update chart options for better responsiveness
+            const chartOptions = {
+                ...darkModeOptions,
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: window.innerWidth < 768 ? 'bottom' : 'right',
+                        labels: {
+                            boxWidth: window.innerWidth < 768 ? 12 : 15,
+                            padding: window.innerWidth < 768 ? 10 : 15,
+                            color: chartTextColor
+                        }
                     }
                 }
-            }
-        };
+            };
 
-        // Update all chart configurations to use the new options
-        [categoryChart, trendChart, weeklyChart, growthChart].forEach(chart => {
-            chart.options = { ...chart.options, ...chartOptions };
-            chart.update();
-        });
-
-        // Add resize handler for responsive charts
-        window.addEventListener('resize', () => {
+            // Update all chart configurations to use the new options
             [categoryChart, trendChart, weeklyChart, growthChart].forEach(chart => {
-                chart.options.plugins.legend.position = window.innerWidth < 768 ? 'bottom' : 'right';
+                chart.options = { ...chart.options, ...chartOptions };
                 chart.update();
             });
-        });
-    </script>
-}
 
+            // Add resize handler for responsive charts
+            window.addEventListener('resize', () => {
+                [categoryChart, trendChart, weeklyChart, growthChart].forEach(chart => {
+                    chart.options.plugins.legend.position = window.innerWidth < 768 ? 'bottom' : 'right';
+                    chart.update();
+                });
+            });
+        </script>
+    }
