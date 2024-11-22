@@ -21,17 +21,17 @@ public class ExpenseController : Controller
         _expenseService = expenseService;
     }
 
-    public async Task<IActionResult> Index(CancellationToken ct)
+    public IActionResult Index(string category, string start, string end)
     {
-    
+        ViewBag.Category = category == "" ? category : null;
+        ViewBag.Start = start;
+        ViewBag.End = end;
         return View();
     }
+     public  IActionResult AddExpenses() {
 
-    public IActionResult AddExpenses()
-    {
         return RedirectToAction("Index");
-    }
-
+     }
     [HttpPost]
     public async Task<IActionResult> AddExpenses(Expense expense, CancellationToken ct) {
 
