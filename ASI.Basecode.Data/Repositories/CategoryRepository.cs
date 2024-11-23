@@ -23,14 +23,26 @@ namespace ASI.Basecode.Data.Repositories
             UnitOfWork.SaveChanges();
         }
 
-        public void DeleteCategory(int categoryId)
+        public string DeleteCategory(int categoryId)
         {
-            var category = this.GetDbSet<Category>().FirstOrDefault(c => c.Id == categoryId);
-            if (category != null)
+           try
             {
-                this.GetDbSet<Category>().Remove(category);
-                UnitOfWork.SaveChanges();
+                var category = this.GetDbSet<Category>().FirstOrDefault(c => c.Id == categoryId);
+                if (category != null)
+                {
+                    this.GetDbSet<Category>().Remove(category);
+                    UnitOfWork.SaveChanges();
+                    return "Category deleted successfully";
+                }
+                return "Category not found";
             }
+            catch (Exception ex)
+            {
+                return "Error";
+            }
+
+
+
         }
 
         public IQueryable<Category> GetCategories()

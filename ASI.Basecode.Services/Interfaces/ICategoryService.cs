@@ -10,7 +10,7 @@ namespace ASI.Basecode.Services.Interfaces
     public interface ICategoryService
     {
         void AddCategory(Category category);
-        void DeleteCategory(int categoryId);
+        string DeleteCategory(int categoryId);
         IQueryable<Category> GetCategories();
         IQueryable<Category> GetCategoriesByUserId(int userId);
         Category? GetCategory(int categoryId); 
