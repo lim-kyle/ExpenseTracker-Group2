@@ -51,7 +51,7 @@ namespace ASI.Basecode.WebApp.Controllers
                         return RedirectToAction("Index");
                     }
 
-                    _categoryService.AddCategory(category);
+                     _categoryService.AddCategory(category);
                     TempData["Success"] = "Category added successfully.";
                     return RedirectToAction("Index");
                 }
@@ -91,7 +91,18 @@ namespace ASI.Basecode.WebApp.Controllers
         }
         public IActionResult DeleteCategory(int id)
         {
-            _categoryService.DeleteCategory(id);
+            var ok = _categoryService.DeleteCategory(id);
+            if (ok == "Category not found")
+            {
+                TempData["ErrorMessage"] = ok;
+            } else if (ok == "Error")
+            {
+                TempData["ErrorMessage"] = "This category is associated with an expense.";
+            }
+            else
+            {
+                TempData["Success"] = ok;
+            }
             return RedirectToAction("Index");
         } 
     }
