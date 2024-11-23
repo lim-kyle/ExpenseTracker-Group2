@@ -12667,19 +12667,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\fritz\\.nuget\\packages\\": {}
+    "C:\\Users\\tt143\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\New folder (5)\\ASI.Basecode.WebApp\\ASI.Basecode.WebApp.csproj",
+      "projectUniqueName": "C:\\Users\\tt143\\Source\\Repos\\ExpenseTracker-Group2\\ASI.Basecode.WebApp\\ASI.Basecode.WebApp.csproj",
       "projectName": "ASI.Basecode.WebApp",
-      "projectPath": "D:\\New folder (5)\\ASI.Basecode.WebApp\\ASI.Basecode.WebApp.csproj",
-      "packagesPath": "C:\\Users\\fritz\\.nuget\\packages\\",
-      "outputPath": "D:\\New folder (5)\\ASI.Basecode.WebApp\\obj\\",
+      "projectPath": "C:\\Users\\tt143\\Source\\Repos\\ExpenseTracker-Group2\\ASI.Basecode.WebApp\\ASI.Basecode.WebApp.csproj",
+      "packagesPath": "C:\\Users\\tt143\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\tt143\\Source\\Repos\\ExpenseTracker-Group2\\ASI.Basecode.WebApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\fritz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\tt143\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -12687,17 +12687,18 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\New folder (5)\\ASI.Basecode.Resources\\ASI.Basecode.Resources.csproj": {
-              "projectPath": "D:\\New folder (5)\\ASI.Basecode.Resources\\ASI.Basecode.Resources.csproj"
+            "C:\\Users\\tt143\\Source\\Repos\\ExpenseTracker-Group2\\ASI.Basecode.Resources\\ASI.Basecode.Resources.csproj": {
+              "projectPath": "C:\\Users\\tt143\\Source\\Repos\\ExpenseTracker-Group2\\ASI.Basecode.Resources\\ASI.Basecode.Resources.csproj"
             },
-            "D:\\New folder (5)\\ASI.Basecode.Services\\ASI.Basecode.Services.csproj": {
-              "projectPath": "D:\\New folder (5)\\ASI.Basecode.Services\\ASI.Basecode.Services.csproj"
+            "C:\\Users\\tt143\\Source\\Repos\\ExpenseTracker-Group2\\ASI.Basecode.Services\\ASI.Basecode.Services.csproj": {
+              "projectPath": "C:\\Users\\tt143\\Source\\Repos\\ExpenseTracker-Group2\\ASI.Basecode.Services\\ASI.Basecode.Services.csproj"
             }
           }
         }
@@ -12795,7 +12796,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }
