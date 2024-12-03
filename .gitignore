@@ -4,4 +4,9 @@
 
 /.vs
 
+# Ignore all bin folders
+**/bin/
+bin/
 
+**/obj/
+obj/
