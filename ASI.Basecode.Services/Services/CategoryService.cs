@@ -20,9 +20,10 @@ namespace ASI.Basecode.Services.Services
         {
             _repository.AddCategory(category);
         }
-        public void DeleteCategory(int categoryId)
+        public string DeleteCategory(int categoryId)
         {
-            _repository.DeleteCategory(categoryId);
+            var ok =  _repository.DeleteCategory(categoryId);
+            return ok;
         }
         public IQueryable<Category> GetCategories()
         {

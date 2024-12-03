@@ -97,3 +97,23 @@ C:\Users\tt143\Source\Repos\ExpenseTracker-Group2\ASI.Basecode.Resources\obj\Deb
 C:\Users\tt143\Source\Repos\ExpenseTracker-Group2\ASI.Basecode.Resources\obj\Debug\net6.0\refint\ASI.Basecode.Resources.dll
 C:\Users\tt143\Source\Repos\ExpenseTracker-Group2\ASI.Basecode.Resources\obj\Debug\net6.0\ASI.Basecode.Resources.pdb
 C:\Users\tt143\Source\Repos\ExpenseTracker-Group2\ASI.Basecode.Resources\obj\Debug\net6.0\ref\ASI.Basecode.Resources.dll
+D:\New folder (5)\ASI.Basecode.Resources\bin\Debug\net6.0\ASI.Basecode.Resources.deps.json
+D:\New folder (5)\ASI.Basecode.Resources\bin\Debug\net6.0\ASI.Basecode.Resources.dll
+D:\New folder (5)\ASI.Basecode.Resources\bin\Debug\net6.0\ASI.Basecode.Resources.pdb
+D:\New folder (5)\ASI.Basecode.Resources\obj\Debug\net6.0\ASI.Basecode.Resources.Messages.Common.resources
+D:\New folder (5)\ASI.Basecode.Resources\obj\Debug\net6.0\ASI.Basecode.Resources.Messages.Errors.resources
+D:\New folder (5)\ASI.Basecode.Resources\obj\Debug\net6.0\ASI.Basecode.Resources.Views.Account.resources
+D:\New folder (5)\ASI.Basecode.Resources\obj\Debug\net6.0\ASI.Basecode.Resources.Views.Button.resources
+D:\New folder (5)\ASI.Basecode.Resources\obj\Debug\net6.0\ASI.Basecode.Resources.Views.Screen.resources
+D:\New folder (5)\ASI.Basecode.Resources\obj\Debug\net6.0\ASI.Basecode.Resources.Views.Table.resources
+D:\New folder (5)\ASI.Basecode.Resources\obj\Debug\net6.0\ASI.Basecode.Resources.Views.TitleText.resources
+D:\New folder (5)\ASI.Basecode.Resources\obj\Debug\net6.0\ASI.Basecode.Resources.csproj.GenerateResource.cache
+D:\New folder (5)\ASI.Basecode.Resources\obj\Debug\net6.0\ASI.Basecode.Resources.GeneratedMSBuildEditorConfig.editorconfig
+D:\New folder (5)\ASI.Basecode.Resources\obj\Debug\net6.0\ASI.Basecode.Resources.AssemblyInfoInputs.cache
+D:\New folder (5)\ASI.Basecode.Resources\obj\Debug\net6.0\ASI.Basecode.Resources.AssemblyInfo.cs
+D:\New folder (5)\ASI.Basecode.Resources\obj\Debug\net6.0\ASI.Basecode.Resources.csproj.CoreCompileInputs.cache
+D:\New folder (5)\ASI.Basecode.Resources\obj\Debug\net6.0\ASI.Basecode.Resources.sourcelink.json
+D:\New folder (5)\ASI.Basecode.Resources\obj\Debug\net6.0\ASI.Basecode.Resources.dll
+D:\New folder (5)\ASI.Basecode.Resources\obj\Debug\net6.0\refint\ASI.Basecode.Resources.dll
+D:\New folder (5)\ASI.Basecode.Resources\obj\Debug\net6.0\ASI.Basecode.Resources.pdb
+D:\New folder (5)\ASI.Basecode.Resources\obj\Debug\net6.0\ref\ASI.Basecode.Resources.dll

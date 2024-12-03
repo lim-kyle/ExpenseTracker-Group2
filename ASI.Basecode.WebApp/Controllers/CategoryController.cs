@@ -2,6 +2,7 @@
 using ASI.Basecode.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Linq;
 
 
@@ -26,19 +27,42 @@ namespace ASI.Basecode.WebApp.Controllers
         {
             return View();
         }
-
         [HttpPost]
         public IActionResult AddCategory(Category category)
         {
             var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == "UserId");
+
+            if (userIdClaim == null)
+                return RedirectToAction("Login", "Account");
+
+            category.UserId = int.Parse(userIdClaim.Value);
+
             if (ModelState.IsValid)
             {
-                category.UserId = int.Parse(userIdClaim.Value);
-                _categoryService.AddCategory(category);
-                return RedirectToAction("Index");
-            }
-            return View();
+                try
+                {
+                    bool categoryExists = _categoryService
+                        .GetCategoriesByUserId(category.UserId)
+                        .Any(c => c.Name == category.Name);
 
+                    if (categoryExists)
+                    {
+                        TempData["ErrorMessage"] = "A category with the same name already exists.";
+                        return RedirectToAction("Index");
+                    }
+
+                     _categoryService.AddCategory(category);
+                    TempData["Success"] = "Category added successfully.";
+                    return RedirectToAction("Index");
+                }
+                catch (Exception ex)
+                {
+                    TempData["ErrorMessage"] = "An unexpected error occurred. Please try again.";
+                    Console.WriteLine(ex); 
+                }
+            }
+
+            return RedirectToAction("Index"); 
         }
         public IActionResult UpdateCategory(int id)
         {
@@ -67,7 +91,18 @@ namespace ASI.Basecode.WebApp.Controllers
         }
         public IActionResult DeleteCategory(int id)
         {
-            _categoryService.DeleteCategory(id);
+            var ok = _categoryService.DeleteCategory(id);
+            if (ok == "Category not found")
+            {
+                TempData["ErrorMessage"] = ok;
+            } else if (ok == "Error")
+            {
+                TempData["ErrorMessage"] = "This category is associated with an expense.";
+            }
+            else
+            {
+                TempData["Success"] = ok;
+            }
             return RedirectToAction("Index");
         } 
     }
