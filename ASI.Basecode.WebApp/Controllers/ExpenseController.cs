@@ -40,53 +40,77 @@ public class ExpenseController : Controller
             var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == "UserId");
             expense.UserId = int.Parse(userIdClaim.Value);
             await _expenseService.AddExpenseAsync(expense, ct);
+            TempData["Success"] = "Expense Added Successfully";
             return RedirectToAction("Index");
         }
         return View("Index", expense);
     }
 
-    public async Task<IActionResult> UpdateExpenses(int id, CancellationToken ct)
+    public async Task<IActionResult> UpdateExpenses(string id, CancellationToken ct)
     {
-        var expense = await _expenseService.GetExpenseByIdAsync(id, ct);
-        if (expense == null)
+
+        try
         {
-            return NotFound();
+            var op = EncryptionUtility.Decrypt(id);
+            var expense = await _expenseService.GetExpenseByIdAsync(int.Parse(op), ct);
+            if (expense == null)
+            {
+                TempData["ErrorMessage"] = "Expense Not Found";
+                return RedirectToAction("Index");
+            }
+            return View(expense);
         }
-        return View(expense);
+        catch (Exception ex)
+        {
+            TempData["ErrorMessage"] = ex.Message;
+            return RedirectToAction("Index");
+        }
+       
+        
     }
 
     [HttpPost]
     public async Task<IActionResult> Edit(Expense expense, CancellationToken ct)
     {
-        if (expense == null)
+        if(ModelState.IsValid)
         {
-            ModelState.AddModelError(string.Empty, "Expense cannot be null.");
-            return View(expense);
-        }
-        var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == "UserId");
+            if (expense == null)
+            {
+                ModelState.AddModelError(string.Empty, "Expense not found");
+                return View(expense);
+            }
+            var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == "UserId");
 
-        try
-        {
-            expense.UserId  = int.Parse(userIdClaim.Value);
-            await _expenseService.UpdateExpenseAsync(expense, ct);
-            return RedirectToAction("Index");
+            try
+            {
+                expense.UserId = int.Parse(userIdClaim.Value);
+                await _expenseService.UpdateExpenseAsync(expense, ct);
+                TempData["Success"] = "Expense Updated Successfully";
+                return RedirectToAction("Index");
+            }
+            catch (InvalidOperationException ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+                TempData["ErrorMessage"] = ex.Message;
+                return RedirectToAction("Index");
+            }
         }
-        catch (InvalidOperationException ex)
-        {
-            ModelState.AddModelError(string.Empty, ex.Message);
-            return View(expense);
-        }
+        TempData["ErrorMessage"] = "All Fields are required";
+        return RedirectToAction("Index");
     }
 
-    public async Task<IActionResult> DeleteConfirmed(int id, CancellationToken ct)
+    public async Task<IActionResult> DeleteConfirmed(string id, CancellationToken ct)
     {
         try
         {
-            await _expenseService.DeleteExpenseAsync(id, ct);
+            var op = EncryptionUtility.Decrypt(id);
+            await _expenseService.DeleteExpenseAsync(int.Parse(op), ct);
+            TempData["Success"] = "Expense Deleted Successfully";
             return RedirectToAction("Index");
         }
         catch (InvalidOperationException ex)
         {
+            TempData["ErrorMessage"] = ex.Message;
             ModelState.AddModelError(string.Empty, ex.Message);
             return RedirectToAction("Index");
         }

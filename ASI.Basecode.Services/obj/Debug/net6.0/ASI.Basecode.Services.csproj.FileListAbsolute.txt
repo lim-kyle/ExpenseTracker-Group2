@@ -120,3 +120,57 @@ D:\New folder (5)\ASI.Basecode.Services\obj\Debug\net6.0\ASI.Basecode.Services.d
 D:\New folder (5)\ASI.Basecode.Services\obj\Debug\net6.0\refint\ASI.Basecode.Services.dll
 D:\New folder (5)\ASI.Basecode.Services\obj\Debug\net6.0\ASI.Basecode.Services.pdb
 D:\New folder (5)\ASI.Basecode.Services\obj\Debug\net6.0\ref\ASI.Basecode.Services.dll
+C:\Users\chcma\Documents\DemoDay\ExpenseTracker-Group2\ASI.Basecode.Services\bin\Debug\net6.0\ASI.Basecode.Services.deps.json
+C:\Users\chcma\Documents\DemoDay\ExpenseTracker-Group2\ASI.Basecode.Services\bin\Debug\net6.0\ASI.Basecode.Services.dll
+C:\Users\chcma\Documents\DemoDay\ExpenseTracker-Group2\ASI.Basecode.Services\bin\Debug\net6.0\ASI.Basecode.Services.pdb
+C:\Users\chcma\Documents\DemoDay\ExpenseTracker-Group2\ASI.Basecode.Services\bin\Debug\net6.0\ASI.Basecode.Data.dll
+C:\Users\chcma\Documents\DemoDay\ExpenseTracker-Group2\ASI.Basecode.Services\bin\Debug\net6.0\ASI.Basecode.Resources.dll
+C:\Users\chcma\Documents\DemoDay\ExpenseTracker-Group2\ASI.Basecode.Services\bin\Debug\net6.0\ASI.Basecode.Data.pdb
+C:\Users\chcma\Documents\DemoDay\ExpenseTracker-Group2\ASI.Basecode.Services\bin\Debug\net6.0\ASI.Basecode.Resources.pdb
+C:\Users\chcma\Documents\DemoDay\ExpenseTracker-Group2\ASI.Basecode.Services\obj\Debug\net6.0\ASI.Basecode.Services.csproj.AssemblyReference.cache
+C:\Users\chcma\Documents\DemoDay\ExpenseTracker-Group2\ASI.Basecode.Services\obj\Debug\net6.0\ASI.Basecode.Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chcma\Documents\DemoDay\ExpenseTracker-Group2\ASI.Basecode.Services\obj\Debug\net6.0\ASI.Basecode.Services.AssemblyInfoInputs.cache
+C:\Users\chcma\Documents\DemoDay\ExpenseTracker-Group2\ASI.Basecode.Services\obj\Debug\net6.0\ASI.Basecode.Services.AssemblyInfo.cs
+C:\Users\chcma\Documents\DemoDay\ExpenseTracker-Group2\ASI.Basecode.Services\obj\Debug\net6.0\ASI.Basecode.Services.csproj.CoreCompileInputs.cache
+C:\Users\chcma\Documents\DemoDay\ExpenseTracker-Group2\ASI.Basecode.Services\obj\Debug\net6.0\ASI.Basecode.Services.sourcelink.json
+C:\Users\chcma\Documents\DemoDay\ExpenseTracker-Group2\ASI.Basecode.Services\obj\Debug\net6.0\ASI.Base.22E0E64E.Up2Date
+C:\Users\chcma\Documents\DemoDay\ExpenseTracker-Group2\ASI.Basecode.Services\obj\Debug\net6.0\ASI.Basecode.Services.dll
+C:\Users\chcma\Documents\DemoDay\ExpenseTracker-Group2\ASI.Basecode.Services\obj\Debug\net6.0\refint\ASI.Basecode.Services.dll
+C:\Users\chcma\Documents\DemoDay\ExpenseTracker-Group2\ASI.Basecode.Services\obj\Debug\net6.0\ASI.Basecode.Services.pdb
+C:\Users\chcma\Documents\DemoDay\ExpenseTracker-Group2\ASI.Basecode.Services\obj\Debug\net6.0\ref\ASI.Basecode.Services.dll
+C:\Users\kylea\Downloads\DEMO DAY-20241203T152500Z-001\DEMO DAY\DemoDay\DemoDay\ExpenseTracker-Group2\ExpenseTracker-Group2\ASI.Basecode.Services\bin\Debug\net6.0\ASI.Basecode.Services.deps.json
+C:\Users\kylea\Downloads\DEMO DAY-20241203T152500Z-001\DEMO DAY\DemoDay\DemoDay\ExpenseTracker-Group2\ExpenseTracker-Group2\ASI.Basecode.Services\bin\Debug\net6.0\ASI.Basecode.Services.dll
+C:\Users\kylea\Downloads\DEMO DAY-20241203T152500Z-001\DEMO DAY\DemoDay\DemoDay\ExpenseTracker-Group2\ExpenseTracker-Group2\ASI.Basecode.Services\bin\Debug\net6.0\ASI.Basecode.Services.pdb
+C:\Users\kylea\Downloads\DEMO DAY-20241203T152500Z-001\DEMO DAY\DemoDay\DemoDay\ExpenseTracker-Group2\ExpenseTracker-Group2\ASI.Basecode.Services\bin\Debug\net6.0\ASI.Basecode.Data.dll
+C:\Users\kylea\Downloads\DEMO DAY-20241203T152500Z-001\DEMO DAY\DemoDay\DemoDay\ExpenseTracker-Group2\ExpenseTracker-Group2\ASI.Basecode.Services\bin\Debug\net6.0\ASI.Basecode.Resources.dll
+C:\Users\kylea\Downloads\DEMO DAY-20241203T152500Z-001\DEMO DAY\DemoDay\DemoDay\ExpenseTracker-Group2\ExpenseTracker-Group2\ASI.Basecode.Services\bin\Debug\net6.0\ASI.Basecode.Data.pdb
+C:\Users\kylea\Downloads\DEMO DAY-20241203T152500Z-001\DEMO DAY\DemoDay\DemoDay\ExpenseTracker-Group2\ExpenseTracker-Group2\ASI.Basecode.Services\bin\Debug\net6.0\ASI.Basecode.Resources.pdb
+C:\Users\kylea\Downloads\DEMO DAY-20241203T152500Z-001\DEMO DAY\DemoDay\DemoDay\ExpenseTracker-Group2\ExpenseTracker-Group2\ASI.Basecode.Services\obj\Debug\net6.0\ASI.Basecode.Services.csproj.AssemblyReference.cache
+C:\Users\kylea\Downloads\DEMO DAY-20241203T152500Z-001\DEMO DAY\DemoDay\DemoDay\ExpenseTracker-Group2\ExpenseTracker-Group2\ASI.Basecode.Services\obj\Debug\net6.0\ASI.Basecode.Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kylea\Downloads\DEMO DAY-20241203T152500Z-001\DEMO DAY\DemoDay\DemoDay\ExpenseTracker-Group2\ExpenseTracker-Group2\ASI.Basecode.Services\obj\Debug\net6.0\ASI.Basecode.Services.AssemblyInfoInputs.cache
+C:\Users\kylea\Downloads\DEMO DAY-20241203T152500Z-001\DEMO DAY\DemoDay\DemoDay\ExpenseTracker-Group2\ExpenseTracker-Group2\ASI.Basecode.Services\obj\Debug\net6.0\ASI.Basecode.Services.AssemblyInfo.cs
+C:\Users\kylea\Downloads\DEMO DAY-20241203T152500Z-001\DEMO DAY\DemoDay\DemoDay\ExpenseTracker-Group2\ExpenseTracker-Group2\ASI.Basecode.Services\obj\Debug\net6.0\ASI.Basecode.Services.csproj.CoreCompileInputs.cache
+C:\Users\kylea\Downloads\DEMO DAY-20241203T152500Z-001\DEMO DAY\DemoDay\DemoDay\ExpenseTracker-Group2\ExpenseTracker-Group2\ASI.Basecode.Services\obj\Debug\net6.0\ASI.Basecode.Services.sourcelink.json
+C:\Users\kylea\Downloads\DEMO DAY-20241203T152500Z-001\DEMO DAY\DemoDay\DemoDay\ExpenseTracker-Group2\ExpenseTracker-Group2\ASI.Basecode.Services\obj\Debug\net6.0\ASI.Base.22E0E64E.Up2Date
+C:\Users\kylea\Downloads\DEMO DAY-20241203T152500Z-001\DEMO DAY\DemoDay\DemoDay\ExpenseTracker-Group2\ExpenseTracker-Group2\ASI.Basecode.Services\obj\Debug\net6.0\ASI.Basecode.Services.dll
+C:\Users\kylea\Downloads\DEMO DAY-20241203T152500Z-001\DEMO DAY\DemoDay\DemoDay\ExpenseTracker-Group2\ExpenseTracker-Group2\ASI.Basecode.Services\obj\Debug\net6.0\refint\ASI.Basecode.Services.dll
+C:\Users\kylea\Downloads\DEMO DAY-20241203T152500Z-001\DEMO DAY\DemoDay\DemoDay\ExpenseTracker-Group2\ExpenseTracker-Group2\ASI.Basecode.Services\obj\Debug\net6.0\ASI.Basecode.Services.pdb
+C:\Users\kylea\Downloads\DEMO DAY-20241203T152500Z-001\DEMO DAY\DemoDay\DemoDay\ExpenseTracker-Group2\ExpenseTracker-Group2\ASI.Basecode.Services\obj\Debug\net6.0\ref\ASI.Basecode.Services.dll
+C:\Users\kylea\Documents\Alliance\Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Services\bin\Debug\net6.0\ASI.Basecode.Services.deps.json
+C:\Users\kylea\Documents\Alliance\Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Services\bin\Debug\net6.0\ASI.Basecode.Services.dll
+C:\Users\kylea\Documents\Alliance\Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Services\bin\Debug\net6.0\ASI.Basecode.Services.pdb
+C:\Users\kylea\Documents\Alliance\Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Services\bin\Debug\net6.0\ASI.Basecode.Data.dll
+C:\Users\kylea\Documents\Alliance\Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Services\bin\Debug\net6.0\ASI.Basecode.Resources.dll
+C:\Users\kylea\Documents\Alliance\Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Services\bin\Debug\net6.0\ASI.Basecode.Data.pdb
+C:\Users\kylea\Documents\Alliance\Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Services\bin\Debug\net6.0\ASI.Basecode.Resources.pdb
+C:\Users\kylea\Documents\Alliance\Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Services\obj\Debug\net6.0\ASI.Basecode.Services.csproj.AssemblyReference.cache
+C:\Users\kylea\Documents\Alliance\Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Services\obj\Debug\net6.0\ASI.Basecode.Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kylea\Documents\Alliance\Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Services\obj\Debug\net6.0\ASI.Basecode.Services.AssemblyInfoInputs.cache
+C:\Users\kylea\Documents\Alliance\Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Services\obj\Debug\net6.0\ASI.Basecode.Services.AssemblyInfo.cs
+C:\Users\kylea\Documents\Alliance\Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Services\obj\Debug\net6.0\ASI.Basecode.Services.csproj.CoreCompileInputs.cache
+C:\Users\kylea\Documents\Alliance\Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Services\obj\Debug\net6.0\ASI.Basecode.Services.sourcelink.json
+C:\Users\kylea\Documents\Alliance\Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Services\obj\Debug\net6.0\ASI.Base.22E0E64E.Up2Date
+C:\Users\kylea\Documents\Alliance\Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Services\obj\Debug\net6.0\ASI.Basecode.Services.dll
+C:\Users\kylea\Documents\Alliance\Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Services\obj\Debug\net6.0\refint\ASI.Basecode.Services.dll
+C:\Users\kylea\Documents\Alliance\Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Services\obj\Debug\net6.0\ASI.Basecode.Services.pdb
+C:\Users\kylea\Documents\Alliance\Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Services\obj\Debug\net6.0\ref\ASI.Basecode.Services.dll

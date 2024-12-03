@@ -10,18 +10,6 @@ namespace ASI.Basecode.WebApp.Controllers
         {
             return View();
         }
-        public IActionResult ExpendseTrends()
-        {
-            var expenseTrendsViewModel = new ExpenseTrendsViewModel
-            {
-                Months = new List<string> { "November", "October", "September", "August" },
-                Groceries = new List<int> { 200, 150, 100, 180 },
-                Bills = new List<int> { 300, 250, 200, 280 },
-                Allowance = new List<int> { 150, 120, 180, 140 },
-                TotalAmount = new List<int> { 650, 520, 480, 600 }
-            };
-
-            return View(expenseTrendsViewModel);
-        }
+      
     }
 }

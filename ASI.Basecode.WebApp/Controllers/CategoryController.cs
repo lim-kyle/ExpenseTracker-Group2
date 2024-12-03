@@ -1,5 +1,6 @@
 ﻿using ASI.Basecode.Data.Models;
 using ASI.Basecode.Services.Interfaces;
+using ASI.Basecode.WebApp.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -64,14 +65,17 @@ namespace ASI.Basecode.WebApp.Controllers
 
             return RedirectToAction("Index"); 
         }
-        public IActionResult UpdateCategory(int id)
+        public IActionResult UpdateCategory(string id)
         {
 
-            Category? category = _categoryService.GetCategory(id);
+            var op = EncryptionUtility.Decrypt(id);
 
+            Category category = _categoryService.GetCategory(int.Parse(op));
+            category.Id = int.Parse(op);
             if (category == null)
             {
-                return NotFound();
+                TempData["ErrorMessage"] = "Category Not Found";
+                return RedirectToAction("Index");
             }
             return View(category);
         }
@@ -82,16 +86,25 @@ namespace ASI.Basecode.WebApp.Controllers
             var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == "UserId");
             if (ModelState.IsValid)
             {
+                try
+                {
 
-                category.UserId = int.Parse(userIdClaim.Value);
-                _categoryService.UpdateCategory(category);
+                    category.UserId = int.Parse(userIdClaim.Value);
+                    _categoryService.UpdateCategory(category);
+                    TempData["Success"] = "Category Updated Successfully";
+                }catch (Exception e)
+                {
+                    TempData["ErrorMessage"] = "Category Not Found";
+                }
+               
                 return RedirectToAction("Index");
             }
             return View();
         }
-        public IActionResult DeleteCategory(int id)
+        public IActionResult DeleteCategory(string id)
         {
-            var ok = _categoryService.DeleteCategory(id);
+            var op = EncryptionUtility.Decrypt(id);
+            var ok = _categoryService.DeleteCategory(int.Parse(op));
             if (ok == "Category not found")
             {
                 TempData["ErrorMessage"] = ok;

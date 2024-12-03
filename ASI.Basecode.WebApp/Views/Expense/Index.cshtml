@@ -30,7 +30,7 @@
                     <div class="flex flex-col space-y-2 col-span-2">
                         <label for="CategoryId" class="text-gray-700 dark:text-gray-300 font-medium">Category</label>
                         <select class="outline-none bg-gray-50 dark:bg-gray-700 p-3 rounded-xl border border-gray-200 dark:border-gray-600 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200"
-                                id="CategoryId" name="CategoryId" required>
+                                id="CategoryId" name="CategoryId" >
                             <option value="">Select a category</option>
                             @foreach (var category in categories)
                             {
@@ -228,9 +228,17 @@
 
 @section scripts {
     <script>
+        var errorMessage = '@TempData["ErrorMessage"]';
+        var Success = '@TempData["Success"]';
+        if (errorMessage) {
+            toastr.error(errorMessage);
+        }
+        if (Success) {
+            toastr.success(Success);
+        }
         const expenses = @Html.Raw(Json.Serialize(expenses.Select(e => new
         {
-            id = e.Id,
+            id = EncryptionUtility.Encrypt(e.Id.ToString()),
             title = e.ExpenseTitle,
             amount = e.Amount,
             date = e.DateCreated,
@@ -284,7 +292,7 @@
                                class="px-4 py-2 text-blue-600 bg-blue-50 dark:bg-blue-900/50 rounded-xl hover:bg-blue-100 dark:hover:bg-blue-800 transition-all duration-200">
                                 <i class="fas fa-edit"></i>
                             </a>
-                            <button onclick="showDeleteConfirmation(${expense.id})"
+                            <button onclick="showDeleteConfirmation('${expense.id}')"
                                      class="px-4 py-2 text-red-600 bg-red-50 dark:bg-red-900/50 rounded-xl hover:bg-red-100 dark:hover:bg-red-800 transition-all duration-200">
                                 <i class="fas fa-trash"></i>
                             </button>
@@ -349,6 +357,7 @@
         let expenseIdToDelete = null;
 
         function showDeleteConfirmation(id) {
+            
             expenseIdToDelete = id;
             deleteModal.classList.remove('hidden');
             deleteModal.classList.add('flex');
