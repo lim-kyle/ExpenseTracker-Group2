@@ -144,3 +144,18 @@ C:\Users\kylea\Documents\Alliance\Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Da
 C:\Users\kylea\Documents\Alliance\Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Data\obj\Debug\net6.0\ASI.Basecode.Data.pdb
 C:\Users\kylea\Documents\Alliance\Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Data\obj\Debug\net6.0\ASI.Basecode.Data.genruntimeconfig.cache
 C:\Users\kylea\Documents\Alliance\Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Data\obj\Debug\net6.0\ref\ASI.Basecode.Data.dll
+D:\Codes -- Projects\AA.Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Data\bin\Debug\net6.0\ASI.Basecode.Data.deps.json
+D:\Codes -- Projects\AA.Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Data\bin\Debug\net6.0\ASI.Basecode.Data.runtimeconfig.json
+D:\Codes -- Projects\AA.Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Data\bin\Debug\net6.0\ASI.Basecode.Data.dll
+D:\Codes -- Projects\AA.Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Data\bin\Debug\net6.0\ASI.Basecode.Data.pdb
+D:\Codes -- Projects\AA.Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Data\obj\Debug\net6.0\ASI.Basecode.Data.csproj.AssemblyReference.cache
+D:\Codes -- Projects\AA.Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Data\obj\Debug\net6.0\ASI.Basecode.Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\Codes -- Projects\AA.Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Data\obj\Debug\net6.0\ASI.Basecode.Data.AssemblyInfoInputs.cache
+D:\Codes -- Projects\AA.Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Data\obj\Debug\net6.0\ASI.Basecode.Data.AssemblyInfo.cs
+D:\Codes -- Projects\AA.Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Data\obj\Debug\net6.0\ASI.Basecode.Data.csproj.CoreCompileInputs.cache
+D:\Codes -- Projects\AA.Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Data\obj\Debug\net6.0\ASI.Basecode.Data.sourcelink.json
+D:\Codes -- Projects\AA.Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Data\obj\Debug\net6.0\ASI.Basecode.Data.dll
+D:\Codes -- Projects\AA.Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Data\obj\Debug\net6.0\refint\ASI.Basecode.Data.dll
+D:\Codes -- Projects\AA.Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Data\obj\Debug\net6.0\ASI.Basecode.Data.pdb
+D:\Codes -- Projects\AA.Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Data\obj\Debug\net6.0\ASI.Basecode.Data.genruntimeconfig.cache
+D:\Codes -- Projects\AA.Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Data\obj\Debug\net6.0\ref\ASI.Basecode.Data.dll

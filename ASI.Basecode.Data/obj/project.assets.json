@@ -3034,19 +3034,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\allan\\.nuget\\packages\\": {}
+    "C:\\Users\\chcma\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\allan\\source\\repos\\ExpenseTracker-Group2\\ASI.Basecode.Data\\ASI.Basecode.Data.csproj",
+      "projectUniqueName": "D:\\Codes -- Projects\\AA.Demo-Day\\ExpenseTracker-Group2\\ASI.Basecode.Data\\ASI.Basecode.Data.csproj",
       "projectName": "ASI.Basecode.Data",
-      "projectPath": "C:\\Users\\allan\\source\\repos\\ExpenseTracker-Group2\\ASI.Basecode.Data\\ASI.Basecode.Data.csproj",
-      "packagesPath": "C:\\Users\\allan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\allan\\source\\repos\\ExpenseTracker-Group2\\ASI.Basecode.Data\\obj\\",
+      "projectPath": "D:\\Codes -- Projects\\AA.Demo-Day\\ExpenseTracker-Group2\\ASI.Basecode.Data\\ASI.Basecode.Data.csproj",
+      "packagesPath": "C:\\Users\\chcma\\.nuget\\packages\\",
+      "outputPath": "D:\\Codes -- Projects\\AA.Demo-Day\\ExpenseTracker-Group2\\ASI.Basecode.Data\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\allan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\chcma\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3140,13 +3140,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Users\\allan\\source\\repos\\ExpenseTracker-Group2\\ASI.Basecode.Data\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }
