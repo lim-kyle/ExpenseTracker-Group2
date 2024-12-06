@@ -41,7 +41,8 @@
     <!-- Form Card -->
     <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 p-8">
         <form asp-action="UpdateCategory" method="post" class="space-y-6">
-            <input type="hidden" name="Id" value="@Model.Id" />
+            <input type="hidden" name="encryptedId" value="@EncryptionUtility.Encrypt(Model.Id.ToString())" />
+            <input type="hidden" name="Id" value="-1" />
 
             <div class="space-y-2">
                 <label for="Name" class="text-gray-700 dark:text-gray-300 font-medium block">Category Name</label>

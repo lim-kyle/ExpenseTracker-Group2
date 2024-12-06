@@ -13,17 +13,25 @@ namespace ASI.Basecode.Services.Services
     public class CategoryService : ICategoryService
     {
         private readonly ICategoryRepository _repository;
-        public CategoryService(ICategoryRepository repository) {
+        public CategoryService(ICategoryRepository repository)
+        {
             _repository = repository;
         }
         public void AddCategory(Category category)
         {
+            if (string.IsNullOrWhiteSpace(category.Name)) throw new ArgumentException("Expense title cannot be null or empty.");
+            if (this.CategoryExists(category.UserId, category.Name) != null) throw new Exception("Category already exists.");
             _repository.AddCategory(category);
         }
-        public string DeleteCategory(int categoryId)
+
+        public Category CategoryExists(int userId, string name)
         {
-            var ok =  _repository.DeleteCategory(categoryId);
-            return ok;
+            return _repository.CategoryExists(userId, name);
+        }
+        public void DeleteCategory(int categoryId, int userId)
+        {
+            _repository.DeleteCategory(categoryId, userId);
+
         }
         public IQueryable<Category> GetCategories()
         {
@@ -33,12 +41,16 @@ namespace ASI.Basecode.Services.Services
         {
             return _repository.GetCategoriesByUserId(userId);
         }
-        public Category? GetCategory(int categoryId)
+        public Category GetCategory(int categoryId)
         {
             return _repository.GetCategory(categoryId);
         }
         public void UpdateCategory(Category category)
         {
+            if (string.IsNullOrWhiteSpace(category.Name)) throw new ArgumentException("Category name cannot be null or empty.");
+
+            var categoryExist = this.CategoryExists(category.UserId, category.Name);
+            if (categoryExist != null && categoryExist.Id != category.Id) throw new Exception("Category already exists.");
             _repository.UpdateCategory(category);
         }
     }

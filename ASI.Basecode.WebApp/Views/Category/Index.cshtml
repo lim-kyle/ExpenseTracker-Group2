@@ -1,11 +1,13 @@
-﻿@model IEnumerable<ASI.Basecode.Data.Models.Category>
-
+﻿@model ASI.Basecode.Data.Models.Category
+@inject ASI.Basecode.Services.Interfaces.ICategoryService CategoryService
 @{
     ViewData["Title"] = "Category Management";
+    var userId = User.Claims.FirstOrDefault(c => c.Type == "UserId")?.Value;
+    var categories = CategoryService.GetCategoriesByUserId(int.Parse(userId));
 }
 
 @section modals {
-    <div id="modal" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 hidden items-center justify-center">
+    <div id="modal" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50  @(ViewData.ModelState.IsValid ? "hidden" : "flex") items-center justify-center">
         <form asp-action="AddCategory" method="post" class="bg-white dark:bg-gray-800 rounded-2xl p-8 md:p-12 w-11/12 max-w-2xl shadow-2xl">
             <div class="space-y-6">
                 <div class="text-center space-y-3">
@@ -20,9 +22,10 @@
                            class="w-full outline-none bg-gray-50 dark:bg-gray-700 p-3 rounded-xl border border-gray-200 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-400 focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-800 transition-all duration-200 dark:text-white"
                            id="Name" 
                            name="Name" 
-                           required 
+                            
                            maxlength="50" 
                            placeholder="e.g. Groceries, Transportation" />
+                    <span asp-validation-for="Name" class="text-red-500 text-sm"></span>
                     <p class="text-sm text-gray-500 dark:text-gray-400">Choose a clear and concise name for your category (max 50 characters)</p>
                 </div>
 
@@ -110,9 +113,9 @@
 
     <!-- Categories Grid -->
     <div id="categoriesGrid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        @if (Model != null && Model.Any())
+        @if (categories != null && categories.Any())
         {
-            foreach (var category in Model)
+            foreach (var category in categories)
             {
                 <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 p-6 hover:shadow-md transition-all duration-200">
                     <div class="flex items-center justify-between mb-4">

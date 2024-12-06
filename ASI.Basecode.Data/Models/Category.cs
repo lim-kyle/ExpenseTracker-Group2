@@ -13,7 +13,7 @@ namespace ASI.Basecode.Data.Models
     {
         [Key]
         public int Id { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Category name is required.")]
         public string Name { get; set; }
         [Required]
         public DateTime DateCreated { get; }

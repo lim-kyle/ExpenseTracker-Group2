@@ -18,105 +18,89 @@ namespace ASI.Basecode.WebApp.Controllers
         }
         public IActionResult Index()
         {
-            var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == "UserId");
-            int userId = int.Parse(userIdClaim.Value);
-            IQueryable<Category> categories = _categoryService.GetCategoriesByUserId(userId);
-            return View(categories);
+
+            return View();
         }
 
         public IActionResult AddCategory()
         {
-            return View();
+            return RedirectToAction("Index"); ;
         }
         [HttpPost]
         public IActionResult AddCategory(Category category)
         {
             var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == "UserId");
-
             if (userIdClaim == null)
                 return RedirectToAction("Login", "Account");
-
             category.UserId = int.Parse(userIdClaim.Value);
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    bool categoryExists = _categoryService
-                        .GetCategoriesByUserId(category.UserId)
-                        .Any(c => c.Name == category.Name);
-
-                    if (categoryExists)
-                    {
-                        TempData["ErrorMessage"] = "A category with the same name already exists.";
-                        return RedirectToAction("Index");
-                    }
-
-                     _categoryService.AddCategory(category);
+                    _categoryService.AddCategory(category);
                     TempData["Success"] = "Category added successfully.";
                     return RedirectToAction("Index");
                 }
                 catch (Exception ex)
                 {
-                    TempData["ErrorMessage"] = "An unexpected error occurred. Please try again.";
-                    Console.WriteLine(ex); 
+                    TempData["ErrorMessage"] = ex.Message;
                 }
             }
-
-            return RedirectToAction("Index"); 
+            return View("Index", category);
         }
         public IActionResult UpdateCategory(string id)
         {
-
-            var op = EncryptionUtility.Decrypt(id);
-
-            Category category = _categoryService.GetCategory(int.Parse(op));
-            category.Id = int.Parse(op);
-            if (category == null)
+            try
             {
-                TempData["ErrorMessage"] = "Category Not Found";
-                return RedirectToAction("Index");
+                var op = EncryptionUtility.Decrypt(id);
+                Category category = _categoryService.GetCategory(int.Parse(op));
+                return View(category);
             }
-            return View(category);
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = ex.Message;
+            }
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
-        public IActionResult UpdateCategory(Category category)
+        public IActionResult UpdateCategory(Category category, string encryptedId)
         {
             var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == "UserId");
             if (ModelState.IsValid)
             {
                 try
                 {
-
+                    var op = EncryptionUtility.Decrypt(encryptedId);
                     category.UserId = int.Parse(userIdClaim.Value);
+                    category.Id = int.Parse(op);
                     _categoryService.UpdateCategory(category);
                     TempData["Success"] = "Category Updated Successfully";
-                }catch (Exception e)
-                {
-                    TempData["ErrorMessage"] = "Category Not Found";
                 }
-               
+                catch (Exception ex)
+                {
+                    TempData["ErrorMessage"] = ex.Message;
+                }
+
                 return RedirectToAction("Index");
             }
             return View();
         }
         public IActionResult DeleteCategory(string id)
         {
-            var op = EncryptionUtility.Decrypt(id);
-            var ok = _categoryService.DeleteCategory(int.Parse(op));
-            if (ok == "Category not found")
+            var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == "UserId");
+            try
             {
-                TempData["ErrorMessage"] = ok;
-            } else if (ok == "Error")
-            {
-                TempData["ErrorMessage"] = "This category is associated with an expense.";
+                var op = EncryptionUtility.Decrypt(id);
+                _categoryService.DeleteCategory(int.Parse(op), int.Parse(userIdClaim.Value));
+                TempData["Success"] = "Category Deleted Successfully";
             }
-            else
+            catch (Exception ex)
             {
-                TempData["Success"] = ok;
+                TempData["ErrorMessage"] = ex.Message;
             }
             return RedirectToAction("Index");
-        } 
+        }
     }
 }
