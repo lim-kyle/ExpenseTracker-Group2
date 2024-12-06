@@ -561,13 +561,21 @@
                     format: 'a4'
                 });
 
-                // Custom colors and styles
+                // // Custom colors and styles
+                // const colors = {
+                //     primary: isDarkMode ? '#60A5FA' : '#3B82F6',
+                //     text: isDarkMode ? '#D1D5DB' : '#1F2937',
+                //     subtext: isDarkMode ? '#9CA3AF' : '#6B7280',
+                //     accent: isDarkMode ? '#374151' : '#E5E7EB'
+                // };
+
                 const colors = {
-                    primary: isDarkMode ? '#60A5FA' : '#3B82F6',
-                    text: isDarkMode ? '#D1D5DB' : '#1F2937',
-                    subtext: isDarkMode ? '#9CA3AF' : '#6B7280',
-                    accent: isDarkMode ? '#374151' : '#E5E7EB'
+                    primary: isDarkMode ? '#60A5FA' : '#3B82F6', // Original color for primary (unchanged)
+                    text: '#5a5a5a',    // Text color set to black
+                    subtext: '#5a5a5a', // Original color for subtext (unchanged)
+                    accent: isDarkMode ? '#374151' : '#E5E7EB' // Accent color remains based on theme
                 };
+
 
                 // Helper function for consistent text styling
                 const addText = (text, x, y, size = 10, color = colors.text) => {
@@ -686,21 +694,6 @@
                         yPos += 10;
                     });
 
-                // Insights Page
-                doc.addPage();
-                addText('Financial Insights', 20, 20, 16, colors.primary);
-
-                // Add monthly comparison
-                const monthlyComparison = calculateMonthlyComparison(filteredExpenses);
-                addText('Month-over-Month Analysis', 20, 40, 12, colors.text);
-                yPos = 50;
-                Object.entries(monthlyComparison).forEach(([month, change]) => {
-                    const prefix = change >= 0 ? '▲' : '▼';
-                    const color = change >= 0 ? '#EF4444' : '#10B981';
-                    addText(`${month}: ${prefix} ${Math.abs(change)}%`, 25, yPos, 10, color);
-                    yPos += 8;
-                });
-
                 // Modern footer with page numbers
                 const pageCount = doc.internal.getNumberOfPages();
                 for (let i = 1; i <= pageCount; i++) {
@@ -734,8 +727,7 @@
 
                 [
                     `Average Weekly Spending: ${formatCurrency(avgWeeklySpend)}`,
-                    `Highest Spending Week: ${highestWeek[0]} (${formatCurrency(highestWeek[1])})`,
-                    `Weekly Spending Variance: ${calculateVariance(Object.values(weeklyData)).toFixed(1)}%`
+                    `Highest Spending Week: ${highestWeek[0]} (${formatCurrency(highestWeek[1])})`
                 ].forEach(text => {
                     addText(`• ${text}`, 25, yPos, 10);
                     yPos += 10;

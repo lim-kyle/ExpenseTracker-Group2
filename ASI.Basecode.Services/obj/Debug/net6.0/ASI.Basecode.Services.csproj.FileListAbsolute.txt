@@ -174,3 +174,21 @@ C:\Users\kylea\Documents\Alliance\Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Se
 C:\Users\kylea\Documents\Alliance\Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Services\obj\Debug\net6.0\refint\ASI.Basecode.Services.dll
 C:\Users\kylea\Documents\Alliance\Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Services\obj\Debug\net6.0\ASI.Basecode.Services.pdb
 C:\Users\kylea\Documents\Alliance\Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Services\obj\Debug\net6.0\ref\ASI.Basecode.Services.dll
+D:\Codes -- Projects\AA.Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Services\bin\Debug\net6.0\ASI.Basecode.Services.deps.json
+D:\Codes -- Projects\AA.Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Services\bin\Debug\net6.0\ASI.Basecode.Services.dll
+D:\Codes -- Projects\AA.Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Services\bin\Debug\net6.0\ASI.Basecode.Services.pdb
+D:\Codes -- Projects\AA.Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Services\bin\Debug\net6.0\ASI.Basecode.Data.dll
+D:\Codes -- Projects\AA.Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Services\bin\Debug\net6.0\ASI.Basecode.Resources.dll
+D:\Codes -- Projects\AA.Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Services\bin\Debug\net6.0\ASI.Basecode.Data.pdb
+D:\Codes -- Projects\AA.Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Services\bin\Debug\net6.0\ASI.Basecode.Resources.pdb
+D:\Codes -- Projects\AA.Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Services\obj\Debug\net6.0\ASI.Basecode.Services.csproj.AssemblyReference.cache
+D:\Codes -- Projects\AA.Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Services\obj\Debug\net6.0\ASI.Basecode.Services.GeneratedMSBuildEditorConfig.editorconfig
+D:\Codes -- Projects\AA.Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Services\obj\Debug\net6.0\ASI.Basecode.Services.AssemblyInfoInputs.cache
+D:\Codes -- Projects\AA.Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Services\obj\Debug\net6.0\ASI.Basecode.Services.AssemblyInfo.cs
+D:\Codes -- Projects\AA.Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Services\obj\Debug\net6.0\ASI.Basecode.Services.csproj.CoreCompileInputs.cache
+D:\Codes -- Projects\AA.Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Services\obj\Debug\net6.0\ASI.Basecode.Services.sourcelink.json
+D:\Codes -- Projects\AA.Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Services\obj\Debug\net6.0\ASI.Base.22E0E64E.Up2Date
+D:\Codes -- Projects\AA.Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Services\obj\Debug\net6.0\ASI.Basecode.Services.dll
+D:\Codes -- Projects\AA.Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Services\obj\Debug\net6.0\refint\ASI.Basecode.Services.dll
+D:\Codes -- Projects\AA.Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Services\obj\Debug\net6.0\ASI.Basecode.Services.pdb
+D:\Codes -- Projects\AA.Demo-Day\ExpenseTracker-Group2\ASI.Basecode.Services\obj\Debug\net6.0\ref\ASI.Basecode.Services.dll
