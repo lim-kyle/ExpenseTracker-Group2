@@ -10,10 +10,12 @@ namespace ASI.Basecode.Data.Interfaces
     public interface IUserRepository
     {
         IQueryable<User> GetUsers();
-        bool UserExists(string userId);
+        bool UserExists(string username,string email);
         void AddUser(User user);
         User GetUser(int userId);
 
         void UpdateUser(User user);
+
+       
     }
 }
