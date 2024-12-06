@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Codes -- Projects\\AA.Demo-Day\\ExpenseTracker-Group2\\ASI.Basecode.Resources\\ASI.Basecode.Resources.csproj": {}
+    "C:\\Users\\allan\\source\\repos\\ExpenseTracker-Group2\\ASI.Basecode.Resources\\ASI.Basecode.Resources.csproj": {}
   },
   "projects": {
-    "D:\\Codes -- Projects\\AA.Demo-Day\\ExpenseTracker-Group2\\ASI.Basecode.Resources\\ASI.Basecode.Resources.csproj": {
+    "C:\\Users\\allan\\source\\repos\\ExpenseTracker-Group2\\ASI.Basecode.Resources\\ASI.Basecode.Resources.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Codes -- Projects\\AA.Demo-Day\\ExpenseTracker-Group2\\ASI.Basecode.Resources\\ASI.Basecode.Resources.csproj",
+        "projectUniqueName": "C:\\Users\\allan\\source\\repos\\ExpenseTracker-Group2\\ASI.Basecode.Resources\\ASI.Basecode.Resources.csproj",
         "projectName": "ASI.Basecode.Resources",
-        "projectPath": "D:\\Codes -- Projects\\AA.Demo-Day\\ExpenseTracker-Group2\\ASI.Basecode.Resources\\ASI.Basecode.Resources.csproj",
-        "packagesPath": "C:\\Users\\chcma\\.nuget\\packages\\",
-        "outputPath": "D:\\Codes -- Projects\\AA.Demo-Day\\ExpenseTracker-Group2\\ASI.Basecode.Resources\\obj\\",
+        "projectPath": "C:\\Users\\allan\\source\\repos\\ExpenseTracker-Group2\\ASI.Basecode.Resources\\ASI.Basecode.Resources.csproj",
+        "packagesPath": "C:\\Users\\allan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\allan\\source\\repos\\ExpenseTracker-Group2\\ASI.Basecode.Resources\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\chcma\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\allan\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

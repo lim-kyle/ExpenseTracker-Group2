@@ -3804,19 +3804,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\chcma\\.nuget\\packages\\": {}
+    "C:\\Users\\allan\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Codes -- Projects\\AA.Demo-Day\\ExpenseTracker-Group2\\ASI.Basecode.Services\\ASI.Basecode.Services.csproj",
+      "projectUniqueName": "C:\\Users\\allan\\source\\repos\\ExpenseTracker-Group2\\ASI.Basecode.Services\\ASI.Basecode.Services.csproj",
       "projectName": "ASI.Basecode.Services",
-      "projectPath": "D:\\Codes -- Projects\\AA.Demo-Day\\ExpenseTracker-Group2\\ASI.Basecode.Services\\ASI.Basecode.Services.csproj",
-      "packagesPath": "C:\\Users\\chcma\\.nuget\\packages\\",
-      "outputPath": "D:\\Codes -- Projects\\AA.Demo-Day\\ExpenseTracker-Group2\\ASI.Basecode.Services\\obj\\",
+      "projectPath": "C:\\Users\\allan\\source\\repos\\ExpenseTracker-Group2\\ASI.Basecode.Services\\ASI.Basecode.Services.csproj",
+      "packagesPath": "C:\\Users\\allan\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\allan\\source\\repos\\ExpenseTracker-Group2\\ASI.Basecode.Services\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\chcma\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\allan\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3831,11 +3831,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\Codes -- Projects\\AA.Demo-Day\\ExpenseTracker-Group2\\ASI.Basecode.Data\\ASI.Basecode.Data.csproj": {
-              "projectPath": "D:\\Codes -- Projects\\AA.Demo-Day\\ExpenseTracker-Group2\\ASI.Basecode.Data\\ASI.Basecode.Data.csproj"
+            "C:\\Users\\allan\\source\\repos\\ExpenseTracker-Group2\\ASI.Basecode.Data\\ASI.Basecode.Data.csproj": {
+              "projectPath": "C:\\Users\\allan\\source\\repos\\ExpenseTracker-Group2\\ASI.Basecode.Data\\ASI.Basecode.Data.csproj"
             },
-            "D:\\Codes -- Projects\\AA.Demo-Day\\ExpenseTracker-Group2\\ASI.Basecode.Resources\\ASI.Basecode.Resources.csproj": {
-              "projectPath": "D:\\Codes -- Projects\\AA.Demo-Day\\ExpenseTracker-Group2\\ASI.Basecode.Resources\\ASI.Basecode.Resources.csproj"
+            "C:\\Users\\allan\\source\\repos\\ExpenseTracker-Group2\\ASI.Basecode.Resources\\ASI.Basecode.Resources.csproj": {
+              "projectPath": "C:\\Users\\allan\\source\\repos\\ExpenseTracker-Group2\\ASI.Basecode.Resources\\ASI.Basecode.Resources.csproj"
             }
           }
         }
