@@ -8,7 +8,7 @@ namespace ASI.Basecode.WebApp.Models
 {
     public static class EncryptionUtility
     {
-        // Pad "123123" to 16 characters for AES-128
+        //  16 characters for AES-128
         private static readonly byte[] Key = Encoding.UTF8.GetBytes("123123".PadRight(16, '0'));
         private static readonly byte[] IV = Encoding.UTF8.GetBytes("Initialization12"); // 16 characters for IV
 

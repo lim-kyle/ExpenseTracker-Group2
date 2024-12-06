@@ -39,21 +39,17 @@ namespace ASI.Basecode.Services.Services
         public void AddUser(UserViewModel model)
         {
             var user = new User();
-            if (!_repository.UserExists(model.Username))
-            {
+
+            if (_repository.UserExists(model.Username, "")) throw new InvalidDataException(Resources.Messages.Errors.UserExists);
+            if (_repository.UserExists("", model.Email)) throw new InvalidDataException("Email already exists.");
+          
                 _mapper.Map(model, user);
                 user.Password = PasswordManager.EncryptPassword(model.Password);
                 user.CreatedTime = DateTime.Now;
                 user.UpdatedTime = DateTime.Now;
                 user.CreatedBy = System.Environment.UserName;
                 user.UpdatedBy = System.Environment.UserName;
-
                 _repository.AddUser(user);
-            }
-            else
-            {
-                throw new InvalidDataException(Resources.Messages.Errors.UserExists);
-            }
         }
 
         public void UpdateUser(User user)

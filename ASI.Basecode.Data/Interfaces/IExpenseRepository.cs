@@ -8,11 +8,12 @@ namespace ASI.Basecode.Data.Interfaces;
 
 public interface IExpenseRepository
 {
-    Task AddExpenseAsync(Expense expense, CancellationToken ct);
-    Task<List<Expense>> GetExpensesAsync(CancellationToken ct);
-    Task<List<Expense>> GetExpensesAsyncByUserId(int userId);
-    Task<List<Expense>> FilterExpensesByCategoryAndDate(int userId, int categoryId, DateTime startDate, DateTime endDate);
-    Task UpdateExpenseAsync(Expense expense, CancellationToken ct);
-    Task<Expense> GetExpenseByIdAsync(int expenseId, CancellationToken ct);
-    Task DeleteExpenseAsync(int expenseId, CancellationToken ct);
+    void AddExpense(Expense expense);
+    Expense GetExpenseById(int expenseId);
+
+    List<Expense> GetExpenses();
+    List<Expense> GetUserExpenses(int userId);
+    List<Expense> FilterExpensesByCategoryAndDate(int userId, int categoryId, DateTime startDate, DateTime endDate);
+    void UpdateExpense(Expense expense);
+    void DeleteExpense(int expenseId,int userId);
 }

@@ -120,7 +120,6 @@ namespace ASI.Basecode.WebApp.Controllers
             {
                 _userService.AddUser(model);
                 TempData["Success"] = "Successfully Registered";
-
                 return RedirectToAction("Login", "Account");
             }
             catch(InvalidDataException ex)
@@ -129,7 +128,7 @@ namespace ASI.Basecode.WebApp.Controllers
             }
             catch(Exception ex)
             {
-                TempData["ErrorMessage"] = Resources.Messages.Errors.ServerError;
+                TempData["ErrorMessage"] = ex.Message;
             }
             return View();
         }

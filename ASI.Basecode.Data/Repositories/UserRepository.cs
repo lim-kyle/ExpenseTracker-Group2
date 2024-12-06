@@ -11,7 +11,7 @@ namespace ASI.Basecode.Data.Repositories
 {
     public class UserRepository : BaseRepository, IUserRepository
     {
-        public UserRepository(IUnitOfWork unitOfWork) : base(unitOfWork) 
+        public UserRepository(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
 
         }
@@ -21,9 +21,9 @@ namespace ASI.Basecode.Data.Repositories
             return this.GetDbSet<User>();
         }
 
-        public bool UserExists(string username)
+        public bool UserExists(string username,string email)
         {
-            return this.GetDbSet<User>().Any(x => x.Username == username);
+            return this.GetDbSet<User>().Any(x => x.Username == username || x.Email == email);
         }
 
         public void AddUser(User user)
@@ -42,6 +42,8 @@ namespace ASI.Basecode.Data.Repositories
             this.GetDbSet<User>().Update(user);
             UnitOfWork.SaveChanges();
         }
+
+     
 
     }
 }

@@ -5,7 +5,7 @@
 @{
     ViewData["Title"] = "Analytics & Reports";
     var userId = User.Claims.FirstOrDefault(c => c.Type == "UserId")?.Value;
-    var expenses = await ExpenseRepository.GetExpensesAsyncByUserId(int.Parse(userId));
+    var expenses =  ExpenseRepository.GetUserExpenses(int.Parse(userId));
     var categories = CategoryRepository.GetCategoriesByUserId(int.Parse(userId)).ToList();
 }
 

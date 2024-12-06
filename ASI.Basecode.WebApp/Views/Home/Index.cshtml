@@ -1,12 +1,12 @@
 ﻿@model IEnumerable<ASI.Basecode.Data.Models.Expense>
-@inject ASI.Basecode.Data.Interfaces.IExpenseRepository ExpenseRepository
-@inject ASI.Basecode.Data.Interfaces.ICategoryRepository CategoryRepository
+@inject ASI.Basecode.Services.Interfaces.IExpenseService ExpenseService
+@inject ASI.Basecode.Services.Interfaces.ICategoryService CategoryService
 
 @{
     ViewData["Title"] = "Dashboard";
     var userId = User.Claims.FirstOrDefault(c => c.Type == "UserId")?.Value;
-    var expenses = await ExpenseRepository.GetExpensesAsyncByUserId(int.Parse(userId));
-    var categories = CategoryRepository.GetCategoriesByUserId(int.Parse(userId)).ToList();
+    var expenses =  ExpenseService.GetUserExpenses(int.Parse(userId));
+    var categories = CategoryService.GetCategoriesByUserId(int.Parse(userId)).ToList();
     
     // Calculate statistics
     var totalExpenses = expenses.Sum(e => e.Amount);

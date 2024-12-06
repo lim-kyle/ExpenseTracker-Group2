@@ -1,13 +1,13 @@
 ﻿@model ASI.Basecode.Data.Models.Expense
-@inject ASI.Basecode.Data.Interfaces.ICategoryRepository CategoryRepository
-@inject ASI.Basecode.Data.Interfaces.IExpenseRepository ExpenseRepository
+@inject ASI.Basecode.Services.Interfaces.ICategoryService CategoryService
+@inject ASI.Basecode.Services.Interfaces.IExpenseService ExpenseService
 
 @{
     ViewData["Title"] = "Expense Management";
     var userId = User.Claims.FirstOrDefault(c => c.Type == "UserId")?.Value;
-    var categories = CategoryRepository.GetCategoriesByUserId(int.Parse(userId)).ToList();
+    var categories = CategoryService.GetCategoriesByUserId(int.Parse(userId)).ToList();
 
-    var expenses = await ExpenseRepository.GetExpensesAsyncByUserId(int.Parse(userId));
+    var expenses =  ExpenseService.GetUserExpenses(int.Parse(userId));
 
 }
 @section modals {
@@ -30,7 +30,7 @@
                     <div class="flex flex-col space-y-2 col-span-2">
                         <label for="CategoryId" class="text-gray-700 dark:text-gray-300 font-medium">Category</label>
                         <select class="outline-none bg-gray-50 dark:bg-gray-700 p-3 rounded-xl border border-gray-200 dark:border-gray-600 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200"
-                                id="CategoryId" name="CategoryId" >
+                                id="CategoryId" asp-for="CategoryId" name="CategoryId" >
                             <option value="">Select a category</option>
                             @foreach (var category in categories)
                             {

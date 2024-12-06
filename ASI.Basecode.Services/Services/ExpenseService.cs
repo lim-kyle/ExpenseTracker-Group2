@@ -1,4 +1,5 @@
 ﻿
+using ASI.Basecode.Data.Exceptions;
 using ASI.Basecode.Data.Interfaces;
 using ASI.Basecode.Data.Models;
 using ASI.Basecode.Services.Interfaces;
@@ -18,117 +19,64 @@ public class ExpenseService : IExpenseService
         _repository = repository;
     }
 
-    public async Task AddExpenseAsync(Expense expense, CancellationToken ct)
+    public List<Expense> GetExpenses()
+    {
+        return _repository.GetExpenses();
+    }
+    public void AddExpense(Expense expense)
     {
         if (string.IsNullOrWhiteSpace(expense.ExpenseTitle))
         {
-            throw new ArgumentException("Expense title cannot be null or empty.", nameof(expense.ExpenseTitle));
+            throw new ExpenseTitleEmpty("Expense title cannot be null or empty.");
         }
-        try
+        if (expense.CategoryId == 0)
         {
-            await _repository.AddExpenseAsync(expense, ct);
+            throw new CategoryEmpty("Category cannot be null or empty.");
         }
-        catch (Exception ex)
+        if (expense.Amount < 0)
         {
-            throw new InvalidOperationException("Error adding expense", ex);
+            throw new InvalidAmount("Invalid Expense Amount.");
         }
+        _repository.AddExpense(expense);
     }
 
-    public async Task<List<Expense>> GetExpensesAsync(CancellationToken ct)
+
+
+    public Expense GetExpenseById(int expenseId)
     {
-        try
-        {
-            var expenses = await _repository.GetExpensesAsync(ct);
 
-            if (expenses == null)
-            {
-                return new List<Expense>();
-            }
-
-            return expenses;
-        }
-        catch (Exception ex)
-        {
-            throw new InvalidOperationException("Error retrieving expenses", ex);
-        }
+        var expense = _repository.GetExpenseById(expenseId);
+        return expense;
     }
 
-    public async Task<Expense?> GetExpenseByIdAsync(int expenseId, CancellationToken ct)
+    public void UpdateExpense(Expense expense)
     {
-        try
-        {
-            var expense = await _repository.GetExpenseByIdAsync(expenseId, ct);
-
-            if (expense == null)
-            {
-                throw new KeyNotFoundException($"Expense with ID {expenseId} not found.");
-            }
-
-            return expense;
-        }
-        catch (Exception ex)
-        {
-            throw new InvalidOperationException("Error retrieving expense by ID", ex);
-        }
-    }
-
-    public async Task UpdateExpenseAsync(Expense expense, CancellationToken ct)
-    {
-        if (expense == null)
-        {
-            throw new ArgumentNullException(nameof(expense));
-        }
-
         if (string.IsNullOrWhiteSpace(expense.ExpenseTitle))
         {
-            throw new ArgumentException("Expense title cannot be null or empty.", nameof(expense.ExpenseTitle));
+            throw new ExpenseTitleEmpty("Expense title cannot be null or empty.");
         }
-
-        //if (string.IsNullOrWhiteSpace(expense.Category))
-        //{
-        //    throw new ArgumentException("Category cannot be null or empty.", nameof(expense.Category));
-        //}
-
-        try
+        if (expense.CategoryId <= 0)
         {
-            var existingExpense = await _repository.GetExpenseByIdAsync(expense.Id, ct);
-            if (existingExpense == null)
-            {
-                throw new KeyNotFoundException($"Expense with ID {expense.Id} not found.");
-            }
-
-            await _repository.UpdateExpenseAsync(expense, ct);
+            throw new CategoryEmpty("Category cannot be null or empty.");
         }
-        catch (Exception ex)
+        if (expense.Amount < 0)
         {
-            throw new InvalidOperationException("Error updating expense", ex);
+            throw new InvalidAmount("Invalid Expense Amount.");
         }
+        _repository.UpdateExpense(expense);
     }
 
-    public async Task DeleteExpenseAsync(int expenseId, CancellationToken ct)
+    public void DeleteExpense(int expenseId, int userId)
     {
-        try
-        {
-            var existingExpense = await _repository.GetExpenseByIdAsync(expenseId, ct);
-            if (existingExpense == null)
-            {
-                throw new KeyNotFoundException($"Expense with ID {expenseId} not found.");
-            }
-
-            await _repository.DeleteExpenseAsync(expenseId, ct);
-        }
-        catch (Exception ex)
-        {
-            throw new InvalidOperationException("Error deleting expense", ex);
-        }
+        _repository.DeleteExpense(expenseId,userId);
     }
 
-    public async Task<List<Expense>> GetExpensesAsyncByUserId(int userId)
+    public List<Expense> GetUserExpenses(int userId)
     {
-        return await _repository.GetExpensesAsyncByUserId(userId);
+        return _repository.GetUserExpenses(userId);
     }
-    public async Task<List<Expense>> FilterExpensesByCategoryAndDate(int userId, int categoryId, DateTime startDate, DateTime endDate)
+    public List<Expense> FilterExpensesByCategoryAndDate(int userId, int categoryId, DateTime startDate, DateTime endDate)
     {
-        return await _repository.GetExpensesAsyncByUserId(userId);
+        return _repository.FilterExpensesByCategoryAndDate(userId, categoryId, startDate, endDate);
     }
 }
